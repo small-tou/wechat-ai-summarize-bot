@@ -25,3 +25,17 @@ Then fill them into `local.json`.
 
 ### 4. try the demo
 RUN: `yarn run demo` or `npm run demo`
+
+```
+$ yarn run demo
+$ ./node_modules/.bin/ts-node main.ts
+[Fri Oct 09 2020 00:00:00] [LOG]    TestBot started.
+[Fri Oct 09 2020 00:00:00] [LOG]    TestBot Contact<${YOUR ACCOUNT NICK NAME}> login
+[Fri Oct 09 2020 00:00:00] [LOG]    TestBot ready.
+
+
+# bot is ready, all setup work has been done.
+# when new message comes, following logs will be printed.
+
+[Fri Oct 09 2020 00:00:01] [LOG]    TestBot on message: Message#Text ...
+```
