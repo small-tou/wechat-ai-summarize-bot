@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@types/config": "^0.0.36",
+    "@types/console-stamp": "^0.2.32",
+    "config": "^3.3.2",
+    "console-stamp": "^0.2.9",
+    "wechaty": "^0.48.10",
+    "wechaty-puppet": "^0.32.3",
+    "wechaty-puppet-padlocal": "^0.1.2"
+  },
+  "devDependencies": {
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  },
+  "scripts": {
+    "demo": "./node_modules/.bin/ts-node main.ts"
+  }
+}
