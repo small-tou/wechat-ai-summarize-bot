@@ -1,5 +1,10 @@
 ## How To Use
 
+### 1. check node version, need to be $ge than v12.0.0
+```
+node --version // >= v12.0.0
+``` 
+
 ### 1. install node modules
 After cloning the repo, change current directory to repo's root folder:
 
