@@ -4670,10 +4670,10 @@ p-try@^2.0.0:
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
 
-padlocal-client-ts@^0.1.22:
-  version "0.1.22"
-  resolved "https://registry.yarnpkg.com/padlocal-client-ts/-/padlocal-client-ts-0.1.22.tgz#f75fdc7cdb44efdab4c4c601353ae6b0d5077b3b"
-  integrity sha512-+9zC1+ZUf+w1HkE3Sbup0s9l5oyvqbJc51QbAkT5mYoI0EB38d41iW+DT40yNIrcMaaSMdCrdkNqnWpBwsImYA==
+padlocal-client-ts@^0.1.25:
+  version "0.1.25"
+  resolved "https://registry.npm.taobao.org/padlocal-client-ts/download/padlocal-client-ts-0.1.25.tgz#0378f09f011579bdd88ed75e0b766719482ee4a0"
+  integrity sha1-A3jwnwEVeb3YjtdeC3ZnGUgu5KA=
   dependencies:
     "@grpc/grpc-js" "^1.1.3"
     "@types/crypto-js" "^3.1.47"
@@ -6183,10 +6183,10 @@ wechaty-puppet-hostie@^0.10.0:
     rxjs "^6.6.2"
     ws "^7.3.1"
 
-wechaty-puppet-padlocal@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/wechaty-puppet-padlocal/-/wechaty-puppet-padlocal-0.1.2.tgz#bcc943ca1e3c17dfb7ea758f47eb2f26a886d24d"
-  integrity sha512-oR01r7O6m5wSuVuJvfM4+dmDSWsVLn8EcwiK8y1+NSYJntikM5hqjhSRgmi+XZcU8Vij87zALTS1nXgUIUvEow==
+wechaty-puppet-padlocal@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.npm.taobao.org/wechaty-puppet-padlocal/download/wechaty-puppet-padlocal-0.1.3.tgz#a2a12fca69f5d3d5ffcd215d94833ea65946a699"
+  integrity sha1-oqEvymn109X/zSFdlIM+pllGppk=
   dependencies:
     "@types/fs-extra" "^9.0.1"
     "@types/jest" "^26.0.10"
@@ -6202,7 +6202,7 @@ wechaty-puppet-padlocal@^0.1.2:
     jest "^26.4.0"
     lru-cache "^6.0.0"
     normalize-package-data "^2.5.0"
-    padlocal-client-ts "^0.1.22"
+    padlocal-client-ts "^0.1.25"
     quick-lru "^5.1.0"
     state-switch "^0.6.18"
     typed-emitter "^1.2.0"
