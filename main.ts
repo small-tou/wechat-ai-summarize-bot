@@ -32,8 +32,8 @@ const bot = new Wechaty({
     console.log("TestBot", `${user} login`);
 })
 
-.on("logout", (user: Contact) => {
-    console.log("TestBot", `${user} logout`);
+.on("logout", (user: Contact, reason: string) => {
+    console.log("TestBot", `${user} logout, reason: ${reason}`);
 })
 
 .on("message", async (message: Message) => {
