@@ -1,17 +1,9 @@
 import {PuppetPadlocal} from "wechaty-puppet-padlocal";
 import {Contact, Message, ScanStatus, Wechaty} from "wechaty";
-import * as config from "config";
 require('console-stamp')(console);
 
-const host: string = config.get("padLocal.host");
-const port: number = config.get("padLocal.port");
-const token: string = config.get("padLocal.token");
-const serverCAFilePath: string = config.get("padLocal.serverCAFilePath");
-
 const puppet = new PuppetPadlocal({
-    endpoint: `${host}:${port}`,
-    token,
-    serverCAFilePath
+    token: "YOUR_PADLOCAL_TOKEN"
 })
 
 const bot = new Wechaty({
@@ -41,6 +33,7 @@ const bot = new Wechaty({
 })
 
 
-bot.start();
+bot.start().then(() => {
+    console.log("TestBot", "started.");
+});
 
-console.log("TestBot", "started.");
