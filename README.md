@@ -10,25 +10,19 @@ After cloning the repo, change current directory to repo's root folder:
 
 RUN: `yarn install` or `npm install`
 
-### 3. add local config file
-RUN `cp ./config/default.json ./config/local.json`.
+
+### 3. apply padlocal token
+**Contact [admin](mailto:oxddoxdd@gmail.com) to apply PadLocal token.**
+
+Then replace _YOUR_PADLOCAL_TOKEN_ with granted token in main.ts:
+```
+const puppet = new PuppetPadlocal({
+    token: "YOUR_PADLOCAL_TOKEN"
+})
+```
 
 
-### 4. override local config file
-**Contact [admin](mailto:oxddoxdd@gmail.com) to request following information.**
-
-* server host 
-* server port
-* padlocal token
-* server ca certification 
-
-Then fill them into `local.json`.
-
-
-*`local.json`has been ruled by .gitignore, credentials are safe to store.*
-
-
-### 5. try the demo
+### 4. try the demo
 RUN: `yarn run demo` or `npm run demo`
 
 ```
