@@ -30,10 +30,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@chatie/grpc@^0.17.4":
-  version "0.17.4"
-  resolved "https://registry.yarnpkg.com/@chatie/grpc/-/grpc-0.17.4.tgz#d0bbd2a6939dff61243887f20e3d4daec993970e"
-  integrity sha512-XZptV16yQiUUqOaQudYZOrj3+AEutqYmO2wueiFtAzChBbRcEw/KHihjTP55l3SfFRtu+Q5dj7edEVakFDdmbg==
+"@chatie/grpc@^0.18.10":
+  version "0.18.12"
+  resolved "https://registry.npm.taobao.org/@chatie/grpc/download/@chatie/grpc-0.18.12.tgz#e39d4896e3bb8bec323b947cfcc4aca2fbd64d57"
+  integrity sha1-451IluO7i+wyO5R8/MSsovvWTVc=
   dependencies:
     google-protobuf "^3.11.3"
     grpc "^1.24.2"
@@ -47,22 +47,22 @@
     google-auth-library "^6.1.1"
     semver "^6.2.0"
 
-"@jimp/bmp@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/bmp/-/bmp-0.13.0.tgz#cca2301e56231e7dc20d5aba757fb237b94e2013"
-  integrity sha512-7i/XZLoK5JETBKO0VL7qjnr6WDVl1X8mmaUk6Lzq06/veMPC5IwUIZi1JRVAXPEwTf5uUegq0WFnmUS0lVYzFw==
+"@jimp/bmp@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/bmp/download/@jimp/bmp-0.16.1.tgz#6e2da655b2ba22e721df0795423f34e92ef13768"
+  integrity sha1-bi2mVbK6Iuch3weVQj806S7xN2g=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
     bmp-js "^0.1.0"
 
-"@jimp/core@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/core/-/core-0.13.0.tgz#6ec104d69cd7bf32bd5748f5d6106133e2ee3205"
-  integrity sha512-BMFEUm5HbRP4yCo4Q23CJFx/v6Yr3trw7rERmS1GKUEooDq9ktApZWWTvWq/vggKyysKX0nQ+KT+FaFD/75Q+Q==
+"@jimp/core@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/core/download/@jimp/core-0.16.1.tgz#68c4288f6ef7f31a0f6b859ba3fb28dae930d39d"
+  integrity sha1-aMQoj2738xoPa4Wbo/so2ukw050=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
     any-base "^1.1.0"
     buffer "^5.2.0"
     exif-parser "^0.1.12"
@@ -73,266 +73,266 @@
     pixelmatch "^4.0.2"
     tinycolor2 "^1.4.1"
 
-"@jimp/custom@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/custom/-/custom-0.13.0.tgz#bc7b2568e73eea1e1c15260b7283d7d099630881"
-  integrity sha512-Zir/CHoLRhQDGfPWueCIQbVjVUlayNIUch9fulq4M9V2S+ynHx9BqRn58z8wy+mk8jm1WlpRVhvZ8QUenbL0vg==
+"@jimp/custom@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/custom/download/@jimp/custom-0.16.1.tgz#28b659c59e20a1d75a0c46067bd3f4bd302cf9c5"
+  integrity sha1-KLZZxZ4goddaDEYGe9P0vTAs+cU=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/core" "^0.13.0"
+    "@jimp/core" "^0.16.1"
 
-"@jimp/gif@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/gif/-/gif-0.13.0.tgz#09f208f616d83acc8f8e1f1f6df784bafea46062"
-  integrity sha512-7FO2Fa9FZluqGt1MM/L8s6P5UEedxrIQT2eBAxzB8Z82YTTSWQXw4bdrZWCwiQjBFZwKTIaULIfw6+TxA/Q2XA==
+"@jimp/gif@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/gif/download/@jimp/gif-0.16.1.tgz#d1f7c3a58f4666482750933af8b8f4666414f3ca"
+  integrity sha1-0ffDpY9GZkgnUJM6+Lj0ZmQU88o=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
     gifwrap "^0.9.2"
     omggif "^1.0.9"
 
-"@jimp/jpeg@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/jpeg/-/jpeg-0.13.0.tgz#e7609a932cb0b795c422b6ad25882277a9db029d"
-  integrity sha512-Fol/DxA1lnIzCsNx/CckIEoyWImQHiWPgFAWL5s7VIVaJrEFnnbRqfOxmvr8yWg8mh3hWLeXNcxqA82CKXgg+Q==
+"@jimp/jpeg@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/jpeg/download/@jimp/jpeg-0.16.1.tgz#3b7bb08a4173f2f6d81f3049b251df3ee2ac8175"
+  integrity sha1-O3uwikFz8vbYHzBJslHfPuKsgXU=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
-    jpeg-js "^0.4.0"
+    "@jimp/utils" "^0.16.1"
+    jpeg-js "0.4.2"
 
-"@jimp/plugin-blit@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-blit/-/plugin-blit-0.13.0.tgz#31d8744a2fe79abe0ffd1af3f385953fb9e3b4d5"
-  integrity sha512-roCShFZosJgRMLCLzuOT1pRZysQF/p3avQieZiu9pfg2F9X09f91OauU2Lf3/yOp0TZCWbheqbem9MPlhyED8w==
+"@jimp/plugin-blit@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-blit/download/@jimp/plugin-blit-0.16.1.tgz#09ea919f9d326de3b9c2826fe4155da37dde8edb"
+  integrity sha1-CeqRn50ybeO5woJv5BVdo33ejts=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-blur@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-blur/-/plugin-blur-0.13.0.tgz#35c57830391da331fc28f847742c2ea822d8641f"
-  integrity sha512-LeBhQe72bRk2fe2AftcqcDaWgSu6vFD0fxiAYYMy3pHa8pnPAwnw2W3u4bV/gc5XJt6AJzoRyc7WVG2pE4A3gg==
+"@jimp/plugin-blur@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-blur/download/@jimp/plugin-blur-0.16.1.tgz#e614fa002797dcd662e705d4cea376e7db968bf5"
+  integrity sha1-5hT6ACeX3NZi5wXUzqN259uWi/U=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-circle@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-circle/-/plugin-circle-0.13.0.tgz#2df8783e7e648ed1135d9197a3927543c0e340de"
-  integrity sha512-INwIl8zgWnJYXxYkNhIjG8TXg2Q1nh008SDKyC+Pug4ce/XRJC8w/Gk6HS+U9Z2tIO2/zXv473k/JaiwvDMu1w==
+"@jimp/plugin-circle@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-circle/download/@jimp/plugin-circle-0.16.1.tgz#20e3194a67ca29740aba2630fd4d0a89afa27491"
+  integrity sha1-IOMZSmfKKXQKuiYw/U0Kia+idJE=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-color@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-color/-/plugin-color-0.13.0.tgz#6f5683bb1e02bc1576867b5b79b7736a1249faec"
-  integrity sha512-e71UDivZdZGOhQRLjDo4a0BKgrH858HJ7zFk7/Yti58LwgeIGjYHhuYc+xQOdnBWPzGSD47TuFX5GXmf/x1nmg==
+"@jimp/plugin-color@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-color/download/@jimp/plugin-color-0.16.1.tgz#0f298ba74dee818b663834cd80d53e56f3755233"
+  integrity sha1-DymLp03ugYtmODTNgNU+VvN1UjM=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
     tinycolor2 "^1.4.1"
 
-"@jimp/plugin-contain@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-contain/-/plugin-contain-0.13.0.tgz#d87408f078d3f9438b5d04045cba5d1f185d8fc2"
-  integrity sha512-qPYS+ccMP4mEnf7BB0bcaszUTth8OxeRX0MdMvU6PDEI0nIvVVNwmuI6YtNqqs12PwuYxgPkq6AFenyLyoNP1g==
+"@jimp/plugin-contain@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-contain/download/@jimp/plugin-contain-0.16.1.tgz#3c5f5c495fd9bb08a970739d83694934f58123f2"
+  integrity sha1-PF9cSV/ZuwipcHOdg2lJNPWBI/I=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-cover@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-cover/-/plugin-cover-0.13.0.tgz#bf7e82df3857b374ece24cfb0f524c0cc6e03a6e"
-  integrity sha512-S2GkbXNgIb0afof/NLLq9IJDZPOcFtu1mc32ngt9S8HzXsNHgRAzONW7cg56bwQ6p0+sz/dS5tB4ctOW/pu/Dw==
+"@jimp/plugin-cover@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-cover/download/@jimp/plugin-cover-0.16.1.tgz#0e8caec16a40abe15b1b32e5383a603a3306dc41"
+  integrity sha1-DoyuwWpAq+FbGzLlODpgOjMG3EE=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-crop@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-crop/-/plugin-crop-0.13.0.tgz#2215923db11694796a40a294faf373454a0af3f8"
-  integrity sha512-Y1Ug3kOzsq72EjLiWQlwkHuvUvdSmFUDtxpyOXh3RxeWF7wmdjH8FvdhPj8hWvFLsDYFgWGaLI4Z6SXOr+N8nA==
+"@jimp/plugin-crop@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-crop/download/@jimp/plugin-crop-0.16.1.tgz#b362497c873043fe47ba881ab08604bf7226f50f"
+  integrity sha1-s2JJfIcwQ/5HuogasIYEv3Im9Q8=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-displace@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-displace/-/plugin-displace-0.13.0.tgz#ace748989133322cc1da94f7699ab393904fc306"
-  integrity sha512-c80VIUjIqQoavafthLpYRZdzANCxbOCHzqkFVbZ0kNKJnDDk6fW55mvVW4TJLDToDU81WMlttCmNV0oXcX93gQ==
+"@jimp/plugin-displace@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-displace/download/@jimp/plugin-displace-0.16.1.tgz#4dd9db518c3e78de9d723f86a234bf98922afe8d"
+  integrity sha1-TdnbUYw+eN6dcj+GojS/mJIq/o0=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-dither@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-dither/-/plugin-dither-0.13.0.tgz#c5a917955b9b5690e9cece2ee10e072ff9cfe82e"
-  integrity sha512-EUz/y/AaQ00TnaiVLVAXLz8n8Nx7S36lKi4VXPeYy5a5FyzBimxNiKxdITVe9zooN7+H4FP++/xGFGFMpfWtRg==
+"@jimp/plugin-dither@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-dither/download/@jimp/plugin-dither-0.16.1.tgz#b47de2c0bb09608bed228b41c3cd01a85ec2d45b"
+  integrity sha1-tH3iwLsJYIvtIotBw80BqF7C1Fs=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-fisheye@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-fisheye/-/plugin-fisheye-0.13.0.tgz#d300564c30ae1513268680b5ced4de87d6719aee"
-  integrity sha512-O7h5pNTk2sYcTKxLvV6+zzUpLx8qzdNl6qiP9x1S0CKy64oZ9IwtK1eR1eLom0YA8tUR7rX5Ra4pB8bhq8Oyqw==
+"@jimp/plugin-fisheye@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-fisheye/download/@jimp/plugin-fisheye-0.16.1.tgz#f625047b6cdbe1b83b89e9030fd025ab19cdb1a4"
+  integrity sha1-9iUEe2zb4bg7iekDD9AlqxnNsaQ=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-flip@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-flip/-/plugin-flip-0.13.0.tgz#502c07fbefddbe045a1a8d691f3918651bb0f349"
-  integrity sha512-gWk+Q0LmCvupUuWRfoGyETmH/+lJKZuPCeA9K6UHJldq5Cdg/3MrlKUNS1HcPCDXjw+dWDGC8QnNslvMTaY5VQ==
+"@jimp/plugin-flip@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-flip/download/@jimp/plugin-flip-0.16.1.tgz#7a99ea22bde802641017ed0f2615870c144329bb"
+  integrity sha1-epnqIr3oAmQQF+0PJhWHDBRDKbs=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-gaussian@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-gaussian/-/plugin-gaussian-0.13.0.tgz#9ae00f6080b3ed777eb837d94d9d0a071aa1246b"
-  integrity sha512-0ctRqbCcLdy8y9IrSIH2McWNPLnEwjoe8qxtqoi51zRsM3z3mwjiTC2q8AWeF0SdIdWwV+YV/eP0494AJqjTsg==
+"@jimp/plugin-gaussian@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-gaussian/download/@jimp/plugin-gaussian-0.16.1.tgz#0845e314085ccd52e34fad9a83949bc0d81a68e8"
+  integrity sha1-CEXjFAhczVLjT62ag5SbwNgaaOg=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-invert@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-invert/-/plugin-invert-0.13.0.tgz#f06ba0eed19225f45d1b87fcc84ed8a233e32d1e"
-  integrity sha512-k7TWx/la0MrTcT1dMtncV6I9IuGToRm9Q0ekzfb3k8bHzWRYX4SUtt/WrZ/I+/znD/fGorLtFI057v7mcLJc5A==
+"@jimp/plugin-invert@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-invert/download/@jimp/plugin-invert-0.16.1.tgz#7e6f5a15707256f3778d06921675bbcf18545c97"
+  integrity sha1-fm9aFXByVvN3jQaSFnW7zxhUXJc=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-mask@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-mask/-/plugin-mask-0.13.0.tgz#42492be551c7d1eeb52f13d369476301b51cea7e"
-  integrity sha512-U3OdsgtMNpbCYc1lzzu96zdSgyz7BK9eD8IoFHdw4Ma8gCuM8kp9gdBJlKnzOh8eyYvssdCMZOWz9Xbxc5xH9A==
+"@jimp/plugin-mask@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-mask/download/@jimp/plugin-mask-0.16.1.tgz#e7f2460e05c3cda7af5e76f33ccb0579f66f90df"
+  integrity sha1-5/JGDgXDzaevXnbzPMsFefZvkN8=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-normalize@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-normalize/-/plugin-normalize-0.13.0.tgz#e1f4de7f8caef061c2dc093f3a8251d278b837e5"
-  integrity sha512-yKOgZSvOxSHNlh+U9NOQH4Drgca0Dwb7DQRk3vj67gvHQC96JafIpGwN+9V4fP89lA3rkItbw6xgN6C/28HEUQ==
+"@jimp/plugin-normalize@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-normalize/download/@jimp/plugin-normalize-0.16.1.tgz#032dfd88eefbc4dedc8b1b2d243832e4f3af30c8"
+  integrity sha1-Ay39iO77xN7cixstJDgy5POvMMg=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-print@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-print/-/plugin-print-0.13.0.tgz#32a1e9c30dbf38564956eb326b138b729b6067f1"
-  integrity sha512-Tv7r/1t7z63oLeRuEWw9xbm0G5uuBE54986+BOu8OFaHBpV/BbVHrE7ouApA0mKVZqMZCVjhO6Ph8+uFzRjdOw==
+"@jimp/plugin-print@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-print/download/@jimp/plugin-print-0.16.1.tgz#66b803563f9d109825970714466e6ab9ae639ff6"
+  integrity sha1-ZrgDVj+dEJgllwcURm5qua5jn/Y=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
     load-bmfont "^1.4.0"
 
-"@jimp/plugin-resize@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-resize/-/plugin-resize-0.13.0.tgz#17eb70bed34054b4b9633a213e1396431e8d682e"
-  integrity sha512-XOo0Skn7aq/aGxV9czFx6EaBUbAsAGCVbAS26fMM0AZ4YAWWUEleKTpHunEo92giIPhvlxeFFjQR2jQ9UcB3uQ==
+"@jimp/plugin-resize@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-resize/download/@jimp/plugin-resize-0.16.1.tgz#65e39d848ed13ba2d6c6faf81d5d590396571d10"
+  integrity sha1-ZeOdhI7RO6LWxvr4HV1ZA5ZXHRA=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-rotate@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-rotate/-/plugin-rotate-0.13.0.tgz#325e799055b748fe1948eb85e7ad6ec46d08bc5b"
-  integrity sha512-BaNeh655kF9Rz01ZV+Bkc8hLsHpNu3QnzigruVDjGt9Paoig0EBr+Dgyjje+7eTLu20kyuyxwPUAxLSOiPiraQ==
+"@jimp/plugin-rotate@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-rotate/download/@jimp/plugin-rotate-0.16.1.tgz#53fb5d51a4b3d05af9c91c2a8fffe5d7a1a47c8c"
+  integrity sha1-U/tdUaSz0Fr5yRwqj//l16GkfIw=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-scale@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-scale/-/plugin-scale-0.13.0.tgz#cf498f6fef97354c5a6f1e37d5c5ef940a963297"
-  integrity sha512-e/f7lvii+DmRMgYF+uBKQy437f+J66WbL0FcFEataCF/W9UkTIQGeXdECwJSPfqr81SxC5mGbSBbsdbMKChzAQ==
+"@jimp/plugin-scale@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-scale/download/@jimp/plugin-scale-0.16.1.tgz#89f6ba59feed3429847ed226aebda33a240cc647"
+  integrity sha1-ifa6Wf7tNCmEftImrr2jOiQMxkc=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-shadow@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-shadow/-/plugin-shadow-0.13.0.tgz#dd35819800e7375f2a8eb13a02bf1b8829a3e47e"
-  integrity sha512-qObtH63dmfPLze5wE8XDRjDsBOUnAfEWib4YbjPXGBZVxeKD7+2oPGemsK56HqC/+rYzIynkbi4MUIV1Q0dGjA==
+"@jimp/plugin-shadow@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-shadow/download/@jimp/plugin-shadow-0.16.1.tgz#a7af892a740febf41211e10a5467c3c5c521a04c"
+  integrity sha1-p6+JKnQP6/QSEeEKVGfDxcUhoEw=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugin-threshold@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugin-threshold/-/plugin-threshold-0.13.0.tgz#d92febd59f72d44e3afd60d74e1232ab1645b3a4"
-  integrity sha512-ACF7jk0ogso+2RK+0EsvBupVfE3IMq39wGFQWgpnHR9Tj12mSO279f6i/H8bcj1ZXmHot22nwLOG0wO4AlAaRg==
+"@jimp/plugin-threshold@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugin-threshold/download/@jimp/plugin-threshold-0.16.1.tgz#34f3078f9965145b7ae26c53a32ad74b1195bbf5"
+  integrity sha1-NPMHj5llFFt64mxToyrXSxGVu/U=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
 
-"@jimp/plugins@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/plugins/-/plugins-0.13.0.tgz#d1f2aed6ce4b7de7e3d683daf723d887aa4a826f"
-  integrity sha512-onu8GnSnFjLFuFVFq8+aTYFIDfH8kwZuBHeGaDyScPFFn6QMKsPl4TeLzQ5vwIPvcpkADuFFfuAshE4peutjjA==
+"@jimp/plugins@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/plugins/download/@jimp/plugins-0.16.1.tgz#9f08544c97226d6460a16ced79f57e85bec3257b"
+  integrity sha1-nwhUTJcibWRgoWztefV+hb7DJXs=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/plugin-blit" "^0.13.0"
-    "@jimp/plugin-blur" "^0.13.0"
-    "@jimp/plugin-circle" "^0.13.0"
-    "@jimp/plugin-color" "^0.13.0"
-    "@jimp/plugin-contain" "^0.13.0"
-    "@jimp/plugin-cover" "^0.13.0"
-    "@jimp/plugin-crop" "^0.13.0"
-    "@jimp/plugin-displace" "^0.13.0"
-    "@jimp/plugin-dither" "^0.13.0"
-    "@jimp/plugin-fisheye" "^0.13.0"
-    "@jimp/plugin-flip" "^0.13.0"
-    "@jimp/plugin-gaussian" "^0.13.0"
-    "@jimp/plugin-invert" "^0.13.0"
-    "@jimp/plugin-mask" "^0.13.0"
-    "@jimp/plugin-normalize" "^0.13.0"
-    "@jimp/plugin-print" "^0.13.0"
-    "@jimp/plugin-resize" "^0.13.0"
-    "@jimp/plugin-rotate" "^0.13.0"
-    "@jimp/plugin-scale" "^0.13.0"
-    "@jimp/plugin-shadow" "^0.13.0"
-    "@jimp/plugin-threshold" "^0.13.0"
+    "@jimp/plugin-blit" "^0.16.1"
+    "@jimp/plugin-blur" "^0.16.1"
+    "@jimp/plugin-circle" "^0.16.1"
+    "@jimp/plugin-color" "^0.16.1"
+    "@jimp/plugin-contain" "^0.16.1"
+    "@jimp/plugin-cover" "^0.16.1"
+    "@jimp/plugin-crop" "^0.16.1"
+    "@jimp/plugin-displace" "^0.16.1"
+    "@jimp/plugin-dither" "^0.16.1"
+    "@jimp/plugin-fisheye" "^0.16.1"
+    "@jimp/plugin-flip" "^0.16.1"
+    "@jimp/plugin-gaussian" "^0.16.1"
+    "@jimp/plugin-invert" "^0.16.1"
+    "@jimp/plugin-mask" "^0.16.1"
+    "@jimp/plugin-normalize" "^0.16.1"
+    "@jimp/plugin-print" "^0.16.1"
+    "@jimp/plugin-resize" "^0.16.1"
+    "@jimp/plugin-rotate" "^0.16.1"
+    "@jimp/plugin-scale" "^0.16.1"
+    "@jimp/plugin-shadow" "^0.16.1"
+    "@jimp/plugin-threshold" "^0.16.1"
     timm "^1.6.1"
 
-"@jimp/png@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/png/-/png-0.13.0.tgz#f4d9b6f7843908b081dbace984f0d45e45f1ffda"
-  integrity sha512-9MVU0BLMQKJ6Kaiwjrq6dLDnDktZzeHtxz4qthRHaGOyHLx3RpxmbhaDuK9dDg6NASX3JuXznEhaOP4lqQODpQ==
+"@jimp/png@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/png/download/@jimp/png-0.16.1.tgz#f24cfc31529900b13a2dd9d4fdb4460c1e4d814e"
+  integrity sha1-8kz8MVKZALE6LdnU/bRGDB5NgU4=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/utils" "^0.13.0"
+    "@jimp/utils" "^0.16.1"
     pngjs "^3.3.3"
 
-"@jimp/tiff@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/tiff/-/tiff-0.13.0.tgz#2795a35073fe296dc09ac2fa693fe5b3558386f6"
-  integrity sha512-8lLGgEmhVRRjzZfn/QgpM3+mijq5ORYqRHtLcqDgcQaUY/q/OU1CxLYX777pozyQ3KIq1O+jyyHZm2xu3RZkPA==
+"@jimp/tiff@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/tiff/download/@jimp/tiff-0.16.1.tgz#0e8756695687d7574b6bc73efab0acd4260b7a12"
+  integrity sha1-DodWaVaH11dLa8c++rCs1CYLehI=
   dependencies:
     "@babel/runtime" "^7.7.2"
     utif "^2.0.1"
 
-"@jimp/types@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/types/-/types-0.13.0.tgz#e397bc848ee9a01e0fe8e266efcc045f23c36f79"
-  integrity sha512-qGq9qVHiRTgtIy061FSBr9l7OFrSiFLkKyQVnOBndEjwls2XLBKXkMmSD2U3oiHcNuf3ACsDSTIzK3KX/hDHvg==
+"@jimp/types@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/types/download/@jimp/types-0.16.1.tgz#0dbab37b3202315c91010f16c31766d35a2322cc"
+  integrity sha1-DbqzezICMVyRAQ8Wwxdm01ojIsw=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/bmp" "^0.13.0"
-    "@jimp/gif" "^0.13.0"
-    "@jimp/jpeg" "^0.13.0"
-    "@jimp/png" "^0.13.0"
-    "@jimp/tiff" "^0.13.0"
+    "@jimp/bmp" "^0.16.1"
+    "@jimp/gif" "^0.16.1"
+    "@jimp/jpeg" "^0.16.1"
+    "@jimp/png" "^0.16.1"
+    "@jimp/tiff" "^0.16.1"
     timm "^1.6.1"
 
-"@jimp/utils@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@jimp/utils/-/utils-0.13.0.tgz#4cde8039a70a1c94baa33e4d8074e174ba895b74"
-  integrity sha512-zA4573jE4FIpBKiYpPGo66JOAGdv/FS/N9fW9GpkbwJeTu12fV+r4R1ARSyt8UEKdE4DMBatBmQC0U2FGZijOA==
+"@jimp/utils@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/@jimp/utils/download/@jimp/utils-0.16.1.tgz?cache=0&sync_timestamp=1608029933603&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40jimp%2Futils%2Fdownload%2F%40jimp%2Futils-0.16.1.tgz#2f51e6f14ff8307c4aa83d5e1a277da14a9fe3f7"
+  integrity sha1-L1Hm8U/4MHxKqD1eGid9oUqf4/c=
   dependencies:
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
@@ -679,7 +679,7 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
-brolog@^1.12.4, brolog@^1.2.6, brolog@^1.3.3, brolog@^1.6.2, brolog@^1.6.5, brolog@^1.8.3:
+brolog@^1.12.4, brolog@^1.2.6, brolog@^1.3.3, brolog@^1.6.2, brolog@^1.8.3:
   version "1.12.4"
   resolved "https://registry.yarnpkg.com/brolog/-/brolog-1.12.4.tgz#db6a71a4bcc760cbe1e28be95cc0a1a785d7b8ce"
   integrity sha512-ibNvm1hD3WMhKAnxelbwI8t39c5Z0s/gMFARj1Y/tdID1s3dCSdd2UVn+6wtu04nRUTg4TXg9s1WXqcD5d0ZVw==
@@ -869,7 +869,7 @@ cliui@^5.0.0:
     strip-ansi "^5.2.0"
     wrap-ansi "^5.1.0"
 
-clone-class@^0.6.19:
+clone-class@^0.6.20:
   version "0.6.20"
   resolved "https://registry.yarnpkg.com/clone-class/-/clone-class-0.6.20.tgz#b199a51f1e7466d3f544fe1de74b6b8d97ca007e"
   integrity sha512-h5ZvC7K0wptqIamtMkRF3LPoIr0bz0f60G3u5KkUhtRRz0PKJG8BnjiUyK4xgJ1FO+YS8muadU0r1J981CluBw==
@@ -1280,14 +1280,14 @@ figures@^2.0.0:
   dependencies:
     escape-string-regexp "^1.0.5"
 
-file-box@^0.13.1:
-  version "0.13.5"
-  resolved "https://registry.yarnpkg.com/file-box/-/file-box-0.13.5.tgz#69375b8e097300750ee508d55455189fafb24aa5"
-  integrity sha512-xFUQyEpRSSKVe99BJZ447hXqffxrQgAvszubhMyeFiBPS/2xZRzgEX3/rrEP2IARDm2kJskUB2nS4BiFp0JOWA==
+file-box@^0.16.1:
+  version "0.16.4"
+  resolved "https://registry.npm.taobao.org/file-box/download/file-box-0.16.4.tgz#3192bbe184efd8e6fa46c176ab7d5f78f5df892c"
+  integrity sha1-MZK74YTv2Ob6RsF2q31fePXfiSw=
   dependencies:
-    jimp "^0.13.0"
-    jsqr "^1.2.0"
-    mime "^2.3.1"
+    jimp "^0.16.1"
+    jsqr "^1.3.1"
+    mime "^2.4.6"
     qrcode "^1.4.4"
 
 file-type@^9.0.0:
@@ -1315,12 +1315,20 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
-find-up@^4.0.0, find-up@^4.1.0:
+find-up@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/find-up/-/find-up-4.1.0.tgz#97afe7d6cdc0bc5928584b7c8d7b16e8a9aa5d19"
   integrity sha512-PpOwAdQ/YlXQ2vj8a3h8IipDuYRi3wceVQQGYWxNINccq40Anw7BlsEXCMbt1Zt+OLA6Fq9suIpIWD0OsnISlw==
   dependencies:
     locate-path "^5.0.0"
+    path-exists "^4.0.0"
+
+find-up@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npm.taobao.org/find-up/download/find-up-5.0.0.tgz#4c92819ecb7083561e4f4a240a86be5198f536fc"
+  integrity sha1-TJKBnstwg1YeT0okCoa+UZj1Nvw=
+  dependencies:
+    locate-path "^6.0.0"
     path-exists "^4.0.0"
 
 flash-store@^0.20.4:
@@ -1573,7 +1581,14 @@ hosted-git-info@^2.1.4:
   resolved "https://registry.npm.taobao.org/hosted-git-info/download/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
   integrity sha1-dTm9S8Hg4KiVgVouAmJCCxKFhIg=
 
-hot-import@^0.2.1, hot-import@^0.2.14:
+hosted-git-info@^3.0.6:
+  version "3.0.7"
+  resolved "https://registry.npm.taobao.org/hosted-git-info/download/hosted-git-info-3.0.7.tgz#a30727385ea85acfcee94e0aad9e368c792e036c"
+  integrity sha1-owcnOF6oWs/O6U4KrZ42jHkuA2w=
+  dependencies:
+    lru-cache "^6.0.0"
+
+hot-import@^0.2.14:
   version "0.2.14"
   resolved "https://registry.yarnpkg.com/hot-import/-/hot-import-0.2.14.tgz#4d1e0fd48edc840b82a7be2db09527f6103dfbb1"
   integrity sha512-vLfpcReGqXoyAmp8rXdD2YSD0DfwozTg9LsgCGpyy1c9cHTU4mVvuUkNPnSnRai9v2kykINo5NbKmBl3DZQrPw==
@@ -1788,15 +1803,15 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
-jimp@^0.13.0:
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/jimp/-/jimp-0.13.0.tgz#d5497350adaebf5dd32e4b873871fe41297cccf4"
-  integrity sha512-N/iG8L7Qe+AcHhrgcL0m7PTP/14iybmSIuOqCDvuel9gcIKEzxbbGuPCJVMchwXzusc2E7h9UjO9LZDfXb/09w==
+jimp@^0.16.1:
+  version "0.16.1"
+  resolved "https://registry.npm.taobao.org/jimp/download/jimp-0.16.1.tgz#192f851a30e5ca11112a3d0aa53137659a78ca7a"
+  integrity sha1-GS+FGjDlyhERKj0KpTE3ZZp4yno=
   dependencies:
     "@babel/runtime" "^7.7.2"
-    "@jimp/custom" "^0.13.0"
-    "@jimp/plugins" "^0.13.0"
-    "@jimp/types" "^0.13.0"
+    "@jimp/custom" "^0.16.1"
+    "@jimp/plugins" "^0.16.1"
+    "@jimp/types" "^0.16.1"
     regenerator-runtime "^0.13.3"
 
 jmespath@0.15.0:
@@ -1804,7 +1819,7 @@ jmespath@0.15.0:
   resolved "https://registry.yarnpkg.com/jmespath/-/jmespath-0.15.0.tgz#a3f222a9aae9f966f5d27c796510e28091764217"
   integrity sha1-o/Iiqarp+Wb10nx5ZRDigJF2Qhc=
 
-jpeg-js@^0.4.0:
+jpeg-js@0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/jpeg-js/-/jpeg-js-0.4.2.tgz#8b345b1ae4abde64c2da2fe67ea216a114ac279d"
   integrity sha512-+az2gi/hvex7eLTMTlbRLOhH6P6WFdk2ITI8HJsaH2VqYO0I594zXSYEP+tf4FW+8Cy68ScDXoAsQdyQanv3sw==
@@ -1831,10 +1846,10 @@ json-parse-even-better-errors@^2.3.0:
   resolved "https://registry.yarnpkg.com/json-parse-even-better-errors/-/json-parse-even-better-errors-2.3.1.tgz#7c47805a94319928e05777405dc12e1f7a4ee02d"
   integrity sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==
 
-json-rpc-peer@^0.16.0:
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/json-rpc-peer/-/json-rpc-peer-0.16.0.tgz#44ce9924cab354c3f263b315b8feb9ed644a06c2"
-  integrity sha512-7T112z5S5xKpWBk1MRmYao6PDPXPFct9cWJbZBVGyg4Zle8EOdvd6y09n+dWFZNdh5qZShHlYQModXU+gHyWcQ==
+json-rpc-peer@^0.17.0:
+  version "0.17.0"
+  resolved "https://registry.npm.taobao.org/json-rpc-peer/download/json-rpc-peer-0.17.0.tgz#1182664b1db4c6072faba8163d1d213d063183bb"
+  integrity sha1-EYJmSx20xgcvq6gWPR0hPQYxg7s=
   dependencies:
     "@babel/runtime" "^7.3.4"
     json-rpc-protocol "^0.13.1"
@@ -1888,7 +1903,7 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-jsqr@^1.2.0:
+jsqr@^1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/jsqr/-/jsqr-1.3.1.tgz#515a766e58b00c80142f3a2dc4b8751100ceedcf"
   integrity sha512-zCTP6Qd/WwjrpuHFkJuXc5opRdKprUr7eI7+JCCtcetThJt45qptu82MWQ+eET+FtDrMo7+BYjo3iD0XIq1L9Q==
@@ -1961,6 +1976,13 @@ locate-path@^5.0.0:
   integrity sha1-Gvujlq/WdqbUJQTQpno6frn2KqA=
   dependencies:
     p-locate "^4.1.0"
+
+locate-path@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npm.taobao.org/locate-path/download/locate-path-6.0.0.tgz#55321eb309febbc59c4801d931a72452a681d286"
+  integrity sha1-VTIeswn+u8WcSAHZMackUqaB0oY=
+  dependencies:
+    p-locate "^5.0.0"
 
 lodash.assignin@^4.0.9:
   version "4.2.0"
@@ -2150,10 +2172,15 @@ mime@^1.3.4:
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
   integrity sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
 
-mime@^2.2.0, mime@^2.3.1:
+mime@^2.2.0:
   version "2.4.6"
   resolved "https://registry.yarnpkg.com/mime/-/mime-2.4.6.tgz#e5b407c90db442f2beb5b162373d07b69affa4d1"
   integrity sha512-RZKhC3EmpBchfTGBVb8fb+RL2cWyw/32lshnsETttkBAyAUXSGHxbEJWWRXc751DrIxG1q04b8QwMbAwkRPpUA==
+
+mime@^2.4.6:
+  version "2.4.7"
+  resolved "https://registry.npm.taobao.org/mime/download/mime-2.4.7.tgz?cache=0&sync_timestamp=1608084083331&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmime%2Fdownload%2Fmime-2.4.7.tgz#962aed9be0ed19c91fd7dc2ece5d7f4e89a90d74"
+  integrity sha1-lirtm+DtGckf19wuzl1/TompDXQ=
 
 mimic-fn@^1.0.0:
   version "1.2.0"
@@ -2309,7 +2336,7 @@ nopt@^4.0.1:
     abbrev "1"
     osenv "^0.1.4"
 
-normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, normalize-package-data@^2.4.0, normalize-package-data@^2.5.0:
+normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, normalize-package-data@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-2.5.0.tgz#e66db1838b200c1dfc233225d12cb36520e234a8"
   integrity sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==
@@ -2317,6 +2344,16 @@ normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, normalize-package-
     hosted-git-info "^2.1.4"
     resolve "^1.10.0"
     semver "2 || 3 || 4 || 5"
+    validate-npm-package-license "^3.0.1"
+
+normalize-package-data@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/normalize-package-data/download/normalize-package-data-3.0.0.tgz?cache=0&sync_timestamp=1602547447569&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnormalize-package-data%2Fdownload%2Fnormalize-package-data-3.0.0.tgz#1f8a7c423b3d2e85eb36985eaf81de381d01301a"
+  integrity sha1-H4p8Qjs9LoXrNpher4HeOB0BMBo=
+  dependencies:
+    hosted-git-info "^3.0.6"
+    resolve "^1.17.0"
+    semver "^7.3.2"
     validate-npm-package-license "^3.0.1"
 
 npm-bundled@^1.0.1:
@@ -2473,6 +2510,13 @@ p-limit@^2.0.0, p-limit@^2.2.0:
   dependencies:
     p-try "^2.0.0"
 
+p-limit@^3.0.2:
+  version "3.1.0"
+  resolved "https://registry.npm.taobao.org/p-limit/download/p-limit-3.1.0.tgz#e1daccbe78d0d1388ca18c64fea38e3e57e3706b"
+  integrity sha1-4drMvnjQ0TiMoYxk/qOOPlfjcGs=
+  dependencies:
+    yocto-queue "^0.1.0"
+
 p-locate@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/p-locate/-/p-locate-3.0.0.tgz#322d69a05c0264b25997d9f40cd8a891ab0064a4"
@@ -2487,15 +2531,22 @@ p-locate@^4.1.0:
   dependencies:
     p-limit "^2.2.0"
 
+p-locate@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npm.taobao.org/p-locate/download/p-locate-5.0.0.tgz#83c8315c6785005e3bd021839411c9e110e6d834"
+  integrity sha1-g8gxXGeFAF470CGDlBHJ4RDm2DQ=
+  dependencies:
+    p-limit "^3.0.2"
+
 p-try@^2.0.0:
   version "2.2.0"
   resolved "https://registry.npm.taobao.org/p-try/download/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha1-yyhoVA4xPWHeWPr741zpAE1VQOY=
 
-padlocal-client-ts@0.2.3:
-  version "0.2.3"
-  resolved "https://registry.npm.taobao.org/padlocal-client-ts/download/padlocal-client-ts-0.2.3.tgz?cache=0&sync_timestamp=1606993158907&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpadlocal-client-ts%2Fdownload%2Fpadlocal-client-ts-0.2.3.tgz#1b74db9b932ed46d8096201bf32b8c4de81b41fb"
-  integrity sha1-G3Tbm5Mu1G2AliAb8yuMTegbQfs=
+padlocal-client-ts@^0.2.8:
+  version "0.2.8"
+  resolved "https://registry.npm.taobao.org/padlocal-client-ts/download/padlocal-client-ts-0.2.8.tgz#7d8d538faccc129d011e3fae2faad5868f78bec0"
+  integrity sha1-fY1Tj6zMEp0BHj+uL6rVho94vsA=
   dependencies:
     "@grpc/grpc-js" "^1.1.3"
     "@types/crypto-js" "^3.1.47"
@@ -2624,12 +2675,12 @@ pixelmatch@^4.0.2:
   dependencies:
     pngjs "^3.0.0"
 
-pkg-dir@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/pkg-dir/-/pkg-dir-4.2.0.tgz#f099133df7ede422e81d1d8448270eeb3e4261f3"
-  integrity sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==
+pkg-dir@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npm.taobao.org/pkg-dir/download/pkg-dir-5.0.0.tgz#a02d6aebe6ba133a928f74aec20bafdfe6b8e760"
+  integrity sha1-oC1q6+a6EzqSj3Suwguv3+a452A=
   dependencies:
-    find-up "^4.0.0"
+    find-up "^5.0.0"
 
 pngjs@^3.0.0, pngjs@^3.3.0, pngjs@^3.3.3:
   version "3.4.0"
@@ -2740,12 +2791,7 @@ querystring@0.2.0:
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
-quick-lru@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-3.0.0.tgz#2f96145481567e5bc442c6c4a66e86158405c696"
-  integrity sha512-WLzHLB/msD8Q/5jNh4LviurG896aIEJRS1M3gHz91nSmaXn8q+/q4yOQvNMIETl9f5pAu3igqexB62ARWOUoOg==
-
-quick-lru@^5.1.0:
+quick-lru@^5.1.0, quick-lru@^5.1.1:
   version "5.1.1"
   resolved "https://registry.npm.taobao.org/quick-lru/download/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha1-NmST5rPkKjpoheLpnRj4D7eoyTI=
@@ -2779,14 +2825,6 @@ read-pkg-up@^1.0.1:
     find-up "^1.0.0"
     read-pkg "^1.0.0"
 
-read-pkg-up@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-5.0.0.tgz#b6a6741cb144ed3610554f40162aa07a6db621b8"
-  integrity sha512-XBQjqOBtTzyol2CpsQOw8LHV0XbDZVG7xMMjmXAJomlVY03WOBRmYgDJETlvcg0H63AJvPRwT7GFi5rvOzUOKg==
-  dependencies:
-    find-up "^3.0.0"
-    read-pkg "^5.0.0"
-
 read-pkg-up@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-7.0.1.tgz#f3a6135758459733ae2b95638056e1854e7ef507"
@@ -2805,7 +2843,7 @@ read-pkg@^1.0.0:
     normalize-package-data "^2.3.2"
     path-type "^1.0.0"
 
-read-pkg@^5.0.0, read-pkg@^5.2.0:
+read-pkg@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/read-pkg/-/read-pkg-5.2.0.tgz#7bf295438ca5a33e56cd30e053b34ee7250c93cc"
   integrity sha512-Ug69mNOpfvKDAc2Q8DRpMjjzdtrnv9HcSMX+4VsZxD1aZ6ZzrIE7rlzXBtWTyhULSMKg076AW6WR5iZpD0JiOg==
@@ -2845,10 +2883,10 @@ redent@^1.0.0:
     indent-string "^2.1.0"
     strip-indent "^1.0.1"
 
-redux-observable@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/redux-observable/-/redux-observable-1.2.0.tgz#ff51b6c6be2598e9b5e89fc36639186bb0e669c7"
-  integrity sha512-yeR90RP2WzZzCxxnQPlh2uFzyfFLsfXu8ROh53jGDPXVqj71uNDMmvi/YKQkd9ofiVoO4OYb1snbowO49tCEMg==
+redux-observable@^2.0.0-alpha.0:
+  version "2.0.0-alpha.0"
+  resolved "https://registry.npm.taobao.org/redux-observable/download/redux-observable-2.0.0-alpha.0.tgz#e2fbb9da1db722a581c861976958c3b5d58f49cd"
+  integrity sha1-4vu52h23IqWByGGXaVjDtdWPSc0=
 
 redux-thunk@^2.3.0:
   version "2.3.0"
@@ -2926,7 +2964,7 @@ reselect@^4.0.0:
   resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.0.0.tgz#f2529830e5d3d0e021408b246a206ef4ea4437f7"
   integrity sha512-qUgANli03jjAyGlnbYVAV5vvnOmJnODyABz51RdBN7M4WaVu8mecZWgyQNkG8Yqe3KRGRt0l4K4B3XVEULC4CA==
 
-resolve@^1.10.0:
+resolve@^1.10.0, resolve@^1.17.0:
   version "1.19.0"
   resolved "https://registry.npm.taobao.org/resolve/download/resolve-1.19.0.tgz#1af5bf630409734a067cae29318aac7fa29a267c"
   integrity sha1-GvW/YwQJc0oGfK4pMYqsf6KaJnw=
@@ -2971,7 +3009,7 @@ run-async@^2.2.0:
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
   integrity sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==
 
-rx-queue@^0.8.1:
+rx-queue@^0.8.5:
   version "0.8.5"
   resolved "https://registry.yarnpkg.com/rx-queue/-/rx-queue-0.8.5.tgz#543f5b5ca25e3cc9fe10619c60da434154c698f3"
   integrity sha512-MPjGDOsL4Ws/tY/RMP77KxsmKd1BXulVtevirFvgjzHMAa6tVRijqk72gf2l/swjDbPYyPO6UR89zU5XLyXnIQ==
@@ -2981,7 +3019,7 @@ rx@^4.1.0:
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
   integrity sha1-pfE/957zt0D+MKqAP7CfmIBdR4I=
 
-rxjs@^6.2.1, rxjs@^6.6.2:
+rxjs@^6.6.2, rxjs@^6.6.3:
   version "6.6.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.3.tgz#8ca84635c4daa900c0d3967a6ee7ac60271ee552"
   integrity sha512-trsQc+xYYXZ3urjOiJOuCOa5N3jAZ3eiSpQB5hIT8zGlL2QfnHLJ2r7GMkBGuIausdJN1OneaI6gQlsqNHHmZQ==
@@ -3018,10 +3056,17 @@ sax@>=0.6.0, sax@^1.2.4:
   resolved "https://registry.npm.taobao.org/semver/download/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha1-qVT5Ma66UI0we78Gnv8MAclhFvc=
 
-semver@^6.0.0, semver@^6.2.0:
+semver@^6.2.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
+
+semver@^7.3.2:
+  version "7.3.4"
+  resolved "https://registry.npm.taobao.org/semver/download/semver-7.3.4.tgz?cache=0&sync_timestamp=1606853731020&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsemver%2Fdownload%2Fsemver-7.3.4.tgz#27aaa7d2e4ca76452f98d3add093a72c943edc97"
+  integrity sha1-J6qn0uTKdkUvmNOt0JOnLJQ+3Jc=
+  dependencies:
+    lru-cache "^6.0.0"
 
 set-blocking@^2.0.0, set-blocking@~2.0.0:
   version "2.0.0"
@@ -3210,6 +3255,11 @@ strip-json-comments@~2.0.1:
   resolved "https://registry.npm.taobao.org/strip-json-comments/download/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
 
+stronger-typed-streams@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.npm.taobao.org/stronger-typed-streams/download/stronger-typed-streams-0.2.0.tgz#6bf2e73bec8f8639157de68c0a5cba78c2f57779"
+  integrity sha1-a/LnO+yPhjkVfeaMCly6eML1d3k=
+
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
@@ -3352,7 +3402,7 @@ type-fest@^0.8.1:
   resolved "https://registry.npm.taobao.org/type-fest/download/type-fest-0.8.1.tgz?cache=0&sync_timestamp=1606293370764&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftype-fest%2Fdownload%2Ftype-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha1-CeJJ696FHTseSNJ8EFREZn8XuD0=
 
-typed-emitter@^1.2.0, typed-emitter@^1.3.0:
+typed-emitter@^1.2.0, typed-emitter@^1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/typed-emitter/-/typed-emitter-1.3.1.tgz#c98d71551a99d5f08ba9085ee44b8fc9b2357502"
   integrity sha512-2h7utWyXgd2R2u2IuL8B4yu1gqMxbgUj2VS/MGVbFhEVQNJKXoQQoS5CBMh+eW31zFeSmDfEQ3qQf4xy5SlPVQ==
@@ -3431,29 +3481,30 @@ verror@1.10.0, verror@^1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-watchdog@^0.8.12, watchdog@^0.8.17:
+watchdog@^0.8.17:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/watchdog/-/watchdog-0.8.17.tgz#515596a0d413b8a2a2a3ebcfeb142a0dda28b438"
   integrity sha512-RHxxLKqtggCGapGIng8OBOzebF9rx2ucl4bT36mj7GkipcIzj4Rhg0nlcP0RpMHtC8Gys4a5F9/DXz/qYIa0WQ==
   dependencies:
     brolog "^1.3.3"
 
-wechaty-puppet-hostie@^0.10.0:
-  version "0.10.3"
-  resolved "https://registry.yarnpkg.com/wechaty-puppet-hostie/-/wechaty-puppet-hostie-0.10.3.tgz#c483c06eb77045e64ba4526eb6e79215c636ce65"
-  integrity sha512-0WagzN+ImqemYfBjLUqa2iFwXIYCExK3RlpO7qxhX2ybVNYzHuOioEqDD7aEdbJ7MXadqUKmC8XvLmqPSWZ4Nw==
+wechaty-puppet-hostie@^0.11.0:
+  version "0.11.13"
+  resolved "https://registry.npm.taobao.org/wechaty-puppet-hostie/download/wechaty-puppet-hostie-0.11.13.tgz#35a76925632a4ec54db31cb1e6029163a9f2ea93"
+  integrity sha1-NadpJWMqTsVNsxyx5gKRY6ny6pM=
   dependencies:
-    "@chatie/grpc" "^0.17.4"
+    "@chatie/grpc" "^0.18.10"
     "@reduxjs/toolkit" "^1.4.0"
     redux "^4.0.5"
-    redux-observable "^1.2.0"
+    redux-observable "^2.0.0-alpha.0"
     rxjs "^6.6.2"
+    stronger-typed-streams "^0.2.0"
     ws "^7.3.1"
 
-wechaty-puppet-padlocal@^0.2.3:
-  version "0.2.3"
-  resolved "https://registry.npm.taobao.org/wechaty-puppet-padlocal/download/wechaty-puppet-padlocal-0.2.3.tgz#8c711a7a53a4aa4ab4ca3e84a63917214d39ac1a"
-  integrity sha1-jHEaelOkqkq0yj6EpjkXIU05rBo=
+wechaty-puppet-padlocal@^0.2.8:
+  version "0.2.8"
+  resolved "https://registry.npm.taobao.org/wechaty-puppet-padlocal/download/wechaty-puppet-padlocal-0.2.8.tgz#1dbe239527db184cae606cde6eadff7296eeb3b4"
+  integrity sha1-Hb4jlSfbGEyuYGzebq3/cpbus7Q=
   dependencies:
     "@types/fs-extra" "^9.0.1"
     "@types/lru-cache" "^5.1.0"
@@ -3467,59 +3518,59 @@ wechaty-puppet-padlocal@^0.2.3:
     hot-import "^0.2.14"
     lru-cache "^6.0.0"
     normalize-package-data "^2.5.0"
-    padlocal-client-ts "0.2.3"
+    padlocal-client-ts "^0.2.8"
     quick-lru "^5.1.0"
     state-switch "^0.6.18"
     typed-emitter "^1.2.0"
     watchdog "^0.8.17"
-    wechaty-puppet "^0.32.3"
+    wechaty-puppet "^0.33.3"
     xml2js "^0.4.23"
 
-wechaty-puppet@^0.32.3:
-  version "0.32.3"
-  resolved "https://registry.yarnpkg.com/wechaty-puppet/-/wechaty-puppet-0.32.3.tgz#09c0f1e71d40facfa78bb0de60327fbed8d1b3a7"
-  integrity sha512-wgQ8k8brUietRAjRhMlaH1oNKVWcd35Doq+aLQQ3Xi0F/Xr5LK6kVAPZJBz2JhD8z4hmucEkr0cBFx50vWyIsg==
+wechaty-puppet@^0.33.3:
+  version "0.33.6"
+  resolved "https://registry.npm.taobao.org/wechaty-puppet/download/wechaty-puppet-0.33.6.tgz#906ad62f7cdc02f12a1a56efc85c73e3d49b32f9"
+  integrity sha1-kGrWL3zcAvEqGlbvyFxz49SbMvk=
   dependencies:
-    brolog "^1.6.5"
-    clone-class "^0.6.19"
-    file-box "^0.13.1"
-    hot-import "^0.2.1"
+    brolog "^1.12.4"
+    clone-class "^0.6.20"
+    file-box "^0.16.1"
+    hot-import "^0.2.14"
     memory-card "^0.10.1"
-    normalize-package-data "^2.4.0"
-    quick-lru "^3.0.0"
-    read-pkg-up "^5.0.0"
-    rx-queue "^0.8.1"
-    rxjs "^6.2.1"
-    semver "^6.0.0"
+    normalize-package-data "^3.0.0"
+    quick-lru "^5.1.1"
+    read-pkg-up "^7.0.1"
+    rx-queue "^0.8.5"
+    rxjs "^6.6.3"
+    semver "^7.3.2"
     state-switch "^0.9.7"
-    typed-emitter "^1.2.0"
-    watchdog "^0.8.12"
+    typed-emitter "^1.3.1"
+    watchdog "^0.8.17"
 
-wechaty@^0.48.10:
-  version "0.48.10"
-  resolved "https://registry.yarnpkg.com/wechaty/-/wechaty-0.48.10.tgz#7bc3479e261fbecdf897d8c774a43ad2dc7829a3"
-  integrity sha512-W6bYGV0Hy4ONo37Rfa5slQZxN9AyiPA8gWuyjUGK9QBN0XdZIt2Jg5P/bcrjd51ODJGfn/CahqDO4ysnwulXig==
+wechaty@^0.50.7:
+  version "0.50.7"
+  resolved "https://registry.npm.taobao.org/wechaty/download/wechaty-0.50.7.tgz#14141f67bb3eaf5235aafac5263d548c52dd42b2"
+  integrity sha1-FBQfZ7s+r1I1qvrFJj1UjFLdQrI=
   dependencies:
     brolog "^1.12.4"
     clone-class "^0.7.3"
     cuid "^2.1.8"
     dotenv "^8.2.0"
     in-gfw "^1.2.0"
-    json-rpc-peer "^0.16.0"
+    json-rpc-peer "^0.17.0"
     npm-programmatic "0.0.12"
     open-graph "^0.2.4"
     opencollective "^1.0.3"
     opencollective-postinstall "^2.0.3"
-    pkg-dir "^4.2.0"
+    pkg-dir "^5.0.0"
     portfinder "^1.0.28"
     promise-retry "^2.0.1"
     raven "^2.6.4"
     read-pkg-up "^7.0.1"
     state-switch "^0.9.9"
-    typed-emitter "^1.3.0"
+    typed-emitter "^1.3.1"
     watchdog "^0.8.17"
-    wechaty-puppet "^0.32.3"
-    wechaty-puppet-hostie "^0.10.0"
+    wechaty-puppet "^0.33.3"
+    wechaty-puppet-hostie "^0.11.0"
     ws "^7.3.1"
 
 which-module@^2.0.0:
@@ -3678,3 +3729,8 @@ yn@3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/yn/-/yn-3.1.1.tgz#1e87401a09d767c1d5eab26a6e4c185182d2eb50"
   integrity sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
+
+yocto-queue@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npm.taobao.org/yocto-queue/download/yocto-queue-0.1.0.tgz?cache=0&sync_timestamp=1606290469373&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fyocto-queue%2Fdownload%2Fyocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
+  integrity sha1-ApTrPe4FAo0x7hpfosVWpqrxChs=

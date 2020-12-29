@@ -9,9 +9,8 @@
     "@types/console-stamp": "^0.2.32",
     "config": "^3.3.2",
     "console-stamp": "^0.2.9",
-    "wechaty": "^0.48.10",
-    "wechaty-puppet": "^0.32.3",
-    "wechaty-puppet-padlocal": "^0.2.3"
+    "wechaty": "^0.50.7",
+    "wechaty-puppet-padlocal": "^0.2.8"
   },
   "devDependencies": {
     "ts-node": "^9.0.0",
