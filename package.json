@@ -7,10 +7,11 @@
   "dependencies": {
     "@types/config": "^0.0.36",
     "@types/console-stamp": "^0.2.32",
+    "brolog": "^1.12.4",
     "config": "^3.3.2",
     "console-stamp": "^0.2.9",
     "wechaty": "^0.50.7",
-    "wechaty-puppet-padlocal": "^0.2.8"
+    "wechaty-puppet-padlocal": "^0.2.16"
   },
   "devDependencies": {
     "ts-node": "^9.0.0",
