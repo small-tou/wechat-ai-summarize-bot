@@ -5,6 +5,7 @@
   "author": "haoda",
   "license": "Apache-2.0",
   "dependencies": {
+    "qrcode-terminal": "^0.12.0",
     "wechaty": "^0.56.6",
     "wechaty-puppet-padlocal": "^0.2.31"
   },
