@@ -12,7 +12,7 @@ RUN: `yarn install` or `npm install`
 
 
 ### 3. apply padlocal token
-**Contact [admin](mailto:oxddoxdd@gmail.com) to apply PadLocal token.**
+**Visit [pad-local.com](http://pad-local.com) to apply PadLocal token.**
 
 Then replace _YOUR_PADLOCAL_TOKEN_ with granted token in main.ts:
 ```
