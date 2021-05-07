@@ -1,40 +1,31 @@
-## How To Use
+# Quick Start with Demo
+### 0. Apply Token
+You need PadLocal token to run this demo. [How to Apply Token](https://github.com/padlocal/wechaty-puppet-padlocal/wiki/How-to-Apply-Token)
 
-### 1. check node version, need to be $ge than v12.0.0
+### 1. Prepare Node Environment
+[Install Node](https://nodejs.org/), 12/14 LTS version is recommended.
 ```
-node --version // >= v12.0.0
+$ node --version // >= v12.0.0
+``` 
+### 2. Clone the [wechaty-puppet-padlocal-demo](https://github.com/padlocal/wechaty-puppet-padlocal-demo) project.
+
+```
+$ git clone git@github.com:padlocal/wechaty-puppet-padlocal-demo.git
+```
+Then install Node dependencies.
+```
+$ cd wechaty-puppet-padlocal-demo
+$ npm install
 ``` 
 
-### 2. install node modules
-After cloning the repo, change current directory to repo's root folder:
-
-RUN: `yarn install` or `npm install`
-
-
-### 3. apply padlocal token
-**Visit [pad-local.com](http://pad-local.com) to apply PadLocal token.**
-
-Then replace _YOUR_PADLOCAL_TOKEN_ with granted token in main.ts:
-```
+### 3. Set you PadLocal Token in [`main.ts`](https://github.com/padlocal/wechaty-puppet-padlocal-demo/blob/master/main.ts)
+```ts
 const puppet = new PuppetPadlocal({
     token: "YOUR_PADLOCAL_TOKEN"
 })
 ```
-
-
-### 4. try the demo
-RUN: `yarn run demo` or `npm run demo`
-
+Then run it:
 ```
-$ yarn run demo
-$ ./node_modules/.bin/ts-node main.ts
-[Fri Oct 09 2020 00:00:00] [LOG]    TestBot started.
-[Fri Oct 09 2020 00:00:00] [LOG]    TestBot Contact<${YOUR ACCOUNT NICK NAME}> login
-[Fri Oct 09 2020 00:00:00] [LOG]    TestBot ready.
-
-
-# bot is ready, all setup work has been done.
-# when new message comes, following logs will be printed.
-
-[Fri Oct 09 2020 00:00:01] [LOG]    TestBot on message: Message#Text ...
+$ npm run demo
 ```
+![carbon](https://user-images.githubusercontent.com/64943823/117439626-a6cde080-af65-11eb-85a5-815aa422b5c5.png)
