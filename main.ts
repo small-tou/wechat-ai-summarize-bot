@@ -1,6 +1,9 @@
 import { PuppetPadlocal } from "wechaty-puppet-padlocal";
 import { Contact, log, Message, ScanStatus, Wechaty } from "wechaty";
 
+// 去掉注释，可以完全打开调试日志
+// log.level("silly");
+
 const puppet = new PuppetPadlocal({
     token: "YOUR_PADLOCAL_TOKEN"
 })
