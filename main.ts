@@ -38,6 +38,11 @@ const bot = new Wechaty({
 
     .on("message", async (message: Message) => {
         log.info("TestBot", `on message: ${message.toString()}`);
+
+        // ding-dong bot
+        if (message.to()?.self() && message.text().indexOf("ding") !== -1) {
+            await message.talker().say(message.text().replace("ding", "dong"));
+        }
     })
 
     .on("error", (error) => {
