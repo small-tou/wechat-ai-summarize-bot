@@ -1,19 +1,19 @@
 import { PuppetPadlocal } from "wechaty-puppet-padlocal";
-import { Contact, log, Message, ScanStatus, Wechaty } from "wechaty";
+import {log, ScanStatus, WechatyBuilder} from "wechaty";
 
 // 去掉注释，可以完全打开调试日志
 // log.level("silly");
 
 const puppet = new PuppetPadlocal({
-    token: "YOUR_PADLOCAL_TOKEN"
+    token: ">>>> YOUR_PADLOCAL_TOKEN <<<<"
 })
 
-const bot = new Wechaty({
+const bot = WechatyBuilder.build({
     name: "TestBot",
     puppet,
 })
 
-    .on("scan", (qrcode: string, status: ScanStatus) => {
+    .on("scan", (qrcode, status) => {
         if (status === ScanStatus.Waiting && qrcode) {
             const qrcodeImageUrl = [
                 'https://wechaty.js.org/qrcode/',
@@ -28,15 +28,15 @@ const bot = new Wechaty({
         }
     })
 
-    .on("login", (user: Contact) => {
+    .on("login", (user) => {
         log.info("TestBot", `${user} login`);
     })
 
-    .on("logout", (user: Contact, reason: string) => {
+    .on("logout", (user, reason) => {
         log.info("TestBot", `${user} logout, reason: ${reason}`);
     })
 
-    .on("message", async (message: Message) => {
+    .on("message", async (message) => {
         log.info("TestBot", `on message: ${message.toString()}`);
 
         // ding-dong bot

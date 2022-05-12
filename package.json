@@ -6,14 +6,19 @@
   "license": "Apache-2.0",
   "dependencies": {
     "qrcode-terminal": "^0.12.0",
-    "wechaty": "^0.60.10",
-    "wechaty-puppet-padlocal": "^0.4.1"
+    "wechaty": "^1.19.10",
+    "wechaty-puppet-padlocal": "^1.11.13",
+    "wechaty-puppet": "^1.19.6"
   },
   "devDependencies": {
-    "ts-node": "^9.1.1",
-    "typescript": "^4.1.5"
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
   },
   "scripts": {
     "demo": "./node_modules/.bin/ts-node main.ts"
+  },
+  "engines": {
+    "node": ">= 16",
+    "npm": ">=7"
   }
 }
