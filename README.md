@@ -3,9 +3,9 @@
 You need PadLocal token to run this demo. [How to Apply Token](https://github.com/padlocal/wechaty-puppet-padlocal/wiki/How-to-Apply-Token)
 
 ### 1. Prepare Node Environment
-[Install Node](https://nodejs.org/), 12/14 LTS version is recommended.
+[Install Node](https://nodejs.org/), 16 LTS version is recommended.
 ```
-$ node --version // >= v12.0.0
+$ node --version // >= v16.0.0
 ``` 
 ### 2. Clone the [wechaty-puppet-padlocal-demo](https://github.com/padlocal/wechaty-puppet-padlocal-demo) project.
 
