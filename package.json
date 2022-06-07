@@ -8,7 +8,7 @@
     "qrcode-terminal": "^0.12.0",
     "wechaty": "^1.19.10",
     "wechaty-puppet": "^1.19.6",
-    "wechaty-puppet-padlocal": "^1.11.15"
+    "wechaty-puppet-padlocal": "^1.11.18"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
