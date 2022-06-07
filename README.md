@@ -19,12 +19,13 @@ $ npm install
 ``` 
 
 ### 3. Set you PadLocal Token in [`main.ts`](https://github.com/padlocal/wechaty-puppet-padlocal-demo/blob/master/main.ts)
-```ts
-const puppet = new PuppetPadlocal({
-    token: "YOUR_PADLOCAL_TOKEN"
-})
-```
-Then run it:
+https://github.com/padlocal/wechaty-puppet-padlocal-demo/blob/42d2ab8dcfeff2b2be1f6b8b2e09d0f5fc0fdc11/main.ts#L10-L12
+
+_[Optional]_ Uncomment following code to turn on debug log
+https://github.com/padlocal/wechaty-puppet-padlocal-demo/blob/42d2ab8dcfeff2b2be1f6b8b2e09d0f5fc0fdc11/main.ts#L5-L8
+
+
+### 4. Run the demo
 ```
 $ npm run demo
 ```
