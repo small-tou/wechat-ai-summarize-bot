@@ -22,9 +22,16 @@ const bot = WechatyBuilder.build({
         encodeURIComponent(qrcode),
       ].join('')
 
-      log.info(LOGPRE, `onScan: ${ScanStatus[status]}(${status}) - ${qrcodeImageUrl}`);
+      log.info(LOGPRE, `onScan: ${ScanStatus[status]}(${status})`);
+
+      console.log("\n==================================================================");
+      console.log("\n* Two ways to sign on with qr code");
+      console.log("\n1. Scan following QR code:\n");
 
       require('qrcode-terminal').generate(qrcode, {small: true})  // show qrcode on console
+
+      console.log(`\n2. Or open the link in your browser: ${qrcodeImageUrl}`);
+      console.log("\n==================================================================\n");
     } else {
       log.info(LOGPRE, `onScan: ${ScanStatus[status]}(${status})`);
     }
