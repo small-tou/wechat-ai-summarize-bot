@@ -1,8 +1,8 @@
 import {log, Message} from "wechaty";
 import * as PUPPET from "wechaty-puppet";
-import * as fs from "fs";
-import * as path from "path";
-import * as moment from 'moment';
+import fs from "fs";
+import  path from "path";
+import moment from "moment";
 
 
 export const LOGPRE = "[PadLocalDemo]"
