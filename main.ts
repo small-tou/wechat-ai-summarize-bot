@@ -1,15 +1,13 @@
 import {log, ScanStatus, WechatyBuilder} from "wechaty";
 import {PuppetPadlocal} from "wechaty-puppet-padlocal";
 import {dingDongBot, getMessagePayload, LOGPRE} from "./helper";
+import dotenv from "dotenv";
 
-/****************************************
- * 去掉注释，可以完全打开调试日志
- ****************************************/
-// log.level("silly");
+dotenv.config();
 
 const puppet = new PuppetPadlocal({
-    token: ">>>> YOUR_PADLOCAL_TOKEN <<<<"
-})
+  token: process.env.PADLOCAL_API_KEY
+});
 
 const bot = WechatyBuilder.build({
   name: "PadLocalDemo",
