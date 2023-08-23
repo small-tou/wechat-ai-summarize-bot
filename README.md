@@ -20,6 +20,7 @@ cp .env.example .env
 PADLOCAL_API_KEY=puppet_padlocal_xxxxxx
 ```
 
+
 4. 获取 DIFY_API_KEY 
 
 注册 https://dify.ai 账号
@@ -41,6 +42,7 @@ DIFY_API_KEY=xxxxxx
 
 最终标题《亲爱的，这是对今天大家群聊的总结报告》
 ```
+
 5. 运行微信监控程序
 ```bash
 npm run watch
