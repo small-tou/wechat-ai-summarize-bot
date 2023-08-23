@@ -2,7 +2,7 @@
 ## 项目介绍
 本项目是基于微信网页版的微信群聊总结助手，可以帮助群主或管理员自动收集群聊中的总结，自动发送到指定的群聊中。
 
-## 如何运行
+## 运行
 1. 安装依赖
 ```bash
 npm install
@@ -19,6 +19,7 @@ cp .env.example .env
 ```bash
 PADLOCAL_API_KEY=puppet_padlocal_xxxxxx
 ```
+
 
 4. 获取 DIFY_API_KEY 
 
@@ -59,3 +60,5 @@ npm run summarize ./data/2023-08-23/xxx.txt
 即可生成这个群的当日总结。
 
 
+## 友情链接
+- [智囊 AI] https://zhinang.ai/chat
