@@ -1,7 +1,7 @@
 import {log, ScanStatus, WechatyBuilder} from "wechaty";
 import {PuppetPadlocal} from "wechaty-puppet-padlocal";
 import {dingDongBot, getMessagePayload, LOGPRE} from "./helper";
-import dotenv from "dotenv";
+import * as dotenv from "dotenv";
 
 dotenv.config();
 
