@@ -9,3 +9,5 @@ package-lock.json
 yarn.lock
 .env
 data/*
+pnpm-lock.yaml
+```
