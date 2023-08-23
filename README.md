@@ -2,6 +2,8 @@
 ## 项目介绍
 本项目是基于微信机器人的微信群聊总结助手，可以帮助群主或管理员自动收集群聊中的聊天记录，并使用 AI 进行总结，最终将其发送到指定的群聊中。
 
+> 这可能是最简单配置可以把完整功能跑起来的项目，因为尝试了几个项目，都不是很能搞得定，所以用 JS 简单封装了下
+
 效果预览
 
 <img src="https://github.com/aoao-eth/wechat-summarize-bot/assets/897401/f3220210-3b7e-411f-8e2e-801f82a0b5da" width="300" />
@@ -67,3 +69,4 @@ npm run summarize ./data/2023-08-23/xxx.txt
 ## 友情链接
 - [智囊 AI] https://zhinang.ai/chat
 - [Dify.ai] https://dify.ai
+- [PadLocal] http://pad-local.com
