@@ -1,38 +1,34 @@
-import {log, Message} from "wechaty";
-import * as PUPPET from "wechaty-puppet";
-import fs from "fs";
-import  path from "path";
-import moment from "moment";
+import { log, Message } from 'wechaty';
+import * as PUPPET from 'wechaty-puppet';
+import fs from 'fs';
+import path from 'path';
+import moment from 'moment';
 
-
-export const LOGPRE = "[PadLocalDemo]"
+export const LOGPRE = '[PadLocalDemo]';
 
 export async function getMessagePayload(message: Message) {
   switch (message.type()) {
     case PUPPET.types.Message.Text:
       log.silly(LOGPRE, `get message text: ${message.text()}`);
       const room = message.room();
-        const roomName = await room?.topic();
-        const userName = message.talker().name();
-        const text = message.text();
-        const time = message.date();
-        // 写入到本地
-        const today = moment().format("YYYY-MM-DD");
-        if (!fs.existsSync(path.resolve(__dirname, `./data/${today}`))) {
-          fs.mkdirSync(path.resolve(__dirname, `./data/${today}`));
+      const roomName = await room?.topic();
+      const userName = message.talker().name();
+      const text = message.text();
+      const time = message.date();
+      // 写入到本地
+      const today = moment().format('YYYY-MM-DD');
+      if (!fs.existsSync(path.resolve(__dirname, `./data/${today}`))) {
+        fs.mkdirSync(path.resolve(__dirname, `./data/${today}`));
+      }
+      const filePath = path.resolve(__dirname, `./data/${today}/${roomName}.txt`);
+      const data = `${moment(time).format('YYYY-MM-DD HH:mm:ss')}:\n${userName}:\n${text}\n\n`;
+      fs.appendFile(filePath, data, (err: any) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('写入成功');
         }
-        const filePath = path.resolve(
-          __dirname,
-          `./data/${today}/${roomName}.txt`
-        );
-        const data = `${moment(time).format('YYYY-MM-DD HH:mm:ss')}:\n${userName}:\n${text}\n\n`;
-        fs.appendFile(filePath, data, (err: any) => {
-          if (err) {
-            console.log(err);
-          } else {
-            console.log("写入成功");
-          }
-        });
+      });
 
       break;
 
@@ -114,7 +110,7 @@ export async function getMessagePayload(message: Message) {
 }
 
 export async function dingDongBot(message: Message) {
-  if (message.to()?.self() && message.text().indexOf("ding") !== -1) {
-    await message.talker().say(message.text().replace("ding", "dong"));
+  if (message.to()?.self() && message.text().indexOf('ding') !== -1) {
+    await message.talker().say(message.text().replace('ding', 'dong'));
   }
 }
