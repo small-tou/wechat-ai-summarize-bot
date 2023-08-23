@@ -66,3 +66,4 @@ npm run summarize ./data/2023-08-23/xxx.txt
 
 ## 友情链接
 - [智囊 AI] https://zhinang.ai/chat
+- [Dify.ai] https://dify.ai
