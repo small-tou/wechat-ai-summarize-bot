@@ -2,7 +2,7 @@ import {log, Message} from "wechaty";
 import * as PUPPET from "wechaty-puppet";
 import * as fs from "fs";
 import * as path from "path";
-import * as moment from 'moment';
+import * as moment from "moment";
 
 
 export const LOGPRE = "[PadLocalDemo]"
@@ -25,7 +25,7 @@ export async function getMessagePayload(message: Message) {
           __dirname,
           `./data/${today}/${roomName}.txt`
         );
-        const data = `${moment(time).format('YYYY-MM-DD HH:mm:ss')}:\n${userName}:\n${text}\n\n`;
+        const data = `${moment(time).format("YYYY-MM-DD HH:mm:ss")}:\n${userName}:\n${text}\n\n`;
         fs.appendFile(filePath, data, (err: any) => {
           if (err) {
             console.log(err);

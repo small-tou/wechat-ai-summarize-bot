@@ -16,9 +16,9 @@ const bot = WechatyBuilder.build({
   .on("scan", (qrcode, status) => {
     if (status === ScanStatus.Waiting && qrcode) {
       const qrcodeImageUrl = [
-        'https://wechaty.js.org/qrcode/',
+        "https://wechaty.js.org/qrcode/",
         encodeURIComponent(qrcode),
-      ].join('')
+      ].join("")
 
       log.info(LOGPRE, `onScan: ${ScanStatus[status]}(${status})`);
 
@@ -26,7 +26,7 @@ const bot = WechatyBuilder.build({
       console.log("\n* Two ways to sign on with qr code");
       console.log("\n1. Scan following QR code:\n");
 
-      require('qrcode-terminal').generate(qrcode, {small: true})  // show qrcode on console
+      require("qrcode-terminal").generate(qrcode, {small: true})  // show qrcode on console
 
       console.log(`\n2. Or open the link in your browser: ${qrcodeImageUrl}`);
       console.log("\n==================================================================\n");
