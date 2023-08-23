@@ -41,6 +41,9 @@ DIFY_API_KEY=xxxxxx
 
 最终标题《亲爱的，这是对今天大家群聊的总结报告》
 ```
+
+![](./1.jpg)
+
 5. 运行微信监控程序
 ```bash
 npm run watch
