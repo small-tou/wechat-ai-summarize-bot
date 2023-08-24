@@ -17,6 +17,9 @@ export async function getMessagePayload(message: Message) {
       const time = message.date();
       // 写入到本地
       const today = moment().format('YYYY-MM-DD');
+      if(!fs.existsSync(path.resolve(__dirname, `../data`))) {
+        fs.mkdirSync(path.resolve(__dirname, `../data`));
+      }
       if (!fs.existsSync(path.resolve(__dirname, `../data/${today}`))) {
         fs.mkdirSync(path.resolve(__dirname, `../data/${today}`));
       }
