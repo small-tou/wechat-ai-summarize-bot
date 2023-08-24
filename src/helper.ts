@@ -7,6 +7,14 @@ import axios from 'axios';
 
 export const LOGPRE = '[PadLocalDemo]';
 
+//递归目录
+function createDirectoryRecursively(dirPath: string) {
+  if (!fs.existsSync(dirPath)) {
+    createDirectoryRecursively(path.dirname(dirPath));
+    fs.mkdirSync(dirPath);
+  }
+}
+
 export async function getMessagePayload(message: Message) {
   switch (message.type()) {
     case PUPPET.types.Message.Text:
@@ -18,12 +26,8 @@ export async function getMessagePayload(message: Message) {
       const time = message.date();
       // 写入到本地
       const today = moment().format('YYYY-MM-DD');
-      if(!fs.existsSync(path.resolve(__dirname, `../data`))) {
-        fs.mkdirSync(path.resolve(__dirname, `../data`));
-      }
-      if (!fs.existsSync(path.resolve(__dirname, `../data/${today}`))) {
-        fs.mkdirSync(path.resolve(__dirname, `../data/${today}`));
-      }
+      //递归目录
+      createDirectoryRecursively(path.resolve(__dirname, `../data/${today}`));
       const filePath = path.resolve(__dirname, `../data/${today}/${roomName}.txt`);
       const data = `${moment(time).format('YYYY-MM-DD HH:mm:ss')}:\n${userName}:\n${text}\n\n`;
       fs.appendFile(filePath, data, (err: any) => {

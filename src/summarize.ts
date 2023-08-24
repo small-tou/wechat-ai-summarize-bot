@@ -1,6 +1,8 @@
 import fs from 'fs';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import { exec } from 'child_process';
+import { convert2img } from 'yutou_cn_mdimg';
 
 dotenv.config();
 
@@ -26,7 +28,7 @@ if (!fs.existsSync(filePath)) {
 /**
  * The content of the text file to be summarized.
  */
-const fileContent = fs.readFileSync(filePath, 'utf-8')
+const fileContent = fs.readFileSync(filePath, 'utf-8');
 
 /**
  * The raw data to be sent to the Dify.ai API.
@@ -36,7 +38,7 @@ const raw = JSON.stringify({
   query: `<input>${fileContent.slice(-80000)}</input>`,
   response_mode: 'blocking',
   user: 'abc-123',
-}); 
+});
 
 /**
  * Sends a request to the Dify.ai API to summarize the text file.
@@ -55,12 +57,36 @@ const run = async () => {
     /**
      * The summarized text returned by the Dify.ai API.
      */
-    const result = res.data.answer.replace(/\n\n/g, '\n').trim();
-
+    const fileName = filePath.split('/').pop();
+    const date = filePath.split('/').splice(-2, 1)[0];
+    const result =
+      `【${fileName.replace('.txt', '')}】的群聊总结 ${date}\n\n------------\n\n\`\`\`\n` +
+      res.data.answer.replace(/\n\n/g, '\n').trim() +
+      '\n```\n\n------------\n\n❤️本总结由 wx.zhinang.ai 生成。';
 
     console.log(result);
 
-    console.log('------------\n本总结由 wx.zhinang.ai 生成。');
+    const summarizedFilePath = filePath.replace('.txt', '_summarized.txt');
+    // save to file in folder
+    fs.writeFileSync(summarizedFilePath, result);
+
+    // 执行命令
+    const convertRes = await convert2img({
+      mdFile: summarizedFilePath,
+      outputFilename: filePath.replace('.txt', '_summarized.png'),
+      width: 400,
+      cssTemplate: 'githubDark',
+    });
+
+    console.log(`Convert to image successfully!`);
+    // const cmdStr = `npx carbon-now-cli '${filePath.replace('.txt', '_summarized.txt')}'`;
+    // exec(cmdStr, (err, stdout, stderr) => {
+    //   if (err) {
+    //     console.log(err);
+    //   }
+    //   console.log(stdout);
+    //   console.log(stderr);
+    // });
   } catch (e: any) {
     console.error('Error:' + e.message);
   }
