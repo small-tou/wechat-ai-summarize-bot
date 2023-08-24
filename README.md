@@ -1,5 +1,7 @@
 # 微信群聊总结助手 Nodejs 版
 
+[EN Ver: WeChat Group Chat Summary Assistant Nodejs Version](./README_EN.md)
+
 ## 项目介绍
 
 本项目是基于微信机器人的微信群聊总结助手，可以帮助群主或管理员自动收集群聊中的聊天记录，并使用 AI 进行总结，最终将其发送到指定的群聊中。
