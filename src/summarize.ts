@@ -74,7 +74,7 @@ const run = async () => {
     const convertRes = await convert2img({
       mdFile: summarizedFilePath,
       outputFilename: filePath.replace('.txt', '_summarized.png'),
-      width: 400,
+      width: 450,
       cssTemplate: 'githubDark',
     });
 
