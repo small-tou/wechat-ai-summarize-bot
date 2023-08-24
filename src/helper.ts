@@ -17,10 +17,10 @@ export async function getMessagePayload(message: Message) {
       const time = message.date();
       // 写入到本地
       const today = moment().format('YYYY-MM-DD');
-      if (!fs.existsSync(path.resolve(__dirname, `./data/${today}`))) {
-        fs.mkdirSync(path.resolve(__dirname, `./data/${today}`));
+      if (!fs.existsSync(path.resolve(__dirname, `../data/${today}`))) {
+        fs.mkdirSync(path.resolve(__dirname, `../data/${today}`));
       }
-      const filePath = path.resolve(__dirname, `./data/${today}/${roomName}.txt`);
+      const filePath = path.resolve(__dirname, `../data/${today}/${roomName}.txt`);
       const data = `${moment(time).format('YYYY-MM-DD HH:mm:ss')}:\n${userName}:\n${text}\n\n`;
       fs.appendFile(filePath, data, (err: any) => {
         if (err) {
