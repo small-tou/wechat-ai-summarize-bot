@@ -11,7 +11,10 @@
 效果预览
 
 <img src="https://github.com/aoao-eth/wechat-summarize-bot/assets/897401/f3220210-3b7e-411f-8e2e-801f82a0b5da" width="300" />
-<img src="./2.png" width="300" />
+
+同时可以生成一张图片，方便发送到其他平台或者群内
+
+<img src="./static/2.png" width="300" />
 
 ## 运行
 
