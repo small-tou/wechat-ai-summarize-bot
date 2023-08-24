@@ -60,7 +60,7 @@ const run = async () => {
     const fileName = filePath.split('/').pop();
     const date = filePath.split('/').splice(-2, 1)[0];
     const result =
-      `### 【${fileName.replace('.txt', '')}】的今日群聊总结（${date}）\n\n------------\n\n\`\`\`\n` +
+      `【${fileName.replace('.txt', '')}】的群聊总结 ${date}\n\n------------\n\n\`\`\`\n` +
       res.data.answer.replace(/\n\n/g, '\n').trim() +
       '\n```\n\n------------\n\n❤️本总结由 wx.zhinang.ai 生成。';
 
