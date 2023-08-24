@@ -26,7 +26,7 @@ if (!fs.existsSync(filePath)) {
 /**
  * The content of the text file to be summarized.
  */
-const fileContent = fs.readFileSync(filePath, 'utf-8');
+const fileContent = fs.readFileSync(filePath, 'utf-8').substring(0,-90000);
 
 /**
  * The raw data to be sent to the Dify.ai API.
@@ -57,7 +57,10 @@ const run = async () => {
      */
     const result = res.data.answer.replace(/\n\n/g, '\n').trim();
 
+
     console.log(result);
+
+    console.log('\n------------\n本总结由 wx.zhinang.ai 生成。');
   } catch (e: any) {
     console.error('Error:' + e.message);
   }
