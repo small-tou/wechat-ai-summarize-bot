@@ -67,7 +67,11 @@ The final title is "Dear, this is a summary report of today's group chat"
 
 ![](./static/1.jpg)
 
-5. Run the WeChat monitoring program
+5. Set the room name that supports command trigger summarization
+```bash
+MONITOR_ROOMS=room name(only one)
+```
+6. Run the WeChat monitoring program
 
 ```bash
 npm run watch
@@ -75,7 +79,7 @@ npm run watch
 
 At this time, a QR code will pop up. Use WeChat to scan the code to log in. After successful login, the program will continue to capture the chat records of all group chats. The chat records will be saved in the local file, in the data/date folder/group name.txt , Will not be uploaded to any third party.
 
-6. Run the summary program
+7. Run the summarization program manually
 
 At the end of each day, manually summarize the content of a group
 

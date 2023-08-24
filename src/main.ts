@@ -1,9 +1,11 @@
 import { log, ScanStatus, WechatyBuilder } from 'wechaty';
 import { PuppetPadlocal } from 'wechaty-puppet-padlocal';
-import { dingDongBot, getMessagePayload, LOGPRE } from './helper';
+import { dingDongBot, getMessagePayload, LOGPRE,summarize } from './helper';
 import dotenv from 'dotenv';
 
 dotenv.config();
+
+const apiKey = process.env.DIFY_API_KEY;
 
 const puppet = new PuppetPadlocal({
   token: process.env.PADLOCAL_API_KEY,
@@ -45,6 +47,26 @@ const bot = WechatyBuilder.build({
 
     await getMessagePayload(message);
 
+    const room = message.room();
+    const roomName = await room?.topic();
+    var userId:string
+    for (let id of bot.ContactSelf.pool.keys()) {
+      userId = id
+  }
+    console.log("ContactSelf.id----->",userId);
+    console.log("message.talker----->",message.talker().id);
+    // Must be specified for this to be valid
+    var needHandle =  (roomName == process.env.MONITOR_ROOMS&& userId == message.talker().id);
+    if (needHandle) {
+      switch (message.text()) {
+        case "/summarize":
+          // TODO frequency limitation
+          summarize(roomName,apiKey).then((result:string) => {
+          room.say(result)
+        });
+      };
+    }
+
     await dingDongBot(message);
   })
 
@@ -78,3 +100,5 @@ const bot = WechatyBuilder.build({
 bot.start().then(() => {
   log.info(LOGPRE, 'started.');
 });
+
+
