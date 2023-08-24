@@ -26,17 +26,17 @@ if (!fs.existsSync(filePath)) {
 /**
  * The content of the text file to be summarized.
  */
-const fileContent = fs.readFileSync(filePath, 'utf-8').substring(0,-90000);
+const fileContent = fs.readFileSync(filePath, 'utf-8')
 
 /**
  * The raw data to be sent to the Dify.ai API.
  */
 const raw = JSON.stringify({
   inputs: {},
-  query: `<input>${fileContent}</input>`,
+  query: `<input>${fileContent.slice(-90000)}</input>`,
   response_mode: 'blocking',
   user: 'abc-123',
-});
+}); 
 
 /**
  * Sends a request to the Dify.ai API to summarize the text file.
