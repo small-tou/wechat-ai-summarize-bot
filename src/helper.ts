@@ -3,6 +3,7 @@ import * as PUPPET from 'wechaty-puppet';
 import fs from 'fs';
 import path from 'path';
 import moment from 'moment';
+import axios from 'axios';
 
 export const LOGPRE = '[PadLocalDemo]';
 
@@ -119,5 +120,52 @@ export async function getMessagePayload(message: Message) {
 export async function dingDongBot(message: Message) {
   if (message.to()?.self() && message.text().indexOf('ding') !== -1) {
     await message.talker().say(message.text().replace('ding', 'dong'));
+  }
+}
+
+export async function summarize(roomName: string, apiKey: string):Promise<void | string> {
+  if (!roomName) {
+    console.log('Please provide a file path.');
+    return 
+  }
+  const today = moment().format('YYYY-MM-DD');
+  const fileName = path.resolve(__dirname, `../data/${today}/${roomName}.txt`);
+  console.log(fileName)
+  if (!fs.existsSync(fileName)) {
+    console.log('The file path provided does not exist.');
+    return
+  }
+  
+  /**
+   * The content of the text file to be summarized.
+   */
+  const fileContent = fs.readFileSync(fileName, 'utf-8')
+  
+  /**
+   * The raw data to be sent to the Dify.ai API.
+   */
+  const raw = JSON.stringify({
+    inputs: {},
+    query: `<input>${fileContent.slice(-80000)}</input>`,
+    response_mode: 'blocking',
+    user: 'abc-123',
+  }); 
+  console.log('Summarizing...\n\n\n');
+
+  try {
+    const res = await axios.post('https://api.dify.ai/v1/completion-messages', raw, {
+      headers: {
+        Authorization: 'Bearer ' + apiKey,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    /**
+     * The summarized text returned by the Dify.ai API.
+     */
+    const result = res.data.answer.replace(/\n\n/g, '\n').trim();
+    return `${result}\n------------\n本总结由 wx.zhinang.ai 生成。`
+  } catch (e: any) {
+    console.error('Error:' + e.message);
   }
 }
