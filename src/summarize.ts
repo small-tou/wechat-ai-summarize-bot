@@ -33,7 +33,7 @@ const fileContent = fs.readFileSync(filePath, 'utf-8')
  */
 const raw = JSON.stringify({
   inputs: {},
-  query: `<input>${fileContent.slice(-90000)}</input>`,
+  query: `<input>${fileContent.slice(-80000)}</input>`,
   response_mode: 'blocking',
   user: 'abc-123',
 }); 
@@ -60,7 +60,7 @@ const run = async () => {
 
     console.log(result);
 
-    console.log('\n------------\n本总结由 wx.zhinang.ai 生成。');
+    console.log('------------\n本总结由 wx.zhinang.ai 生成。');
   } catch (e: any) {
     console.error('Error:' + e.message);
   }
