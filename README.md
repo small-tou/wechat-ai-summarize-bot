@@ -35,7 +35,8 @@ npm install
 cp .env.example .env
 ```
 
-.env 中有两个变量，这两个变量代表两个平台，接下来会分别介绍如何获取这两个变量的值。
+.env 中有`3`个变量，这`3`个变量中`DIFY_API_KEY`,`PADLOCAL_API_KEY`代表
+2个平台，`MONITOR_ROOMS`代表群组名称，接下来会分别介绍如何获取对应变量的值。
 
 3. 获取 PADLOCAL_API_KEY
 
@@ -78,13 +79,20 @@ DIFY_API_KEY=xxxxxx
 点击右上角“发布”。
 ![](./static/1.jpg)
 
-5. 设置支持命令触发总结的群名，在群内发送 /summarize 命令，即可触发总结
-
+5. 设置 MONITOR_ROOMS
 ```bash
 MONITOR_ROOMS=群名（目前只支持一个）
 ```
 
-6. 运行微信监控程序
+6. 设置支持命令触发总结的群名
+   在群内发送 /summarize 命令，即可触发总结
+
+```bash
+#仅限机器人账户发送
+/summarize
+```
+
+8. 运行微信监控程序
 
 ```bash
 npm run watch
@@ -92,7 +100,7 @@ npm run watch
 
 此时会弹出一个二维码，使用微信扫码登录，登录成功后，程序将持续抓取所有群聊的聊天记录，聊天记录会保存在本地文件中，位置在 data/日期文件夹/群名.txt 中，不会上传到任何第三方。
 
-7. 手动运行总结程序
+9. 手动运行总结程序
    在每天结束的时候，手动对某个群的内容进行总结
 
 ```bash
