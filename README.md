@@ -19,7 +19,7 @@
 
 同时可以生成一张图片，方便发送到其他平台或者群内
 
-<img src="./static/2.png" width="300" />
+<img src="https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/3f9f37c0-26b4-4ae2-9593-c2e0edcc47fe" width="300" />
 
 ## 运行
 
