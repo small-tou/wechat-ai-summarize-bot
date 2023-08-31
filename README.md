@@ -1,4 +1,4 @@
-# 微信群聊总结助手 Nodejs 版
+# 微信群聊总结 AI 助手 (JS ver)
 
 [EN Ver: WeChat Group Chat Summary Assistant Nodejs Version](./README_EN.md)
 
