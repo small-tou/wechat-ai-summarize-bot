@@ -1,5 +1,7 @@
 # 微信群聊总结 AI 助手 (JS ver)
 
+本项目由免费白嫖 GPT 的智囊 AI https://zhinang.ai 技术支持
+
 [EN Ver: WeChat Group Chat Summary Assistant Nodejs Version](./README_EN.md)
 
 ## 封号风险提示
