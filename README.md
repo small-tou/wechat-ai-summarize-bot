@@ -1,6 +1,13 @@
-# 微信群聊总结助手 Nodejs 版
+# 微信群聊总结 AI 助手 (JS ver)
+
+本项目由免费白嫖 GPT 的智囊 AI https://zhinang.ai 技术支持
 
 [EN Ver: WeChat Group Chat Summary Assistant Nodejs Version](./README_EN.md)
+
+## 封号风险提示
+
+⚠️ **重要提示：使用本项目登录微信可能存在封号的风险，请慎重使用并遵守相关平台的规则。使用本项目意味着您已经充分了解并接受这一风险。**
+
 
 ## 项目介绍
 
@@ -14,7 +21,7 @@
 
 同时可以生成一张图片，方便发送到其他平台或者群内
 
-<img src="./static/2.png" width="300" />
+<img src="https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/3f9f37c0-26b4-4ae2-9593-c2e0edcc47fe" width="300" />
 
 ## 运行
 
@@ -30,7 +37,8 @@ npm install
 cp .env.example .env
 ```
 
-.env 中有两个变量，这两个变量代表两个平台，接下来会分别介绍如何获取这两个变量的值。
+.env 中有`3`个变量，这`3`个变量中`DIFY_API_KEY`,`PADLOCAL_API_KEY`代表
+2个平台，`MONITOR_ROOMS`代表群组名称，接下来会分别介绍如何获取对应变量的值。
 
 3. 获取 PADLOCAL_API_KEY
 
@@ -73,13 +81,20 @@ DIFY_API_KEY=xxxxxx
 点击右上角“发布”。
 ![](./static/1.jpg)
 
-5. 设置支持命令触发总结的群名，在群内发送 /summarize 命令，即可触发总结
-
+5. 设置 MONITOR_ROOMS
 ```bash
 MONITOR_ROOMS=群名（目前只支持一个）
 ```
 
-6. 运行微信监控程序
+6. 设置支持命令触发总结的群名
+   在群内发送 /summarize 命令，即可触发总结
+
+```bash
+#仅限机器人账户发送
+/summarize
+```
+
+8. 运行微信监控程序
 
 ```bash
 npm run watch
@@ -87,7 +102,7 @@ npm run watch
 
 此时会弹出一个二维码，使用微信扫码登录，登录成功后，程序将持续抓取所有群聊的聊天记录，聊天记录会保存在本地文件中，位置在 data/日期文件夹/群名.txt 中，不会上传到任何第三方。
 
-7. 手动运行总结程序
+9. 手动运行总结程序
    在每天结束的时候，手动对某个群的内容进行总结
 
 ```bash
