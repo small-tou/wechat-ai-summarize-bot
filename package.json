@@ -12,16 +12,18 @@
     "wechaty": "^1.19.10",
     "wechaty-puppet": "^1.19.6",
     "wechaty-puppet-padlocal": "^1.11.18",
-    "yutou_cn_mdimg": "^0.2.9"
+    "yutou_cn_mdimg": "^0.2.10"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
     "ts-node": "^10.7.0",
-    "typescript": "^4.6.4"
+    "typescript": "^4.6.4",
+    "pm2": "^5.1.0"
   },
   "scripts": {
-    "watch": "npx ts-node ./src/main.ts",
-    "summarize": "npx ts-node ./src/summarize.ts"
+    "watch": "npx tsc & npx pm2 start dist/main.js --attach",
+    "summarize": "npx ts-node ./src/summarize.ts",
+    "build": "npx tsc"
   },
   "engines": {
     "node": ">= 16",
