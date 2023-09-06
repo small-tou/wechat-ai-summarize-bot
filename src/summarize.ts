@@ -3,6 +3,7 @@ import axios from 'axios';
 import dotenv from 'dotenv';
 import { exec } from 'child_process';
 import { convert2img } from 'yutou_cn_mdimg';
+import { tts } from './tts';
 
 dotenv.config();
 
@@ -65,7 +66,7 @@ const run = async () => {
     const fileName = filePath.split('/').pop();
     const date = filePath.split('/').splice(-2, 1)[0];
     const result =
-      `### 【${fileName.replace('.txt', '')}】的群聊总结 ${date}\n\n------------\n\n\`\`\`\n` +
+      `### 【${fileName?.replace('.txt', '')}】的群聊总结 ${date}\n\n------------\n\n\`\`\`\n` +
       res.data.answer.replace(/\n\n/g, '\n').trim() +
       '\n```\n\n------------\n\n❤️本总结由开源项目 wx.zhinang.ai 生成。';
 
@@ -84,6 +85,14 @@ const run = async () => {
     });
 
     console.log(`Convert to image successfully!`);
+
+    if (process.env.AZURE_TTS_APPKEY){
+      console.log(`Start to convert to audio!`)
+      await tts(summarizedFilePath);
+      console.log(`Convert to audio successfully!`)
+    } 
+    console.log('Done!')
+
     // const cmdStr = `npx carbon-now-cli '${filePath.replace('.txt', '_summarized.txt')}'`;
     // exec(cmdStr, (err, stdout, stderr) => {
     //   if (err) {

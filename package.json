@@ -7,6 +7,7 @@
   "dependencies": {
     "axios": "^1.4.0",
     "dotenv": "^16.3.1",
+    "microsoft-cognitiveservices-speech-sdk": "^1.32.0",
     "moment": "^2.29.4",
     "qrcode-terminal": "^0.12.0",
     "wechaty": "^1.19.10",
@@ -16,9 +17,9 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "pm2": "^5.1.0",
     "ts-node": "^10.7.0",
-    "typescript": "^4.6.4",
-    "pm2": "^5.1.0"
+    "typescript": "^4.6.4"
   },
   "scripts": {
     "watch": "npx tsc & npx pm2 start dist/main.js --attach",

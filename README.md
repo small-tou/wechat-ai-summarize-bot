@@ -15,6 +15,14 @@
 
 > 这可能是最简单配置可以把完整功能跑起来的项目，因为尝试了几个项目，都不是很能搞得定，所以用 JS 简单封装了下
 
+每次执行 summarize 命令都会生成三个总结文件，分别是：
+
+```
+xxx_sumarized.txt # 纯文本总结
+xxx_sumarized.png # 总结的图片
+xxx_sumarized.mp3 # 总结的语音
+```
+
 效果预览
 
 <img src="https://github.com/aoao-eth/wechat-summarize-bot/assets/897401/f3220210-3b7e-411f-8e2e-801f82a0b5da" width="300" />
@@ -108,6 +116,18 @@ npm run watch
 ```bash
 npm run summarize ./data/2023-08-23/xxx.txt
 ```
+
+10. 总结语音生成的配置
+
+```bash
+# 添加以下两个配置即可开启语音生成
+AZURE_TTS_APPKEY=
+AZURE_TTS_REGION=
+```
+
+开通方式：azure 中的认知服务，找到 Speech 服务，开通后，找到密钥和区域，填入即可。每个月前 50W 字免费，基本不需要付费。
+
+https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/SpeechServices
 
 ## 友情链接
 
