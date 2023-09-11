@@ -2,7 +2,7 @@ import * as sdk from 'microsoft-cognitiveservices-speech-sdk';
 import fs from 'fs';
 import dotenv from 'dotenv';
 
-export async function tts(filePath) {
+export async function tts(filePath, content) {
   return new Promise((resolve, reject) => {
     const filename = filePath.replace('.txt', '.mp3');
     const textFileName = filePath.replace('.txt', '.txt');
@@ -17,7 +17,7 @@ export async function tts(filePath) {
     const synthesizer = new sdk.SpeechSynthesizer(speechConfig, audioConfig);
 
 
-    synthesizer.SynthesisCanceled = function (s, e) {
+    synthesizer.SynthesisCanceled = function(s, e) {
       var cancellationDetails = sdk.CancellationDetails.fromResult(e.result);
       var str = '(cancel) Reason: ' + sdk.CancellationReason[cancellationDetails.reason];
       if (cancellationDetails.reason === sdk.CancellationReason.Error) {
@@ -26,14 +26,13 @@ export async function tts(filePath) {
       console.log(str);
     };
 
-    const text = fs.readFileSync(textFileName, 'utf8');
     synthesizer.speakTextAsync(
-      text.replace('### 【', '').replace('------------', '').replace('```', ''),
-      function (result) {
+      content,
+      function(result) {
         synthesizer.close();
         resolve(result);
       },
-      function (err) {
+      function(err) {
         console.trace('err - ' + err);
         synthesizer.close();
         reject(err);

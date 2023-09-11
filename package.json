@@ -7,6 +7,7 @@
   "dependencies": {
     "axios": "^1.4.0",
     "dotenv": "^16.3.1",
+    "lodash": "^4.17.21",
     "microsoft-cognitiveservices-speech-sdk": "^1.32.0",
     "moment": "^2.29.4",
     "qrcode-terminal": "^0.12.0",
