@@ -145,8 +145,9 @@ export async function summarize(roomName: string, apiKey: string):Promise<void |
    * The raw data to be sent to the Dify.ai API.
    */
   const raw = JSON.stringify({
-    inputs: {},
-    query: `<input>${fileContent.slice(-80000)}</input>`,
+    inputs: {
+      query: `<input>${fileContent.slice(-80000)}</input>`,
+    },
     response_mode: 'blocking',
     user: 'abc-123',
   }); 
