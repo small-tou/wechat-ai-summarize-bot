@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import moment from 'moment';
 import axios from 'axios';
+import { BASE_PATH } from './util';
 
 export const LOGPRE = '[PadLocalDemo]';
 
@@ -27,8 +28,8 @@ export async function getMessagePayload(message: Message) {
       // 写入到本地
       const today = moment().format('YYYY-MM-DD');
       //递归目录
-      createDirectoryRecursively(path.resolve(__dirname, `../data/${today}`));
-      const filePath = path.resolve(__dirname, `../data/${today}/${roomName}.txt`);
+      createDirectoryRecursively(path.resolve(BASE_PATH, `${today}`));
+      const filePath = path.resolve(BASE_PATH, `${today}/${roomName}.txt`);
       const data = `${moment(time).format('YYYY-MM-DD HH:mm:ss')}:\n${userName}:\n${text}\n\n`;
       fs.appendFile(filePath, data, (err: any) => {
         if (err) {
@@ -123,24 +124,24 @@ export async function dingDongBot(message: Message) {
   }
 }
 
-export async function summarize(roomName: string, apiKey: string):Promise<void | string> {
+export async function summarize(roomName: string, apiKey: string): Promise<void | string> {
   if (!roomName) {
     console.log('Please provide a file path.');
-    return 
+    return;
   }
   const today = moment().format('YYYY-MM-DD');
-  const fileName = path.resolve(__dirname, `../data/${today}/${roomName}.txt`);
-  console.log(fileName)
+  const fileName = path.resolve(BASE_PATH, `${today}/${roomName}.txt`);
+  console.log(fileName);
   if (!fs.existsSync(fileName)) {
     console.log('The file path provided does not exist.');
-    return
+    return;
   }
-  
+
   /**
    * The content of the text file to be summarized.
    */
-  const fileContent = fs.readFileSync(fileName, 'utf-8')
-  
+  const fileContent = fs.readFileSync(fileName, 'utf-8');
+
   /**
    * The raw data to be sent to the Dify.ai API.
    */
@@ -149,7 +150,7 @@ export async function summarize(roomName: string, apiKey: string):Promise<void |
     query: `<input>${fileContent.slice(-80000)}</input>`,
     response_mode: 'blocking',
     user: 'abc-123',
-  }); 
+  });
   console.log('Summarizing...\n\n\n');
 
   try {
@@ -164,7 +165,7 @@ export async function summarize(roomName: string, apiKey: string):Promise<void |
      * The summarized text returned by the Dify.ai API.
      */
     const result = res.data.answer.replace(/\n\n/g, '\n').trim();
-    return `${result}\n------------\n本总结由 wx.zhinang.ai 生成。`
+    return `${result}\n------------\n本总结由 wx.zhinang.ai 生成。`;
   } catch (e: any) {
     console.error('Error:' + e.message);
   }
