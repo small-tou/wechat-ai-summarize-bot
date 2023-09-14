@@ -1,6 +1,6 @@
-appId: com.example.nextron
-productName: My Nextron App
-copyright: Copyright © 2018 Yoshihide Shiono
+appId: com.html-js.wx-summarize-bot
+productName: 群聊总结智囊
+copyright: Copyright © 2023 Yutou
 directories:
   output: dist
   buildResources: resources
@@ -10,3 +10,9 @@ files:
       - package.json
       - app
 publish: null
+mac:
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  icon: public/icon.icns
