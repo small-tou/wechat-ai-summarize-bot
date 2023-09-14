@@ -2,9 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { ipcRenderer } from 'electron';
 import { Button } from '@nextui-org/button';
 import { Listbox, ListboxItem } from '@nextui-org/listbox';
+import { Navbar, NavbarBrand } from '@nextui-org/navbar';
 import { QRCodeCanvas } from 'qrcode.react';
-import { Modal, ModalBody, ModalContent, ModalHeader, Navbar, NavbarBrand } from '@nextui-org/react';
+import {  Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/modal';
+import { Input } from '@nextui-org/input';
+
 import toast from 'react-hot-toast';
+import { Chip, ModalFooter } from '@nextui-org/react';
+import { Header } from '../components/Header';
+import { useConfig } from '../hooks/useConfig';
 
 type IChatFile = {
   name: string;
@@ -15,6 +21,13 @@ type IChatFile = {
 };
 
 function Home() {
+  const {showConfigModal, setShowConfigModal} = useConfig();
+  const [config, setConfig] = useState({
+    PADLOCAL_API_KEY: '',
+    DIFY_API_KEY: '',
+    AZURE_TTS_APPKEY: '',
+    AZURE_TTS_REGION: '',
+  });
   const [qrCode, setQrCode] = useState<string>();
   const [dirs, setDirs] = useState<
     {
@@ -40,34 +53,56 @@ function Home() {
     ipcRenderer.on('get-all-dirs-reply', (event, arg) => {
       console.log(arg);
       setDirs(arg);
-      if (arg.length) {
+      if (arg.length&&!selectedDirPath) {
         setSelectedDirPath(arg[0].path);
       }
     });
+    setInterval(()=>{
+      ipcRenderer.send('get-all-dirs');
+    },1000*60)
     ipcRenderer.send('get-all-dirs');
+    ipcRenderer.send('start-robot')
     ipcRenderer.on('toast', (event, arg) => {
+      console.log('toast', arg)
       toast(arg);
     });
     ipcRenderer.on('scan-wait', (event, arg) => {
       console.log(arg);
       setQrCode(arg);
     });
+
     ipcRenderer.on('login', (event, arg) => {
       setQrCode(null);
     });
+    ipcRenderer.on('login', (event, arg) => {
+      setQrCode(null);
+    });
+    ipcRenderer.on('show-config', (event, arg) => {
+      console.log('show-config', arg)
+      setShowConfigModal(true);
+      setConfig(arg)
+    });
+    ipcRenderer.on('summarize-end',()=>{
+      ipcRenderer.send('get-all-dirs');
+    })
   }, []);
 
-  function submitSummarize() {
-    ipcRenderer.send('summarize');
+  function submitSummarize(dateDir: string, chatFileName: string) {
+    ipcRenderer.send('summarize',{
+      dateDir,
+      chatFileName
+    });
+  }
+  function sendSummarize(dateDir: string, chatFileName: string) {
+    ipcRenderer.send('send-summarize',{
+      dateDir,
+      chatFileName
+    });
   }
 
   return (
-    <div>
-      <Navbar>
-        <NavbarBrand>
-          <p className='font-bold text-inherit'>微信群聊总结工具</p>
-        </NavbarBrand>
-      </Navbar>
+    <div style={{padding:'0 20px'}}>
+      <Header active={'home'}/>
       {
         dirs.length == 0 ? <div style={{
           display: 'flex',
@@ -101,6 +136,9 @@ function Home() {
                   className='flex items-center justify-between'
                   onClick={() => {
                     setSelectedDirPath(dir.path);
+                  }}
+                  style={{
+                    background:dir.path == selectedDirPath?'#f3f3f3':'none'
                   }}
                   endContent={
                     <div className='flex items-center gap-1 text-default-400'>
@@ -151,18 +189,30 @@ function Home() {
                   }}
                   endContent={
                     <div className='flex items-center gap-2 text-default-400'>
-                    <span
-                      className='text-small'
-                      style={{
-                        fontSize: '12px',
-                        color: '#aaa',
-                      }}
-                    >
-                      {dir.hasSummarized ? '已总结' : null}
-                    </span>
+                      <span
+                        className='text-small'
+                        style={{
+                          fontSize: '12px',
+                          color: '#aaa',
+                          wordWrap:"normal",
+                          wordBreak:'keep-all'
+                        }}
+                      >
+                        {dir.hasSummarized ? '已总结' : null}
+                      </span>
+
                       <Button size='sm' onClick={() => {
-                        submitSummarize();
-                      }}>运行</Button>
+                        ipcRenderer.send('show-file',selectedDir.path+'/'+ dir.name)
+                      }}>查看</Button>
+                      <Button size='sm' onClick={() => {
+                        submitSummarize(selectedDir.path, dir.name);
+                      }}
+                      color={"primary"}>运行</Button>
+                      <Button size='sm' onClick={() => {
+                        sendSummarize(selectedDir.path, dir.name);
+                      }}
+                      color={'secondary'}
+                      >发送</Button>
                     </div>
                   }
                   description={
@@ -239,6 +289,54 @@ function Home() {
               }}>
                 <QRCodeCanvas value={qrCode} size={200} />
               </ModalBody>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+
+      <Modal isOpen={showConfigModal}  closeButton={false}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className='flex flex-col gap-1'>配置</ModalHeader>
+              <ModalBody style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginBottom: '30px',
+              }}>
+                <p >如何获取配置：<a href={'https://wx.zhinang.ai'} target={"_blank"}>点击查看</a></p>
+                <Input required  label={'PADLOCAL_API_KEY'} value={config.PADLOCAL_API_KEY} onChange={(e)=>{
+                  setConfig({
+                    ...config,
+                    PADLOCAL_API_KEY: e.target.value
+                  })
+                }}/>
+                <Input required label={'DIFY_API_KEY'} value={config.DIFY_API_KEY} onChange={(e)=>{
+                  setConfig({
+                    ...config,
+                    DIFY_API_KEY: e.target.value
+                  })
+                }}/>
+                <Input label={'AZURE_TTS_APPKEY'} value={config.AZURE_TTS_APPKEY} onChange={(e)=>{
+                  setConfig({
+                    ...config,
+                    AZURE_TTS_APPKEY: e.target.value
+                  })
+                }}/>
+                <Input label={'AZURE_TTS_REGION'} value={config.AZURE_TTS_REGION} onChange={(e)=>{
+                  setConfig({
+                    ...config,
+                    AZURE_TTS_REGION: e.target.value
+                  })
+                }}/>
+              </ModalBody>
+              <ModalFooter>
+                <Button onClick={()=>{
+                  ipcRenderer.send('save-config', config);
+                  setShowConfigModal(false);
+                }}>保存</Button>
+              </ModalFooter>
             </>
           )}
         </ModalContent>

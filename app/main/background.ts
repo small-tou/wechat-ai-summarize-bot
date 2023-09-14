@@ -1,11 +1,13 @@
 import { app, ipcMain } from 'electron';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
-import bot from './bot';
-import { log, ScanStatus } from 'wechaty';
-import { LOGPRE } from './helper';
 import { summarize } from './summarize';
 import { getAllDirs } from './helpers/getAllDirs';
+import { checkConfigIsOk, getConfig, setConfig } from './config';
+import { sendAudio, sendImage, sendText, startBot } from './startBot';
+import path from 'path';
+import { BASE_PATH, delay } from './util';
+import {shell} from 'electron';
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
@@ -15,14 +17,13 @@ if (isProd) {
   app.setPath('userData', `${app.getPath('userData')} (development)`);
 }
 
-
 (async () => {
   await app.whenReady();
 
   const mainWindow = createWindow('main', {
     width: 1000,
-    height: 600,
-    title: '微信群聊总结',
+    height: 800,
+    title: '微信群聊智囊',
   });
 
   if (isProd) {
@@ -30,61 +31,64 @@ if (isProd) {
   } else {
     const port = process.argv[2];
     await mainWindow.loadURL(`http://localhost:${port}/home`);
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
   }
 
-  // 向 mainWindow 发送事件
 
 
-  bot
-    .on('error', (error) => {
-      log.error(LOGPRE, `on error: ${error}`);
-      mainWindow.webContents.send('toast', `error: ${error}`);
-    })
-    .on('login', (user) => {
-      log.info(LOGPRE, `${user} login`);
-      mainWindow.webContents.send('toast', `${user} login success`);
-      mainWindow.webContents.send('login');
-    })
-
-    .on('logout', (user, reason) => {
-      log.info(LOGPRE, `${user} logout, reason: ${reason}`);
-      mainWindow.webContents.send('toast', `${user} logout, reason: ${reason}`);
-      mainWindow.webContents.send('logout');
-    })
-    .on('scan', (qrcode, status) => {
-      if (status === ScanStatus.Waiting && qrcode) {
-        mainWindow.webContents.send('scan-wait', qrcode);
-      } else if (status === ScanStatus.Scanned) {
-        mainWindow.webContents.send('scan-submit');
-        mainWindow.webContents.send('toast', `QRCode Scanned`);
-      } else if (status === ScanStatus.Confirmed) {
-        mainWindow.webContents.send('scan-confirmed');
-        mainWindow.webContents.send('toast', `QRCode Confirmed`);
-      } else {
-        log.info(LOGPRE, `onScan: ${ScanStatus[status]}(${status})`);
-        mainWindow.webContents.send('toast', `onScan: ${ScanStatus[status]}(${status})`);
-      }
-    })
-    .on('stop', () => {
-      mainWindow.webContents.send('toast', `stop`);
-    });
-
-  await bot.start();
-  mainWindow.webContents.send('toast', `bot started`);
-  await bot.ready();
-  mainWindow.webContents.send('toast', `bot ready`);
-  ipcMain.on('summarize', (event, filePath) => {
-    const summarizeEvent = summarize(filePath);
-    summarizeEvent.on('update', (info) => {
+  ipcMain.on('summarize', (event, {
+    dateDir,
+    chatFileName,
+  }) => {
+    const summarizeEvent = summarize(path.join(BASE_PATH, dateDir, chatFileName));
+    summarizeEvent.addListener('update', (info) => {
+      console.log('summarize update', info)
       mainWindow.webContents.send('toast', info);
     });
+    summarizeEvent.addListener('end', ( ) => {
+      console.log('summarize end')
+      mainWindow.webContents.send('summarize-end' );
+    })
   });
   ipcMain.on('get-all-dirs', (event, title) => {
     const dirs = getAllDirs();
     // 将文件夹列表发送给渲染进程
     event.sender.send('get-all-dirs-reply', dirs);
   });
+
+  ipcMain.on('save-config', async (event, config) => {
+    setConfig(config);
+    if (config.PADLOCAL_API_KEY) {
+      // 更新 padlocal token 后，重新启动 bot
+      await startBot(mainWindow);
+    }
+    mainWindow.webContents.send('toast', `Config saved`);
+  });
+
+  ipcMain.on('show-config', async (event, config) => {
+
+    mainWindow.webContents.send('show-config',getConfig());
+  });
+
+  ipcMain.on('start-robot', async (event, config) => {
+    await startBot(mainWindow);
+  });
+
+  ipcMain.on('show-file', (e,_path) =>{
+    shell.showItemInFolder(path.join(BASE_PATH,_path));
+  });
+  ipcMain.on('send-summarize',async (e, {
+    dateDir,
+    chatFileName,
+  })=>{
+    await sendImage(chatFileName.replace('.txt',''),path.join(BASE_PATH,dateDir,chatFileName.replace('.txt',' 的今日群聊总结.png')))
+    await delay(1000)
+    await sendAudio(chatFileName.replace('.txt',''),path.join(BASE_PATH,dateDir,chatFileName.replace('.txt',' 的今日群聊总结.mp3')))
+    await delay(1000)
+    await sendText(chatFileName.replace('.txt',''),'主人们，智囊 AI 为您奉上今日群聊总结，祝您用餐愉快！由开源项目 wx.zhinang.ai 生成')
+    mainWindow.webContents.send('toast', `发送成功`);
+  });
+
 
 })();
 

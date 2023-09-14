@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <NextUIProvider>
       <Component {...pageProps} />
-      <Toaster />
+      <Toaster position={'bottom-center'}/>
     </NextUIProvider>
   );
 }
