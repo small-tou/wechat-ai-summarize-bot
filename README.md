@@ -8,9 +8,10 @@
 
 下载后直接打开配置 app key 即可运行监控和总结，一键总结，一键发送到群内。
 
-下载地址（暂时只有 mac 和 linux 版本）：https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.0
+下载地址（暂时只有 mac 版本）：https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.0
 
-![image](https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/f2b1905f-7ef8-4165-9f41-1d6bd0244de9)
+![image](https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/38caa175-ea26-4391-81ec-ad902cb0b518)
+
 
 
 ## 项目介绍
