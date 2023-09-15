@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import { uniq } from 'lodash';
-import { BASE_PATH } from '../util';
+import { BASE_PATH, getData } from '../util';
 
 function getChatInfoForDate(date: string, chatName: string) {
   const filePath = path.join(BASE_PATH, `${date}/${chatName}.txt`);
@@ -16,7 +16,7 @@ function getChatInfoForDate(date: string, chatName: string) {
     const chatMembers = uniq(
       chats.map((item) => {
         return item.split('\n')[0];
-      }),
+      })
     );
 
     return {
@@ -51,11 +51,11 @@ export const getAllDirs = () => {
             info: chatInfo
               ? chatInfo
               : {
-                chatCount: 0,
-                chatMembers: [],
-                chatLetters: 0,
-                chatMembersCount: 0,
-              },
+                  chatCount: 0,
+                  chatMembers: [],
+                  chatLetters: 0,
+                  chatMembersCount: 0,
+                },
             hasSummarized:
               fs.existsSync(path.join(dir, _path, file).replace('.txt', ' 的今日群聊总结.txt')) ||
               fs.existsSync(path.join(dir, _path, file).replace('.txt', '_summarized.txt')),
@@ -65,6 +65,7 @@ export const getAllDirs = () => {
             hasAudio:
               fs.existsSync(path.join(dir, _path, file).replace('.txt', ' 的今日群聊总结.mp3')) ||
               fs.existsSync(path.join(dir, _path, file).replace('.txt', '_summarized.mp3')),
+            ...getData(_path, file.replace('.txt', '')),
           };
         })
         .sort((r1, r2) => {

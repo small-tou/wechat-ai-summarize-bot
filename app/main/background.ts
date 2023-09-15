@@ -6,7 +6,8 @@ import { getAllDirs } from './helpers/getAllDirs';
 import { getConfig, setConfig } from './config';
 import { sendAudio, sendImage, sendText, startBot } from './startBot';
 import path from 'path';
-import { BASE_PATH, delay } from './util';
+import { BASE_PATH, delay, PUBLIC_PATH, saveData } from './util';
+import fs from 'fs';
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
@@ -18,12 +19,12 @@ if (isProd) {
 
 (async () => {
   await app.whenReady();
-
+  // pie.initialize(app);
   const mainWindow = createWindow('main', {
-    width: 1000,
+    width: 1200,
     height: 800,
     title: '群聊总结智囊',
-    icon: path.join(__dirname, '../public/logo.png'),
+    icon: path.join(__dirname, PUBLIC_PATH, 'logo.png'),
   });
 
   if (isProd) {
@@ -43,6 +44,9 @@ if (isProd) {
     summarizeEvent.addListener('end', () => {
       console.log('summarize end');
       mainWindow.webContents.send('summarize-end');
+      const dirs = getAllDirs();
+      // 将文件夹列表发送给渲染进程
+      event.sender.send('get-all-dirs-reply', dirs);
     });
   });
   ipcMain.on('get-all-dirs', (event, title) => {
@@ -79,17 +83,38 @@ if (isProd) {
       chatFileName.replace('.txt', ''),
       path.join(BASE_PATH, dateDir, chatFileName.replace('.txt', ' 的今日群聊总结.png'))
     );
-    await delay(1000);
+    await delay(2000);
     await sendAudio(
       chatFileName.replace('.txt', ''),
       path.join(BASE_PATH, dateDir, chatFileName.replace('.txt', ' 的今日群聊总结.mp3'))
     );
-    await delay(1000);
+    await delay(2000);
     await sendText(
       chatFileName.replace('.txt', ''),
-      '主人们，智囊 AI 为您奉上今日群聊总结，祝您用餐愉快！由开源项目 wx.zhinang.ai 生成'
+      getConfig().LAST_MESSAGE ||
+        '主人们，智囊 AI 为您奉上今日群聊总结，祝您用餐愉快！由开源项目 https://github.com/aoao-eth/wechat-ai-summarize-bot 生成'
     );
+
+    try {
+      const file = path.join(BASE_PATH, dateDir, chatFileName.replace('.txt', ' 的今日群聊总结.txt'));
+      const summarized = fs.readFileSync(file).toString();
+      const 评价 = summarized.match(/整体评价.*?\n/);
+      const 活跃发言者 = summarized.match(/今日最活跃的前五名发言者.*?\n/);
+      if (活跃发言者) {
+        await delay(2000);
+        await sendText(chatFileName.replace('.txt', ''), 活跃发言者[0]);
+      }
+      if (评价) {
+        await delay(2000);
+        await sendText(chatFileName.replace('.txt', ''), 评价[0]);
+      }
+    } catch (e) {}
+
     mainWindow.webContents.send('toast', `发送成功`);
+    saveData(dateDir, chatFileName.replace('.txt', ''), {
+      sended: true,
+      send_time: new Date().getTime(),
+    });
   });
 })();
 

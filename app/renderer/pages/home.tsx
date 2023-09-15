@@ -10,6 +10,7 @@ import toast from 'react-hot-toast';
 import { ModalFooter } from '@nextui-org/react';
 import { Header } from '../components/Header';
 import { useConfig } from '../hooks/useConfig';
+import moment from 'moment';
 
 type IChatFile = {
   name: string;
@@ -17,6 +18,8 @@ type IChatFile = {
   hasSummarized: boolean;
   hasImage: boolean;
   hasAudio: boolean;
+  sended: boolean;
+  send_time: number;
 };
 
 function Home() {
@@ -26,6 +29,8 @@ function Home() {
     DIFY_API_KEY: '',
     AZURE_TTS_APPKEY: '',
     AZURE_TTS_REGION: '',
+    CUT_LENGTH: 10000,
+    LAST_MESSAGE: '',
   });
   const [qrCode, setQrCode] = useState<string>();
   const [dirs, setDirs] = useState<
@@ -49,16 +54,28 @@ function Home() {
   }, [selectedDirPath]);
 
   useEffect(() => {
+    setSelectedDir(dirs.find((dir) => dir.path === selectedDirPath));
+  }, [dirs]);
+
+  useEffect(() => {
     ipcRenderer.on('get-all-dirs-reply', (event, arg) => {
-      console.log(arg);
+      console.log('get-all-dirs-reply', arg);
       setDirs(arg);
       if (arg.length && !selectedDirPath) {
         setSelectedDirPath(arg[0].path);
+      } else {
+        const _selectedDirPath = selectedDirPath;
+        setSelectedDirPath(_selectedDirPath);
+        // setSelectedDirPath(selectedDirPath);
+        // setSelectedDir(null);
+        // setTimeout(() => {
+        //   setSelectedDir(dirs.find((dir) => dir.path === selectedDirPath));
+        // }, 300);
       }
     });
     setInterval(() => {
       ipcRenderer.send('get-all-dirs');
-    }, 1000 * 60);
+    }, 1000 * 20);
     ipcRenderer.send('get-all-dirs');
     ipcRenderer.send('start-robot');
     ipcRenderer.on('toast', (event, arg) => {
@@ -205,6 +222,30 @@ function Home() {
                         }}
                       >
                         {dir.hasImage ? '已总结' : null}
+                      </span>
+                      <span
+                        className="text-small"
+                        style={{
+                          fontSize: '12px',
+                          color: '#aaa',
+                          wordWrap: 'normal',
+                          wordBreak: 'keep-all',
+                          lineBreak: 'normal',
+                        }}
+                      >
+                        {dir.sended ? `已发送` : null}
+                      </span>
+                      <span
+                        className="text-small"
+                        style={{
+                          fontSize: '12px',
+                          color: '#aaa',
+                          wordWrap: 'normal',
+                          wordBreak: 'keep-all',
+                          lineBreak: 'normal',
+                        }}
+                      >
+                        {dir.send_time ? `(${moment(dir.send_time).format('HH:mm')})` : null}
                       </span>
                       <Button
                         size="sm"
@@ -399,6 +440,30 @@ function Home() {
                     setConfig({
                       ...config,
                       AZURE_TTS_REGION: e.target.value,
+                    });
+                  }}
+                />
+                <Input
+                  label={'每次总结截取的字数，视您使用的模型而定'}
+                  type={'number'}
+                  value={String(config.CUT_LENGTH || 10000)}
+                  onChange={(e) => {
+                    setConfig({
+                      ...config,
+                      CUT_LENGTH: Number(e.target.value),
+                    });
+                  }}
+                />
+                <Input
+                  label={'发送群聊后的文字'}
+                  value={
+                    config.LAST_MESSAGE ||
+                    '主人们，智囊 AI 为您奉上今日群聊总结，祝您用餐愉快！由开源项目 wx.zhinang.ai 生成'
+                  }
+                  onChange={(e) => {
+                    setConfig({
+                      ...config,
+                      LAST_MESSAGE: e.target.value,
                     });
                   }}
                 />

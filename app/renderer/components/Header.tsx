@@ -1,14 +1,10 @@
 import styles from '../styles/index.module.scss';
 import Link from 'next/link';
-import { Tooltip } from '@nextui-org/tooltip';
 import { ipcRenderer } from 'electron';
 import Github from './icon/Github';
 import Twitter from './icon/Twitter';
 
-
 export function Header(props: { active: string }) {
-
-
   return (
     <div className={styles['chat-header']}>
       <div className={styles['chat-header-inner']}>
@@ -21,15 +17,12 @@ export function Header(props: { active: string }) {
             }}
           >
             <a
-              href='/'
+              href="/"
               style={{
                 textDecoration: 'none',
               }}
             >
-              <span
-
-                className={styles['chat-header-title']}
-              >
+              <span className={styles['chat-header-title']}>
                 智囊 AI
                 <span
                   style={{
@@ -52,17 +45,11 @@ export function Header(props: { active: string }) {
               }}
             >
               <Link
-                href='#'
+                href="#"
                 style={{
                   fontSize: '14px',
-                  color:
-                    props.active == 'home'
-                      ? 'blue'
-                      : '#111',
-                  background:
-                    props.active == 'home'
-                      ? '#cee4fe'
-                      : 'none',
+                  color: props.active == 'home' ? 'blue' : '#111',
+                  background: props.active == 'home' ? '#cee4fe' : 'none',
                   padding: '7px 15px',
                   borderRadius: '10px',
                   fontWeight: 500,
@@ -72,21 +59,15 @@ export function Header(props: { active: string }) {
                 群聊管理
               </Link>
               <Link
-                href='#'
+                href="#"
                 onClick={() => {
                   ipcRenderer.send('open-url', 'https://zhinang.ai');
                 }}
                 className={styles['navs-link']}
                 style={{
                   fontSize: '14px',
-                  color:
-                    props.active == 'chat'
-                      ? 'var(--nextui-colors-primaryLightContrast)'
-                      : '#111',
-                  background:
-                    props.active == 'chat'
-                      ? 'var(--nextui-colors-primaryLight)'
-                      : 'none',
+                  color: props.active == 'chat' ? 'var(--nextui-colors-primaryLightContrast)' : '#111',
+                  background: props.active == 'chat' ? 'var(--nextui-colors-primaryLight)' : 'none',
                   padding: '7px 15px',
                   borderRadius: '10px',
                   fontWeight: 500,
@@ -95,17 +76,11 @@ export function Header(props: { active: string }) {
                 智囊 AI 官网（免费 GPT 工具）
               </Link>
               <Link
-                href='#'
+                href="#"
                 style={{
                   fontSize: '14px',
-                  color:
-                    props.active == 'bots'
-                      ? 'var(--nextui-colors-primaryLightContrast)'
-                      : '#111',
-                  background:
-                    props.active == 'bots'
-                      ? 'var(--nextui-colors-primaryLight)'
-                      : 'none',
+                  color: props.active == 'bots' ? 'var(--nextui-colors-primaryLightContrast)' : '#111',
+                  background: props.active == 'bots' ? 'var(--nextui-colors-primaryLight)' : 'none',
                   padding: '7px 15px',
                   borderRadius: '10px',
                   fontWeight: 500,
@@ -117,29 +92,25 @@ export function Header(props: { active: string }) {
               >
                 设置
               </Link>
-
             </div>
           </div>
         </div>
         <div className={styles['chat-header-right']}>
           <div className={[styles['header-links'], 'hide_in_mobile'].join(' ')}>
-
-
-            <a href='https://twitter.com/zhinang_ai'>
-              <Tooltip content='Twitter' color='success' placement='bottom'>
-                <Twitter />
-              </Tooltip>
+            <a
+              onClick={() => {
+                ipcRenderer.send('open-url', 'https://twitter.com/aoao_eth');
+              }}
+            >
+              <Twitter />
             </a>
-            <a href='https://github.com/aoao-eth/wechat-ai-summarize-bot'>
-              <Tooltip
-                content='Github Opensource'
-                color='success'
-                placement='bottom'
-              >
-                <Github />
-              </Tooltip>
+            <a
+              onClick={() => {
+                ipcRenderer.send('open-url', 'https://github.com/aoao-eth/wechat-ai-summarize-bot');
+              }}
+            >
+              <Github />
             </a>
-
           </div>
         </div>
       </div>

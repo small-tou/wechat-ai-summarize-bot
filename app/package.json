@@ -2,24 +2,32 @@
   "private": true,
   "name": "wx-summarize-bot",
   "description": "本项目是基于微信机器人的微信群聊总结助手，可以帮助群主或管理员自动收集群聊中的聊天记录，并使用 AI 进行总结，最终将其发送到指定的群聊中",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Yutou <xinyu198736@gmail.com>",
   "main": "app/background.js",
   "scripts": {
     "dev": "nextron",
     "build": "nextron build",
+    "build:win32": "nextron build --win --ia32",
+    "build:win64": "nextron build --win --x64",
+    "build:mac": "nextron build --mac --x64",
+    "build:linux": "nextron build --linux",
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
     "@nextui-org/react": "^2.1.10",
     "autoprefixer": "^10.4.15",
     "axios": "^1.4.0",
+    "cheerio": "^1.0.0-rc.10",
+    "commander": "^9.0.0",
+    "electron-installer-windows": "^3.0.0",
     "electron-notarize": "^1.2.2",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.1.0",
     "eventemitter3": "^5.0.1",
     "framer-motion": "^10.16.4",
     "lodash": "^4.17.21",
+    "marked": "^4.0.12",
     "microsoft-cognitiveservices-speech-sdk": "^1.32.0",
     "moment": "^2.29.4",
     "postcss": "^8.4.29",
@@ -31,8 +39,7 @@
     "tailwindcss": "^3.3.3",
     "wechaty": "^1.19.10",
     "wechaty-puppet": "^1.19.6",
-    "wechaty-puppet-padlocal-plus": "^1.20.1",
-    "yutou_cn_mdimg": "^0.2.10"
+    "wechaty-puppet-padlocal-plus": "^1.20.1"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",

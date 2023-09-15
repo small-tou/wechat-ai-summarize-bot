@@ -1,0 +1,25 @@
+@import "https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css";
+@font-face {
+  font-family: ZhuqueFangsong-Regular;
+  src: url(http://assets.html-js.com/ZhuqueFangsong-Regular.ttf);
+}
+.markdown-body {
+  padding: 2rem 1rem;
+  font-family: ZhuqueFangsong-Regular !important;
+  background-color: #1c1b1f !important;
+}
+.markdown-body * {
+  font-family: ZhuqueFangsong-Regular !important;
+  color: #e4e2ce !important;
+}
+.markdown-body pre,
+.markdown-body code {
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  font-size: 16px !important;
+}
+.markdown-body hr {
+  height: 1px !important;
+  margin: 12px 0 !important;
+}

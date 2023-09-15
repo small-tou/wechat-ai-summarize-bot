@@ -1,8 +1,7 @@
 import fs from 'fs';
 import axios from 'axios';
 import dotenv from 'dotenv';
-import { exec } from 'child_process';
-import { convert2img } from 'yutou_cn_mdimg';
+
 import { tts } from './tts';
 import { uniq } from 'lodash';
 import moment from 'moment';
@@ -10,14 +9,14 @@ import EventEmitter from 'eventemitter3';
 import path from 'path';
 import { BASE_PATH } from './util';
 import { getConfig } from './config';
+import mdimg from './mdimg/lib/mdimg.mjs';
 
+const convert2img = mdimg.convert2img;
 dotenv.config();
 
 /**
  * The API key for accessing the Dify.ai API.
  */
-
-
 
 function getChatInfoForDate(date: string, chatName: string) {
   const filePath = path.join(BASE_PATH, date, chatName + '.txt');
@@ -29,9 +28,11 @@ function getChatInfoForDate(date: string, chatName: string) {
     // 对话数量
     const chatCount = chats.length;
     // 参与人
-    const chatMembers = uniq(chats.map((item) => {
-      return item.split('\n')[0];
-    }));
+    const chatMembers = uniq(
+      chats.map((item) => {
+        return item.split('\n')[0];
+      })
+    );
 
     return {
       chatCount,
@@ -80,14 +81,14 @@ export const summarize = (filePath: string) => {
   console.log('prepare summarize:', filePath);
 
   const event = new EventEmitter<{
-    'update': (info: string) => void;
-    'end': () => void;
+    update: (info: string) => void;
+    end: () => void;
   }>();
 
   async function _summarize() {
     try {
       console.log('Summarizing...\n');
-      const apiKey = getConfig().DIFY_API_KEY
+      const apiKey = getConfig().DIFY_API_KEY;
       /**
        * The file path of the text file to be summarized.
        */
@@ -106,12 +107,13 @@ export const summarize = (filePath: string) => {
        */
       const fileContent = fs.readFileSync(filePath, 'utf-8');
 
+      console.log('getConfig()', getConfig());
       /**
        * The raw data to be sent to the Dify.ai API.
        */
       const raw = JSON.stringify({
         inputs: {
-          input_content: `${fileContent.slice(-50000)}`,
+          input_content: `${fileContent.slice(getConfig().CUT_LENGTH ? -1 * Number(getConfig().CUT_LENGTH) : 10000)}`,
         },
         response_mode: 'blocking',
         user: 'abc-123',
@@ -128,7 +130,7 @@ export const summarize = (filePath: string) => {
 
       event.emit('update', `开始文本总结`);
 
-      console.log('Sending request to Dify.ai API...\n');
+      console.log('Sending request to Dify.ai API...\n', raw);
       const res = await axios.post('https://api.dify.ai/v1/completion-messages', raw, {
         headers: {
           Authorization: 'Bearer ' + apiKey,
@@ -136,8 +138,17 @@ export const summarize = (filePath: string) => {
         },
       });
 
-      const todayInfo = (chatInfo ? `今日整体情况 \n👥参与人数：${chatInfo?.chatMembersCount}，📝对话数量：${chatInfo?.chatCount}，📝对话字数：${chatInfo?.chatLetters}\n` : '') +
-        (chatInfoDayOnDay ? `较昨日对比 \n👥参与人数：${getDayOnDayDisplay(chatInfoDayOnDay?.chatMembersCount)}，📝对话数量：${getDayOnDayDisplay(chatInfoDayOnDay?.chatCount)}，📝对话字数：${getDayOnDayDisplay(chatInfoDayOnDay?.chatLetters)}\n\n` : '');
+      const todayInfo =
+        (chatInfo
+          ? `今日整体情况 \n👥参与人数：${chatInfo?.chatMembersCount}，📝对话数量：${chatInfo?.chatCount}，📝对话字数：${chatInfo?.chatLetters}\n`
+          : '') +
+        (chatInfoDayOnDay
+          ? `较昨日对比 \n👥参与人数：${getDayOnDayDisplay(
+              chatInfoDayOnDay?.chatMembersCount
+            )}，📝对话数量：${getDayOnDayDisplay(chatInfoDayOnDay?.chatCount)}，📝对话字数：${getDayOnDayDisplay(
+              chatInfoDayOnDay?.chatLetters
+            )}\n\n`
+          : '');
 
       const result =
         `### 【${fileNameWithoutExt}】的群聊总结 ${date}\n\n------------\n\n\`\`\`\n` +
@@ -152,7 +163,7 @@ export const summarize = (filePath: string) => {
       // save to file in folder
       fs.writeFileSync(summarizedFilePath, result);
 
-      // 执行命令
+      //@ts-ignore
       const convertRes = await convert2img({
         mdFile: summarizedFilePath,
         outputFilename: filePath.replace('.txt', ' 的今日群聊总结.png'),
@@ -177,7 +188,7 @@ export const summarize = (filePath: string) => {
       }
       console.log('Done!');
       event.emit('update', `总结结束`);
-      event.emit('end' );
+      event.emit('end');
       // const cmdStr = `npx carbon-now-cli '${filePath.replace('.txt', '_summarized.txt')}'`;
       // exec(cmdStr, (err, stdout, stderr) => {
       //   if (err) {

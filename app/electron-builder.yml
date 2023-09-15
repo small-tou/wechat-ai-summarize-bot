@@ -10,6 +10,9 @@ files:
       - package.json
       - app
 publish: null
+extraResources:
+  - from: public
+    to: public
 mac:
   hardenedRuntime: true
   gatekeeperAssess: false
@@ -22,3 +25,24 @@ win:
   icon: public/logo.ico
   publisherName: Yutou
   verifyUpdateCodeSignature: false
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  perMachine: true
+  installerIcon: public/logo.ico
+  uninstallerIcon: public/logo.ico
+  installerHeaderIcon: public/logo.ico
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: 群聊总结智囊
+  license: LICENSE
+  artifactName: '${productName}-setup-${version}.${ext}'
+linux:
+  target: AppImage
+  icon: public/logo.png
+  category: Utility
+  synopsis: 群聊总结智囊
+  description: 群聊总结智囊
+  desktop: build/wx-summarize-bot.desktop
+  publish: null
+  artifactName: '${productName}-setup-${version}.${ext}'
