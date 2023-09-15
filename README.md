@@ -11,7 +11,7 @@
 
 下载地址（暂时只有 mac 版本）：[https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.0](https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.1)
 
-如您需要 windows 版本，可以自己构建或者直接代码运行，代码在 app 分支，欢迎构建成功的同学提供 windows 安装包
+如您需要 windows 版本，可以自己构建或者直接代码运行，代码在 app 文件夹中，欢迎构建成功的同学提供 windows 安装包
 
 #### 截图
 ![image](https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/38caa175-ea26-4391-81ec-ad902cb0b518)
