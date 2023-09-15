@@ -37,7 +37,7 @@ xxx_sumarized.mp3 # 总结的语音
 
 <img src="https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/3f9f37c0-26b4-4ae2-9593-c2e0edcc47fe" width="300" />
 
-## 运行
+## 脚本版本运行
 
 1. 安装依赖
 
