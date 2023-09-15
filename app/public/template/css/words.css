@@ -1,0 +1,58 @@
+@import "https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css";
+@font-face {
+  font-family: ZhuqueFangsong-Regular;
+  src: url(http://assets.html-js.com/ZhuqueFangsong-Regular.ttf);
+}
+.markdown-body {
+  padding: 2rem 1rem;
+  font-family: ZhuqueFangsong-Regular !important;
+  background-color: #1c1b1f !important;
+}
+.markdown-body * {
+  font-family: ZhuqueFangsong-Regular !important;
+  color: #e4e2ce !important;
+}
+.markdown-body pre,
+.markdown-body code {
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  font-size: 16px !important;
+}
+.markdown-body hr {
+  height: 1px !important;
+  margin: 12px 0 !important;
+}
+
+.html {
+  font-size: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+#mdimg-body {
+  border-left: 3rem solid #1d9bf0;
+}
+
+.top {
+  color: #1d9bf0;
+  font-size: 5rem;
+  font-weight: bold;
+  padding-left: 4rem;
+  padding-top: 3rem;
+}
+
+.markdown-body {
+  padding: 2rem 4rem;
+  margin: 0 4rem;
+  background-color: #fafafa;
+  hyphens: auto;
+}
+.markdown-body p {
+  color: #121212;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 3.5rem;
+}
+
+.bottom {
+  padding-bottom: 3rem;
+}

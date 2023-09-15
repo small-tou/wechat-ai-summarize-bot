@@ -38,7 +38,7 @@ const fileContent = fs.readFileSync(filePath, 'utf-8');
  */
 const raw = JSON.stringify({
   inputs: {},
-  query: `<input>${fileContent.slice(-58000)}</input>`,
+  query: `<input>${fileContent.slice(-10000)}</input>`,
   response_mode: 'blocking',
   user: 'abc-123',
 });
@@ -132,14 +132,14 @@ const run = async () => {
 
     console.log(result);
 
-    const summarizedFilePath = filePath.replace('.txt', '_summarized.txt');
+    const summarizedFilePath = filePath.replace('.txt', ' 的今日群聊总结.txt');
     // save to file in folder
     fs.writeFileSync(summarizedFilePath, result);
 
     // 执行命令
     const convertRes = await convert2img({
       mdFile: summarizedFilePath,
-      outputFilename: filePath.replace('.txt', '_summarized.png'),
+      outputFilename: filePath.replace('.txt', ' 的今日群聊总结.png'),
       width: 450,
       cssTemplate: 'githubDark',
     });
