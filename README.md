@@ -4,9 +4,11 @@
 
 **重要提示：使用本项目登录微信可能存在封号的风险，请慎重使用并遵守相关平台的规则。使用本项目意味着您已经充分了解并接受这一风险。**
 
-## 新版本：桌面应用即将发布
+## 新版本：桌面应用
 
-新版本近几天会发布，不再需要运行命令和代码，直接下载即可使用，代码将开源于此仓库
+下载后直接打开配置 app key 即可运行监控和总结，一键总结，一键发送到群内。
+
+下载地址（暂时只有 mac 和 linux 版本）：https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.0
 
 ![image](https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/f2b1905f-7ef8-4165-9f41-1d6bd0244de9)
 
