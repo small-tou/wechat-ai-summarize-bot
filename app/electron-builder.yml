@@ -16,3 +16,4 @@ mac:
   entitlements: build/entitlements.mac.plist
   entitlementsInherit: build/entitlements.mac.plist
   icon: public/icon.icns
+  provisioningProfile: build/wxsummarizebot.provisionprofile
