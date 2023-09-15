@@ -15,5 +15,10 @@ mac:
   gatekeeperAssess: false
   entitlements: build/entitlements.mac.plist
   entitlementsInherit: build/entitlements.mac.plist
-  icon: public/icon.icns
+  icon: public/logo.icns
   provisioningProfile: build/wxsummarizebot.provisionprofile
+win:
+  target: nsis
+  icon: public/logo.ico
+  publisherName: Yutou
+  verifyUpdateCodeSignature: false

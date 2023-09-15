@@ -103,14 +103,20 @@ function Home() {
   return (
     <div style={{ padding: '0 20px' }}>
       <Header active={'home'} />
-      {
-        dirs.length == 0 ? <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          height: '100vh',
-          width: '100vw',
-          alignItems: 'center',
-        }}>暂无记录</div> : <div
+      {dirs.length == 0 ? (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            height: '100vh',
+            width: '100vw',
+            alignItems: 'center',
+          }}
+        >
+          暂无记录
+        </div>
+      ) : (
+        <div
           style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -125,7 +131,7 @@ function Home() {
             }}
           >
             <Listbox
-              className='p-0 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1 max-w-[300px] overflow-visible shadow-small '
+              className="p-0 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1 max-w-[300px] overflow-visible shadow-small "
               itemClasses={{
                 base: 'px-3 first:rounded-t-medium last:rounded-b-medium rounded-none gap-3 h-12 data-[hover=true]:bg-default-100/80',
               }}
@@ -133,7 +139,7 @@ function Home() {
               {dirs?.map((dir) => (
                 <ListboxItem
                   key={dir.path}
-                  className='flex items-center justify-between'
+                  className="flex items-center justify-between"
                   onClick={() => {
                     setSelectedDirPath(dir.path);
                   }}
@@ -141,23 +147,23 @@ function Home() {
                     background: dir.path == selectedDirPath ? '#f3f3f3' : 'none',
                   }}
                   endContent={
-                    <div className='flex items-center gap-1 text-default-400'>
-                      <span className='text-small'>{dir.chatFiles.length}</span>
+                    <div className="flex items-center gap-1 text-default-400">
+                      <span className="text-small">{dir.chatFiles.length}</span>
                       <svg
-                        aria-hidden='true'
-                        fill='none'
-                        focusable='false'
-                        height='1em'
-                        role='presentation'
-                        stroke='currentColor'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth='1.5'
-                        viewBox='0 0 24 24'
-                        width='1em'
-                        className='text-xl'
+                        aria-hidden="true"
+                        fill="none"
+                        focusable="false"
+                        height="1em"
+                        role="presentation"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        className="text-xl"
                       >
-                        <path d='m9 18 6-6-6-6' />
+                        <path d="m9 18 6-6-6-6" />
                       </svg>
                     </div>
                   }
@@ -175,7 +181,7 @@ function Home() {
             }}
           >
             <Listbox
-              className='p-0 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1 max-w-[300px] overflow-visible shadow-small  '
+              className="p-0 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1 max-w-[300px] overflow-visible shadow-small  "
               itemClasses={{
                 base: 'px-3 first:rounded-t-medium last:rounded-b-medium rounded-none gap-3 h-12 data-[hover=true]:bg-default-100/80',
               }}
@@ -183,14 +189,14 @@ function Home() {
               {selectedDir?.chatFiles.map((dir) => (
                 <ListboxItem
                   key={dir.name}
-                  className='flex items-center justify-between '
+                  className="flex items-center justify-between "
                   style={{
                     borderBottom: '1px solid #f3f3f3',
                   }}
                   endContent={
-                    <div className='flex items-center gap-2 text-default-400'>
+                    <div className="flex items-center gap-2 text-default-400">
                       <span
-                        className='text-small'
+                        className="text-small"
                         style={{
                           fontSize: '12px',
                           color: '#aaa',
@@ -200,42 +206,52 @@ function Home() {
                       >
                         {dir.hasImage ? '已总结' : null}
                       </span>
-                      <Button size='sm' onClick={() => {
-                        submitSummarize(selectedDir.path, dir.name);
-                      }}
-                              color={'primary'}>总结</Button>
-                      <Button size='sm' onClick={() => {
-                        ipcRenderer.send('show-file', selectedDir.path + '/' + dir.name);
-                      }}
-                              isDisabled={!dir.hasImage}
-                      >查看</Button>
+                      <Button
+                        size="sm"
+                        onClick={() => {
+                          submitSummarize(selectedDir.path, dir.name);
+                        }}
+                        color={'primary'}
+                        style={{
+                          height: '27px',
+                          width: '30px',
+                          padding: '0 8px',
+                        }}
+                      >
+                        总结
+                      </Button>
+                      <Button
+                        size="sm"
+                        onClick={() => {
+                          ipcRenderer.send('show-file', selectedDir.path + '/' + dir.name);
+                        }}
+                        isDisabled={!dir.hasImage}
+                        style={{
+                          height: '27px',
+                          width: '30px',
+                        }}
+                      >
+                        查看
+                      </Button>
 
-                      <Button size='sm' onClick={() => {
-                        sendSummarize(selectedDir.path, dir.name);
-                      }}
-                              isDisabled={!dir.hasImage}
-                              color={'secondary'}
-                      >发送</Button>
+                      <Button
+                        size="sm"
+                        onClick={() => {
+                          sendSummarize(selectedDir.path, dir.name);
+                        }}
+                        isDisabled={!dir.hasImage}
+                        color={'secondary'}
+                        style={{
+                          height: '27px',
+                          width: '30px',
+                        }}
+                      >
+                        发送
+                      </Button>
                     </div>
                   }
                   description={
                     <div className={'gap-2 flex'} style={{}}>
-                    <span
-                      style={{
-                        fontSize: '12px',
-                        color: '#aaa',
-                      }}
-                      className={'text-slate-100'}
-                    >
-                      对话数{' '}
-                      <span
-                        style={{
-                          color: '#444',
-                        }}
-                      >
-                        {dir.info?.chatCount}
-                      </span>
-                    </span>
                       <span
                         style={{
                           fontSize: '12px',
@@ -243,15 +259,15 @@ function Home() {
                         }}
                         className={'text-slate-100'}
                       >
-                      对话人数{' '}
+                        对话数{' '}
                         <span
                           style={{
                             color: '#444',
                           }}
                         >
-                        {dir.info?.chatMembersCount}
+                          {dir.info?.chatCount}
+                        </span>
                       </span>
-                    </span>
                       <span
                         style={{
                           fontSize: '12px',
@@ -259,15 +275,31 @@ function Home() {
                         }}
                         className={'text-slate-100'}
                       >
-                      对话字数{' '}
+                        对话人数{' '}
                         <span
                           style={{
                             color: '#444',
                           }}
                         >
-                        {dir.info?.chatLetters}
+                          {dir.info?.chatMembersCount}
+                        </span>
                       </span>
-                    </span>
+                      <span
+                        style={{
+                          fontSize: '12px',
+                          color: '#aaa',
+                        }}
+                        className={'text-slate-100'}
+                      >
+                        对话字数{' '}
+                        <span
+                          style={{
+                            color: '#444',
+                          }}
+                        >
+                          {dir.info?.chatLetters}
+                        </span>
+                      </span>
                     </div>
                   }
                 >
@@ -277,19 +309,21 @@ function Home() {
             </Listbox>
           </div>
         </div>
-      }
+      )}
 
       <Modal isOpen={!!qrCode} style={{ width: '320px' }}>
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className='flex flex-col gap-1'>请扫码登录</ModalHeader>
-              <ModalBody style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginBottom: '30px',
-              }}>
+              <ModalHeader className="flex flex-col gap-1">请扫码登录</ModalHeader>
+              <ModalBody
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginBottom: '30px',
+                }}
+              >
                 <QRCodeCanvas value={qrCode} size={200} />
               </ModalBody>
             </>
@@ -301,53 +335,84 @@ function Home() {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className='flex flex-col gap-1 ' style={{ justifyContent: 'center' }}>配置</ModalHeader>
-              <ModalBody style={{
-                display: 'flex',
-                justifyContent: 'flex-start',
-                alignItems: 'center',
-                marginBottom: '30px',
-              }}>
-                <p style={{ fontSize: '12px' }}>必须正确配置才能正常运行，关于如何获取这些配置：<a
-                  href={'#'}
-                  onClick={() => {
-                    ipcRenderer.send('open-url', 'https://github.com/aoao-eth/wechat-ai-summarize-bot');
-                  }}
-                  style={{
-                    color: 'blue',
-                  }}
-                >点击查看</a>
+              <ModalHeader className="flex flex-col gap-1 " style={{ justifyContent: 'center' }}>
+                配置
+              </ModalHeader>
+              <ModalBody
+                style={{
+                  display: 'flex',
+                  justifyContent: 'flex-start',
+                  alignItems: 'center',
+                  marginBottom: '30px',
+                }}
+              >
+                <p style={{ fontSize: '12px' }}>
+                  必须正确配置才能正常运行，关于如何获取这些配置：
+                  <a
+                    href={'#'}
+                    onClick={() => {
+                      ipcRenderer.send('open-url', 'https://github.com/aoao-eth/wechat-ai-summarize-bot');
+                    }}
+                    style={{
+                      color: 'blue',
+                    }}
+                  >
+                    点击查看
+                  </a>
                 </p>
-                <Input required label={'PADLOCAL token'} value={config.PADLOCAL_API_KEY} onChange={(e) => {
-                  setConfig({
-                    ...config,
-                    PADLOCAL_API_KEY: e.target.value,
-                  });
-                }} />
-                <Input required label={'DIFY apikey'} value={config.DIFY_API_KEY} onChange={(e) => {
-                  setConfig({
-                    ...config,
-                    DIFY_API_KEY: e.target.value,
-                  });
-                }} />
-                <Input label={'AZURE_TTS_APPKEY'} value={config.AZURE_TTS_APPKEY} onChange={(e) => {
-                  setConfig({
-                    ...config,
-                    AZURE_TTS_APPKEY: e.target.value,
-                  });
-                }} />
-                <Input label={'AZURE_TTS_REGION'} value={config.AZURE_TTS_REGION} onChange={(e) => {
-                  setConfig({
-                    ...config,
-                    AZURE_TTS_REGION: e.target.value,
-                  });
-                }} />
+                <Input
+                  required
+                  label={'PADLOCAL token'}
+                  value={config.PADLOCAL_API_KEY}
+                  onChange={(e) => {
+                    setConfig({
+                      ...config,
+                      PADLOCAL_API_KEY: e.target.value,
+                    });
+                  }}
+                />
+                <Input
+                  required
+                  label={'DIFY apikey'}
+                  value={config.DIFY_API_KEY}
+                  onChange={(e) => {
+                    setConfig({
+                      ...config,
+                      DIFY_API_KEY: e.target.value,
+                    });
+                  }}
+                />
+                <Input
+                  label={'AZURE_TTS_APPKEY'}
+                  value={config.AZURE_TTS_APPKEY}
+                  onChange={(e) => {
+                    setConfig({
+                      ...config,
+                      AZURE_TTS_APPKEY: e.target.value,
+                    });
+                  }}
+                />
+                <Input
+                  label={'AZURE_TTS_REGION'}
+                  value={config.AZURE_TTS_REGION}
+                  onChange={(e) => {
+                    setConfig({
+                      ...config,
+                      AZURE_TTS_REGION: e.target.value,
+                    });
+                  }}
+                />
               </ModalBody>
               <ModalFooter>
-                <Button onClick={() => {
-                  ipcRenderer.send('save-config', config);
-                  setShowConfigModal(false);
-                }} color={'primary'}>保存</Button>
+                <Button
+                  onClick={() => {
+                    ipcRenderer.send('save-config', config);
+                    setShowConfigModal(false);
+                  }}
+                  color={'primary'}
+                >
+                  保存
+                </Button>
               </ModalFooter>
             </>
           )}

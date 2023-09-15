@@ -23,6 +23,7 @@
     "microsoft-cognitiveservices-speech-sdk": "^1.32.0",
     "moment": "^2.29.4",
     "postcss": "^8.4.29",
+    "prettier": "^3.0.3",
     "qrcode-terminal": "^0.12.0",
     "qrcode.react": "^3.1.0",
     "react-hot-toast": "^2.4.1",

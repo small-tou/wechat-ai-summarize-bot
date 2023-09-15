@@ -23,6 +23,7 @@ if (isProd) {
     width: 1000,
     height: 800,
     title: '群聊总结智囊',
+    icon: path.join(__dirname, '../public/logo.png'),
   });
 
   if (isProd) {
@@ -33,11 +34,7 @@ if (isProd) {
     // mainWindow.webContents.openDevTools();
   }
 
-
-  ipcMain.on('summarize', (event, {
-    dateDir,
-    chatFileName,
-  }) => {
+  ipcMain.on('summarize', (event, { dateDir, chatFileName }) => {
     const summarizeEvent = summarize(path.join(BASE_PATH, dateDir, chatFileName));
     summarizeEvent.addListener('update', (info) => {
       console.log('summarize update', info);
@@ -64,7 +61,6 @@ if (isProd) {
   });
 
   ipcMain.on('show-config', async (event, config) => {
-
     mainWindow.webContents.send('show-config', getConfig());
   });
 
@@ -78,23 +74,25 @@ if (isProd) {
   ipcMain.on('open-url', (e, url) => {
     shell.openExternal(url);
   });
-  ipcMain.on('send-summarize', async (e, {
-    dateDir,
-    chatFileName,
-  }) => {
-    await sendImage(chatFileName.replace('.txt', ''), path.join(BASE_PATH, dateDir, chatFileName.replace('.txt', ' 的今日群聊总结.png')));
+  ipcMain.on('send-summarize', async (e, { dateDir, chatFileName }) => {
+    await sendImage(
+      chatFileName.replace('.txt', ''),
+      path.join(BASE_PATH, dateDir, chatFileName.replace('.txt', ' 的今日群聊总结.png'))
+    );
     await delay(1000);
-    await sendAudio(chatFileName.replace('.txt', ''), path.join(BASE_PATH, dateDir, chatFileName.replace('.txt', ' 的今日群聊总结.mp3')));
+    await sendAudio(
+      chatFileName.replace('.txt', ''),
+      path.join(BASE_PATH, dateDir, chatFileName.replace('.txt', ' 的今日群聊总结.mp3'))
+    );
     await delay(1000);
-    await sendText(chatFileName.replace('.txt', ''), '主人们，智囊 AI 为您奉上今日群聊总结，祝您用餐愉快！由开源项目 wx.zhinang.ai 生成');
+    await sendText(
+      chatFileName.replace('.txt', ''),
+      '主人们，智囊 AI 为您奉上今日群聊总结，祝您用餐愉快！由开源项目 wx.zhinang.ai 生成'
+    );
     mainWindow.webContents.send('toast', `发送成功`);
   });
-
-
 })();
 
 app.on('window-all-closed', () => {
   app.quit();
 });
-
-
