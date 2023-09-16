@@ -4,7 +4,7 @@ import { createWindow } from './helpers';
 import { summarize } from './summarize';
 import { getAllDirs } from './helpers/getAllDirs';
 import { getConfig, setConfig } from './config';
-import { sendAudio, sendImage, sendText, startBot } from './startBot';
+import { botStatus, sendAudio, sendImage, sendText, startBot } from './startBot';
 import path from 'path';
 import { BASE_PATH, delay, PUBLIC_PATH, saveData } from './util';
 import fs from 'fs';
@@ -25,6 +25,7 @@ if (isProd) {
     height: 800,
     title: '群聊总结智囊',
     icon: path.join(__dirname, PUBLIC_PATH, 'logo.png'),
+    backgroundColor: '#ffffff',
   });
 
   if (isProd) {
@@ -34,7 +35,11 @@ if (isProd) {
     await mainWindow.loadURL(`http://localhost:${port}/home`);
     // mainWindow.webContents.openDevTools();
   }
-
+  ipcMain.on('get-bot-status', (event, title) => {
+    mainWindow.webContents.send('bot-status-reply', {
+      status: botStatus,
+    });
+  });
   ipcMain.on('summarize', (event, { dateDir, chatFileName }) => {
     const summarizeEvent = summarize(path.join(BASE_PATH, dateDir, chatFileName));
     summarizeEvent.addListener('update', (info) => {
