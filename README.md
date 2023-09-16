@@ -1,15 +1,28 @@
-# 微信群聊总结 AI 助手 (JS ver)
+<p align="center">
+    <h1 align="center">微信群聊总结 AI 助手 (JS and Electron ver)</h1>
+</p>
+<p align="center">
+    <a href="https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.0](https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.3">Mac 版下载</a>
+</p>
+<p align="center">  
+    <a href="https://zhinang.ai" target="_blank">
+        <img src="https://img.shields.io/badge/Power%20by%20zhinang.ai-green?&labelColor=000&style=for-the-badge&logo=openai" />
+    </a>
+</p>
+<p align="center">  
+   本项目由免费白嫖 GPT 的智囊 AI <a href="https://zhinang.ai" target="_blank">https://zhinang.ai</a> 技术支持
+</p>
 
-本项目由免费白嫖 GPT 的智囊 AI https://zhinang.ai 技术支持
 
-**重要提示：使用本项目登录微信可能存在封号的风险，请慎重使用并遵守相关平台的规则。使用本项目意味着您已经充分了解并接受这一风险。**
+<p align="center">
+    <h2 align="center">新版本：桌面应用</h2>
+</p>
 
-
-## 新版本：桌面应用
+> 您可使用桌面版来使用，一键监控、总结、发送。也可以使用脚本版，手动运行监控和总结。
 
 下载后直接打开配置 app key 即可运行监控和总结，一键总结，一键发送到群内。
 
-下载地址（暂时只有 mac 版本）：[https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.0](https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.1)
+[下载地址（暂时只有 mac 版本）](https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.3)
 
 如您需要 windows 版本，可以自己构建或者直接代码运行，代码在 app 文件夹中，欢迎构建成功的同学提供 windows 安装包
 
@@ -18,7 +31,10 @@
 
 
 
-## 项目介绍
+<p align="center">
+    <h2 align="center">项目介绍</h2>
+</p>
+ 
 
 本项目是基于微信机器人的微信群聊总结助手，可以帮助群主或管理员自动收集群聊中的聊天记录，并使用 AI 进行总结，最终将其发送到指定的群聊中。
 
@@ -31,6 +47,8 @@ xxx_sumarized.txt # 纯文本总结
 xxx_sumarized.png # 总结的图片
 xxx_sumarized.mp3 # 总结的语音
 ```
+
+**提示：使用本项目登录微信可能存在封号的风险，请慎重使用并遵守相关平台的规则。使用本项目意味着您已经充分了解并接受这一风险。**
 
 效果预览
 
@@ -142,7 +160,9 @@ AZURE_TTS_REGION=
 
 https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/SpeechServices
 
-## 友情链接
+<p align="center">
+    <h2 align="center">友情链接</h2>
+</p>
 
 - [智囊 AI] https://zhinang.ai/chat
 - [Dify.ai] https://dify.ai
