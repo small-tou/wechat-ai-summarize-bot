@@ -352,7 +352,14 @@ function Home() {
         </div>
       )}
 
-      <Modal isOpen={!!qrCode} style={{ width: '320px' }}>
+      <Modal
+        isOpen={!!qrCode}
+        style={{ width: '320px' }}
+        backdrop={'blur'}
+        onClose={() => {
+          setQrCode(null);
+        }}
+      >
         <ModalContent>
           {(onClose) => (
             <>
@@ -372,7 +379,7 @@ function Home() {
         </ModalContent>
       </Modal>
 
-      <Modal isOpen={showConfigModal} hideCloseButton={true}>
+      <Modal isOpen={showConfigModal} hideCloseButton={true} backdrop={'blur'}>
         <ModalContent>
           {(onClose) => (
             <>
