@@ -13,6 +13,13 @@
    本项目由免费白嫖 GPT 的智囊 AI <a href="https://zhinang.ai" target="_blank">https://zhinang.ai</a> 技术支持
 </p>
 
+--------
+
+<p align="center">  
+   自己跑不起来，但是需要群聊总结的同学，可以加机器人微信号：aoao_eth，然后把机器人拉进你的群里即可。
+</p>
+
+--------
 
 <p align="center">
     <h2 align="center">新版本：桌面应用</h2>
