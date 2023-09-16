@@ -3,8 +3,22 @@ import Link from 'next/link';
 import { ipcRenderer } from 'electron';
 import Github from './icon/Github';
 import Twitter from './icon/Twitter';
+import { useEffect, useState } from 'react';
+import { Chip } from '@nextui-org/react';
+import { SuccessIcon } from './icon/SuccessIcon';
+import { ErrorIcon } from './icon/ErrorIcon';
 
 export function Header(props: { active: string }) {
+  const [botStatus, setBotStatus] = useState('启动中');
+  useEffect(() => {
+    ipcRenderer.on('bot-status-reply', (event, args) => {
+      setBotStatus(args.status);
+    });
+    setInterval(() => {
+      ipcRenderer.send('get-bot-status');
+    }, 3000);
+  }, []);
+
   return (
     <div className={styles['chat-header']}>
       <div className={styles['chat-header-inner']}>
@@ -97,6 +111,24 @@ export function Header(props: { active: string }) {
         </div>
         <div className={styles['chat-header-right']}>
           <div className={[styles['header-links'], 'hide_in_mobile'].join(' ')}>
+            <Chip
+              startContent={
+                ['错误', '已停止', '已退出'].includes(botStatus) ? <ErrorIcon size={14} /> : <SuccessIcon size={14} />
+              }
+              variant="flat"
+              color={['错误', '已停止', '已退出'].includes(botStatus) ? 'danger' : 'success'}
+              style={{
+                paddingLeft: '10px',
+              }}
+            >
+              <span
+                style={{
+                  wordBreak: 'keep-all',
+                }}
+              >
+                {botStatus}
+              </span>
+            </Chip>
             <a
               onClick={() => {
                 ipcRenderer.send('open-url', 'https://twitter.com/aoao_eth');

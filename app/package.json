@@ -2,7 +2,7 @@
   "private": true,
   "name": "wx-summarize-bot",
   "description": "本项目是基于微信机器人的微信群聊总结助手，可以帮助群主或管理员自动收集群聊中的聊天记录，并使用 AI 进行总结，最终将其发送到指定的群聊中",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Yutou <xinyu198736@gmail.com>",
   "main": "app/background.js",
   "scripts": {
