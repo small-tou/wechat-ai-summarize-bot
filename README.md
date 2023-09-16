@@ -27,8 +27,16 @@
 如您需要 windows 版本，可以自己构建或者直接代码运行，代码在 app 文件夹中，欢迎构建成功的同学提供 windows 安装包
 
 #### 截图
-![image](https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/38caa175-ea26-4391-81ec-ad902cb0b518)
+功能：
+* 每日群聊监控和数据统计（界面上实时更新）
+* 一键总结，一键查看总结结果，一键发送到群聊
+* 随时更新的配置，可以配置截取的文本长度和结尾词等
+* 机器人状态监控
 
+正常运行界面
+![image](https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/38caa175-ea26-4391-81ec-ad902cb0b518)
+微信登录界面
+![image](https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/f267d112-f4c8-4c52-a7d6-4d141a2d2823)
 
 
 <p align="center">
