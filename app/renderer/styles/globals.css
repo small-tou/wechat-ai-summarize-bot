@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.uikit-chat-message-item {
+    margin-top: 10px !important;
+}

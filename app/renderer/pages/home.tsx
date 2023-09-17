@@ -11,6 +11,7 @@ import { ModalFooter } from '@nextui-org/react';
 import { Header } from '../components/Header';
 import { useConfig } from '../hooks/useConfig';
 import moment from 'moment';
+import Chat from '../components/Chat';
 
 type IChatFile = {
   name: string;
@@ -23,6 +24,12 @@ type IChatFile = {
 };
 
 function Home() {
+
+  const [chatModal, setChatModal] = useState({
+    show: false,
+    date: '',
+    roomName: '',
+  });
   const { showConfigModal, setShowConfigModal } = useConfig();
   const [config, setConfig] = useState({
     PADLOCAL_API_KEY: '',
@@ -148,7 +155,7 @@ function Home() {
             }}
           >
             <Listbox
-              className="p-0 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1 max-w-[300px] overflow-visible shadow-small "
+              className='p-0 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1 max-w-[300px] overflow-visible shadow-small '
               itemClasses={{
                 base: 'px-3 first:rounded-t-medium last:rounded-b-medium rounded-none gap-3 h-12 data-[hover=true]:bg-default-100/80',
               }}
@@ -156,7 +163,7 @@ function Home() {
               {dirs?.map((dir) => (
                 <ListboxItem
                   key={dir.path}
-                  className="flex items-center justify-between"
+                  className='flex items-center justify-between'
                   onClick={() => {
                     setSelectedDirPath(dir.path);
                   }}
@@ -164,23 +171,23 @@ function Home() {
                     background: dir.path == selectedDirPath ? '#f3f3f3' : 'none',
                   }}
                   endContent={
-                    <div className="flex items-center gap-1 text-default-400">
-                      <span className="text-small">{dir.chatFiles.length}</span>
+                    <div className='flex items-center gap-1 text-default-400'>
+                      <span className='text-small'>{dir.chatFiles.length}</span>
                       <svg
-                        aria-hidden="true"
-                        fill="none"
-                        focusable="false"
-                        height="1em"
-                        role="presentation"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="1.5"
-                        viewBox="0 0 24 24"
-                        width="1em"
-                        className="text-xl"
+                        aria-hidden='true'
+                        fill='none'
+                        focusable='false'
+                        height='1em'
+                        role='presentation'
+                        stroke='currentColor'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='1.5'
+                        viewBox='0 0 24 24'
+                        width='1em'
+                        className='text-xl'
                       >
-                        <path d="m9 18 6-6-6-6" />
+                        <path d='m9 18 6-6-6-6' />
                       </svg>
                     </div>
                   }
@@ -198,7 +205,7 @@ function Home() {
             }}
           >
             <Listbox
-              className="p-0 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1 max-w-[300px] overflow-visible shadow-small  "
+              className='p-0 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1 max-w-[300px] overflow-visible shadow-small  '
               itemClasses={{
                 base: 'px-3 first:rounded-t-medium last:rounded-b-medium rounded-none gap-3 h-12 data-[hover=true]:bg-default-100/80',
               }}
@@ -206,14 +213,14 @@ function Home() {
               {selectedDir?.chatFiles.map((dir) => (
                 <ListboxItem
                   key={dir.name}
-                  className="flex items-center justify-between "
+                  className='flex items-center justify-between '
                   style={{
                     borderBottom: '1px solid #f3f3f3',
                   }}
                   endContent={
-                    <div className="flex items-center gap-2 text-default-400">
+                    <div className='flex items-center gap-2 text-default-400'>
                       <span
-                        className="text-small"
+                        className='text-small'
                         style={{
                           fontSize: '12px',
                           color: '#aaa',
@@ -224,7 +231,7 @@ function Home() {
                         {dir.hasImage ? '已总结' : null}
                       </span>
                       <span
-                        className="text-small"
+                        className='text-small'
                         style={{
                           fontSize: '12px',
                           color: '#aaa',
@@ -236,7 +243,7 @@ function Home() {
                         {dir.sended ? `已发送` : null}
                       </span>
                       <span
-                        className="text-small"
+                        className='text-small'
                         style={{
                           fontSize: '12px',
                           color: '#aaa',
@@ -248,11 +255,31 @@ function Home() {
                         {dir.send_time ? `(${moment(dir.send_time).format('HH:mm')})` : null}
                       </span>
                       <Button
-                        size="sm"
+                        size='sm'
+                        onClick={() => {
+
+                          setChatModal({
+                            show: true,
+                            date: selectedDir.path,
+                            roomName: dir.name,
+                          });
+
+                        }}
+                        color={'primary'}
+                        style={{
+                          height: '27px',
+                          width: '30px',
+                          padding: '0 8px',
+                        }}
+                      >
+                        对话
+                      </Button>
+                      <Button
+                        size='sm'
                         onClick={() => {
                           submitSummarize(selectedDir.path, dir.name);
                         }}
-                        color={'primary'}
+                        color={'warning'}
                         style={{
                           height: '27px',
                           width: '30px',
@@ -262,7 +289,7 @@ function Home() {
                         总结
                       </Button>
                       <Button
-                        size="sm"
+                        size='sm'
                         onClick={() => {
                           ipcRenderer.send('show-file', selectedDir.path + '/' + dir.name);
                         }}
@@ -272,11 +299,11 @@ function Home() {
                           width: '30px',
                         }}
                       >
-                        查看
+                        检查
                       </Button>
 
                       <Button
-                        size="sm"
+                        size='sm'
                         onClick={() => {
                           sendSummarize(selectedDir.path, dir.name);
                         }}
@@ -363,7 +390,7 @@ function Home() {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">请扫码登录</ModalHeader>
+              <ModalHeader className='flex flex-col gap-1'>请扫码登录</ModalHeader>
               <ModalBody
                 style={{
                   display: 'flex',
@@ -383,7 +410,7 @@ function Home() {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1 " style={{ justifyContent: 'center' }}>
+              <ModalHeader className='flex flex-col gap-1 ' style={{ justifyContent: 'center' }}>
                 配置
               </ModalHeader>
               <ModalBody
@@ -490,6 +517,22 @@ function Home() {
           )}
         </ModalContent>
       </Modal>
+      {
+        chatModal.show ? <Modal isOpen={true} onClose={() => {
+          setChatModal({
+            show: false,
+            roomName: '',
+            date: '',
+          });
+        }} size={'3xl'} backdrop={'blur'}>
+
+          <ModalContent>
+            <ModalHeader>{chatModal.roomName} 的实时对话</ModalHeader>
+            <Chat date={chatModal.date} roomName={chatModal.roomName} />
+          </ModalContent>
+        </Modal> : null
+      }
+
     </div>
   );
 }

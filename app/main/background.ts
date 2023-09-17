@@ -6,7 +6,7 @@ import { getAllDirs } from './helpers/getAllDirs';
 import { getConfig, setConfig } from './config';
 import { botAccount, botStatus, logoutBot, sendAudio, sendImage, sendText, startBot } from './startBot';
 import path from 'path';
-import { BASE_PATH, delay, PUBLIC_PATH, saveData } from './util';
+import { BASE_PATH, delay, getChatHistoryFromFile, PUBLIC_PATH, saveData } from './util';
 import fs from 'fs';
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
@@ -40,6 +40,19 @@ if (isProd) {
       status: botStatus,
       account: botAccount,
     });
+  });
+  ipcMain.on('get-chat-content', (event, args) => {
+    const date = args.date;
+    const roomName = args.roomName;
+    const filePath = path.join(BASE_PATH, date, roomName);
+    const chats = getChatHistoryFromFile(filePath);
+
+    mainWindow.webContents.send('chat-content-replay', {
+      date,
+      roomName,
+      chats,
+    });
+
   });
   ipcMain.on('logout-bot', (event, title) => {
     logoutBot();
@@ -126,6 +139,11 @@ if (isProd) {
       sended: true,
       send_time: new Date().getTime(),
     });
+  });
+  ipcMain.on('send-chat-content', (event, arg) => {
+    const roomName = arg.roomName;
+    const content = arg.content;
+    sendText(roomName, content);
   });
 })();
 
