@@ -1025,12 +1025,12 @@ template {
 
 .markdown-body {
     padding: 2rem 1rem;
-    font-family: ZhuqueFangsong-Regular !important;
+    font-family: Montserrat, Inter, Roboto, -apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei, sans-serif !important;
     background-color: #1c1b1f !important;
 }
 
 .markdown-body * {
-    font-family: ZhuqueFangsong-Regular !important;
+    font-family: Montserrat, Inter, Roboto, -apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei, sans-serif !important;
     color: #e4e2ce !important;
 }
 

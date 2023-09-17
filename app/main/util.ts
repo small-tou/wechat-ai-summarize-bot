@@ -29,7 +29,8 @@ export function saveData(date: string, roomName: string, kvs: Record<string, any
   if (fs.existsSync(dataFilePath)) {
     try {
       data = JSON.parse(fs.readFileSync(dataFilePath).toString());
-    } catch (e) {}
+    } catch (e) {
+    }
   }
   if (!data[roomName]) {
     data[roomName] = {};
@@ -44,10 +45,45 @@ export function getData(date: string, roomName: string) {
   if (fs.existsSync(dataFilePath)) {
     try {
       data = JSON.parse(fs.readFileSync(dataFilePath).toString());
-    } catch (e) {}
+    } catch (e) {
+    }
   }
   if (!data[roomName]) {
     data[roomName] = {};
   }
   return data[roomName];
+}
+
+export function getChatHistoryFromFile(filePath: string) {
+  const fileContent = fs.readFileSync(filePath).toString();
+  /**
+   * 2023-09-16 19:49:47:
+   * 甘泉:
+   * 一个中文，一个英文
+   *
+   * 2023-09-16 19:56:28:
+   * Update!9.9.9:
+   * 嘿嘿，到手了
+   *
+   * 2023-09-16 20:02:43:
+   * 芋头 🚀🌙:
+   * 芋头 : [图片]
+   */
+    // 写一段脚本，从类似的结构中抽取时间、用户名、内容
+
+  const pattern = /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}):([\s\S]*?):([\s\S]*?)(?=(\n\n|$))/g;
+
+  const res = [];
+  let result;
+  while ((result = pattern.exec(fileContent))) {
+    const time = result[1];
+    const name = result[2];
+    const content = result[3].trim();
+    res.push({
+      time,
+      name,
+      content,
+    });
+  }
+  return res;
 }

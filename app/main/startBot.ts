@@ -9,6 +9,13 @@ import { RoomInterface } from 'wechaty/dist/esm/src/user-modules/room';
 let bot: WechatyInterface;
 
 export let botStatus = '已停止';
+export let botAccount = '';
+
+export async function logoutBot() {
+  if (bot) {
+    await bot.logout();
+  }
+}
 
 export async function startBot(mainWindow: Electron.BrowserWindow) {
   if (!checkConfigIsOk()) {
@@ -52,6 +59,7 @@ export async function startBot(mainWindow: Electron.BrowserWindow) {
       mainWindow.webContents.send('toast', `${user} login success`);
       mainWindow.webContents.send('login');
       botStatus = '登录成功';
+      botAccount = user.name();
     })
     .on('logout', (user, reason) => {
       log.info(LOGPRE, `${user} logout, reason: ${reason}`);
