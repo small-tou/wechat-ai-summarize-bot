@@ -2,7 +2,7 @@
     <h1 align="center">微信群聊总结 AI 助手 (JS and Electron ver)</h1>
 </p>
 <p align="center">
-    <a href="https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.0](https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.4">Mac 版下载</a>
+    <a href="https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.0](https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.1.0">Mac 版下载</a>
 </p>
 <p align="center">  
     <a href="https://zhinang.ai" target="_blank">
@@ -29,7 +29,7 @@
 
 下载后直接打开配置 app key 即可运行监控和总结，一键总结，一键发送到群内。
 
-[下载地址（暂时只有 mac 版本）](https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.4)
+[下载地址（暂时只有 mac 版本）](https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.1.0)
 
 如您需要 windows 版本，可以自己构建或者直接代码运行，代码在 app 文件夹中，欢迎构建成功的同学提供 windows 安装包
 
@@ -37,11 +37,18 @@
 功能：
 * 每日群聊监控和数据统计（界面上实时更新）
 * 一键总结，一键查看总结结果，一键发送到群聊
+* * 聊天记录实时查看，直接发送内容到群聊
 * 随时更新的配置，可以配置截取的文本长度和结尾词等
-* 机器人状态监控
+* 机器人状态监控，账号切换
+
 
 正常运行界面
-![image](https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/9117d182-f658-4117-9f1a-cfbc3f5ac501)
+![image](https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/42857974-8463-4b2f-aba5-145db3d902d5)
+
+
+点击对话，可以看到实时的对话和对话记录，同时可以直接输入内容对话
+![image](https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/fa894592-a797-4d93-bc61-8e7c6482cc8a)
+
 
 微信登录界面
 ![image](https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/f267d112-f4c8-4c52-a7d6-4d141a2d2823)
