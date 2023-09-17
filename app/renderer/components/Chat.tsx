@@ -3,20 +3,22 @@ import styles from '../styles/ChatGPT.module.scss';
 import { useEffect } from 'react';
 import { ipcRenderer } from 'electron';
 
+const chatuiClient = createClient();
 
 export default function Chat(props: {
   date: string;
   roomName: string;
 }) {
-  const chatuiClient = createClient();
-  chatuiClient.chatboxStore.on('submit', (message) => {
+
+  const sendMessage = (message: string) => {
     ipcRenderer.send('send-chat-content', {
       roomName: props.roomName.replace('.txt', ''),
       content: message,
     });
-  });
-
+  };
   useEffect(() => {
+
+    chatuiClient.chatboxStore.on('submit', sendMessage);
     chatuiClient.messageStore.clear();
     ipcRenderer.send('get-chat-content', {
       date: props.date,
@@ -32,6 +34,9 @@ export default function Chat(props: {
       console.log('chat-replay', args);
       if (args.date == props.date && args.roomName == props.roomName) {
         args.chats.forEach((chat) => {
+          if (chatuiClient.messageStore.messages.find((m) => m.id == chat.name + chat.content + chat.time)) {
+            return;
+          }
           chatuiClient.messageStore.addMessageDirect({
             id: chat.name + chat.content + chat.time,
             role: 'assistant',
@@ -43,8 +48,9 @@ export default function Chat(props: {
             typing: false,
             timestamp: (new Date(chat.time)).getTime(),
           });
+          chatuiClient.messageStore.emit('change');
         });
-        chatuiClient.messageStore.emit('change');
+
       } else {
       }
 
@@ -52,6 +58,7 @@ export default function Chat(props: {
     return () => {
       timer && clearInterval(timer);
       ipcRenderer.removeAllListeners('chat-content-replay');
+      chatuiClient.chatboxStore.removeListener('submit', sendMessage);
     };
   }, []);
   return <ChatProvider client={chatuiClient!}>
