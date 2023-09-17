@@ -1,5 +1,5 @@
 appId: com.html-js.wx-summarize-bot
-productName: 群聊总结智囊
+productName: wx-summarize-bot
 copyright: Copyright © 2023 Yutou
 directories:
   output: dist
@@ -20,6 +20,7 @@ mac:
   entitlementsInherit: build/entitlements.mac.plist
   icon: public/logo.icns
   provisioningProfile: build/wxsummarizebot.provisionprofile
+afterSign: ./scripts/notarize.js
 win:
   target: nsis
   icon: public/logo.ico
@@ -34,15 +35,15 @@ nsis:
   installerHeaderIcon: public/logo.ico
   createDesktopShortcut: true
   createStartMenuShortcut: true
-  shortcutName: 群聊总结智囊
+  shortcutName: wx-summarize-bot
   license: LICENSE
   artifactName: '${productName}-setup-${version}.${ext}'
 linux:
   target: AppImage
   icon: public/logo.png
   category: Utility
-  synopsis: 群聊总结智囊
-  description: 群聊总结智囊
+  synopsis: wx-summarize-bot
+  description: wx-summarize-bot
   desktop: build/wx-summarize-bot.desktop
   publish: null
   artifactName: '${productName}-setup-${version}.${ext}'

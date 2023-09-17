@@ -4,7 +4,7 @@ import { createWindow } from './helpers';
 import { summarize } from './summarize';
 import { getAllDirs } from './helpers/getAllDirs';
 import { getConfig, setConfig } from './config';
-import { botStatus, sendAudio, sendImage, sendText, startBot } from './startBot';
+import { botAccount, botStatus, logoutBot, sendAudio, sendImage, sendText, startBot } from './startBot';
 import path from 'path';
 import { BASE_PATH, delay, PUBLIC_PATH, saveData } from './util';
 import fs from 'fs';
@@ -38,7 +38,11 @@ if (isProd) {
   ipcMain.on('get-bot-status', (event, title) => {
     mainWindow.webContents.send('bot-status-reply', {
       status: botStatus,
+      account: botAccount,
     });
+  });
+  ipcMain.on('logout-bot', (event, title) => {
+    logoutBot();
   });
   ipcMain.on('summarize', (event, { dateDir, chatFileName }) => {
     const summarizeEvent = summarize(path.join(BASE_PATH, dateDir, chatFileName));
