@@ -2,7 +2,7 @@
     <h1 align="center">微信群聊总结 AI 助手 (JS and Electron ver)</h1>
 </p>
 <p align="center">
-    <a href="https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.0](https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.3">Mac 版下载</a>
+    <a href="https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.0](https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.4">Mac 版下载</a>
 </p>
 <p align="center">  
     <a href="https://zhinang.ai" target="_blank">
@@ -29,7 +29,7 @@
 
 下载后直接打开配置 app key 即可运行监控和总结，一键总结，一键发送到群内。
 
-[下载地址（暂时只有 mac 版本）](https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.3)
+[下载地址（暂时只有 mac 版本）](https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.4)
 
 如您需要 windows 版本，可以自己构建或者直接代码运行，代码在 app 文件夹中，欢迎构建成功的同学提供 windows 安装包
 
@@ -41,7 +41,8 @@
 * 机器人状态监控
 
 正常运行界面
-![image](https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/38caa175-ea26-4391-81ec-ad902cb0b518)
+![image](https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/9117d182-f658-4117-9f1a-cfbc3f5ac501)
+
 微信登录界面
 ![image](https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/f267d112-f4c8-4c52-a7d6-4d141a2d2823)
 
