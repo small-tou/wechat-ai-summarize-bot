@@ -148,6 +148,7 @@ export async function summarize(roomName: string, apiKey: string):Promise<void |
     inputs: {
       query: `<input>${fileContent.slice(-80000)}</input>`,
     },
+    query: `<input>${fileContent.slice(-80000)}</input>`,
     response_mode: 'blocking',
     user: 'abc-123',
   }); 
