@@ -67,14 +67,6 @@ xxx_sumarized.mp3 # 总结的语音
 
 **提示：使用本项目登录微信可能存在封号的风险，请慎重使用并遵守相关平台的规则。使用本项目意味着您已经充分了解并接受这一风险。**
 
-效果预览
-
-<img src="https://github.com/aoao-eth/wechat-summarize-bot/assets/897401/f3220210-3b7e-411f-8e2e-801f82a0b5da" width="300" />
-
-同时可以生成一张图片，方便发送到其他平台或者群内
-
-<img src="https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/3f9f37c0-26b4-4ae2-9593-c2e0edcc47fe" width="300" />
-
 ## 脚本版本运行
 
 1. 安装依赖
