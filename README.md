@@ -2,7 +2,7 @@
     <h1 align="center">微信群聊总结 AI 助手 (JS and Electron ver)</h1>
 </p>
 <p align="center">
-    <a href="https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.0.0](https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.1.0">Mac 版下载</a>
+    <a href="https://github.com/aoao-eth/wechat-ai-summarize-bot/releases/tag/1.1.0">Mac 版下载</a>
 </p>
 <p align="center">  
     <a href="https://zhinang.ai" target="_blank">
