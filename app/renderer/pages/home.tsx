@@ -802,6 +802,9 @@ function Home() {
                 </Select>
               </ModalBody>
               <ModalFooter>
+                <Button onClick={()=> setShowConfigModal(false)} color={'secondary'}>
+                  取消
+                </Button>
                 <Button
                   onClick={() => {
                     ipcRenderer.send('save-config', config);
