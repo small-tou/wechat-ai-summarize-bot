@@ -5,11 +5,7 @@ import { ipcRenderer } from 'electron';
 
 const chatuiClient = createClient();
 
-export default function Chat(props: {
-  date: string;
-  roomName: string;
-}) {
-
+export default function Chat(props: { date: string; roomName: string }) {
   const sendMessage = (message: string) => {
     ipcRenderer.send('send-chat-content', {
       roomName: props.roomName.replace('.txt', ''),
@@ -17,7 +13,6 @@ export default function Chat(props: {
     });
   };
   useEffect(() => {
-
     chatuiClient.chatboxStore.on('submit', sendMessage);
     chatuiClient.messageStore.clear();
     ipcRenderer.send('get-chat-content', {
@@ -33,8 +28,8 @@ export default function Chat(props: {
     ipcRenderer.on('chat-content-replay', (event, args) => {
       console.log('chat-replay', args);
       if (args.date == props.date && args.roomName == props.roomName) {
-        args.chats.forEach((chat) => {
-          if (chatuiClient.messageStore.messages.find((m) => m.id == chat.name + chat.content + chat.time)) {
+        args.chats.forEach((chat: any) => {
+          if (chatuiClient.messageStore.messages.find((m: any) => m.id == chat.name + chat.content + chat.time)) {
             return;
           }
           chatuiClient.messageStore.addMessageDirect({
@@ -46,14 +41,12 @@ export default function Chat(props: {
               time: chat.time,
             },
             typing: false,
-            timestamp: (new Date(chat.time)).getTime(),
+            timestamp: new Date(chat.time).getTime(),
           });
           chatuiClient.messageStore.emit('change');
         });
-
       } else {
       }
-
     });
     return () => {
       timer && clearInterval(timer);
@@ -61,54 +54,54 @@ export default function Chat(props: {
       chatuiClient.chatboxStore.removeListener('submit', sendMessage);
     };
   }, []);
-  return <ChatProvider client={chatuiClient!}>
-    <div className={styles['chatgpt-container']}>
-      <div className={styles['chatgpt-container-inner']}>
-        <ChatContainer>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              height: '100%',
-            }}
-          >
-            <MessageList
-              header={(message) => {
-                return <div className={styles['chatgpt-ui-message-header']}>
-                  <div className={styles['chatgpt-ui-message-header-name']}>
-                    {message.external.userName}：
-                  </div>
-
-                </div>;
-              }}
-
-              content={(message) => {
-                return <>
-                  <div
-                    className={[
-                      styles['chatgpt-ui-message'],
-                      message.typingStatus == 'typing'
-                        ? styles['chatgpt-ui-message-typing']
-                        : '',
-                    ].join(' ')}
-                  >
-
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: message.formatedContent || '',
-                      }}
-                    ></div>
-                  </div>
-                </>;
+  return (
+    <ChatProvider client={chatuiClient!}>
+      <div className={styles['chatgpt-container']}>
+        <div className={styles['chatgpt-container-inner']}>
+          <ChatContainer>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                height: '100%',
               }}
             >
-              <MessageLoading></MessageLoading>
-            </MessageList>
-            <ChatInput />
-          </div>
-        </ChatContainer>
+              <MessageList
+                header={(message: any) => {
+                  return (
+                    <div className={styles['chatgpt-ui-message-header']}>
+                      <div className={styles['chatgpt-ui-message-header-name']}>{message.external.userName}：</div>
+                    </div>
+                  );
+                }}
+                robotIcon={<>{'👤'}</>}
+                content={(message: any) => {
+                  return (
+                    <>
+                      <div
+                        className={[
+                          styles['chatgpt-ui-message'],
+                          message.typingStatus == 'typing' ? styles['chatgpt-ui-message-typing'] : '',
+                        ].join(' ')}
+                      >
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: message.formatedContent || '',
+                          }}
+                        ></div>
+                      </div>
+                    </>
+                  );
+                }}
+              >
+                <MessageLoading></MessageLoading>
+              </MessageList>
+              <ChatInput />
+            </div>
+          </ChatContainer>
+        </div>
       </div>
-    </div>
-  </ChatProvider>;
+    </ChatProvider>
+  );
 }

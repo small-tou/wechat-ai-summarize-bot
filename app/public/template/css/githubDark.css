@@ -1018,27 +1018,73 @@ template {
 }
 
 
-@font-face {
-    font-family: ZhuqueFangsong-Regular;
-    src: url(http://assets.html-js.com/ZhuqueFangsong-Regular.ttf);
+body {
+    background-color: #3f4344 !important;
 }
 
 .markdown-body {
-    padding: 2rem 1rem;
     font-family: Montserrat, Inter, Roboto, -apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei, sans-serif !important;
-    background-color: #1c1b1f !important;
+    background: none !important;
 }
 
 .markdown-body * {
     font-family: Montserrat, Inter, Roboto, -apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei, sans-serif !important;
-    color: #e4e2ce !important;
+    color: #fff !important;
+    font-size: 18px;
+    font-weight: 300;
 }
 
 .markdown-body pre,
 .markdown-body code {
     white-space: pre-wrap !important;
     word-wrap: break-word !important;
-    font-size: 16px !important;
+    font-size: 18px !important;
+    padding: 0px !important;
+    background: none !important;
+    color: #fff !important;
+}
+
+.markdown-body .title {
+    line-height: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    border-top: 1px dashed #aaa;
+    border-bottom: 1px dashed #aaa;
+    padding: 10px;
+}
+
+.markdown-body .subtitle {
+    line-height: 30px;
+    font-size: 15px;
+    opacity: 0.5;
+    font-weight: normal;
+}
+
+
+.markdown-body .today {
+    border-top: 1px dashed #aaa;
+    border-bottom: 1px dashed #aaa;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.markdown-body .today pre {
+    margin: 0px !important;
+}
+
+.markdown-body .content {
+    padding: 10px;
+    border-top: 1px dashed #aaa;
+    border-bottom: 1px dashed #aaa;
+    margin: 10px 0;
+}
+
+.markdown-body .footer {
+    line-height: 30px;
+    font-size: 16px;
+    border-top: 1px dashed #aaa;
+    border-bottom: 1px dashed #aaa;
+    padding: 10px;
 }
 
 .markdown-body hr {

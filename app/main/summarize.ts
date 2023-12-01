@@ -3,7 +3,7 @@ import axios from 'axios';
 import dotenv from 'dotenv';
 
 import { tts } from './tts';
-import { uniq } from 'lodash';
+import { padEnd, uniq } from 'lodash';
 import moment from 'moment';
 import EventEmitter from 'eventemitter3';
 import path from 'path';
@@ -27,16 +27,41 @@ function getChatInfoForDate(date: string, chatName: string) {
     const chats = fileContent.split(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}:\n/).filter((item) => item);
     // 对话数量
     const chatCount = chats.length;
+
     // 参与人
     const chatMembers = uniq(
       chats.map((item) => {
         return item.split('\n')[0];
       })
     );
+    const userChatCounts: Record<string, number> = {};
+    const userChatLetters: Record<string, number> = {};
+    chats.forEach((item) => {
+      const name = item.split('\n')[0].replace(':', '');
+      const content = item.split('\n').splice(1).join('\n');
+
+      if (!userChatLetters[name]) {
+        userChatLetters[name] = 0;
+      }
+      userChatLetters[name] += content.length;
+      if (!userChatCounts[name]) {
+        userChatCounts[name] = 0;
+      }
+      userChatCounts[name] += 1;
+    });
+
+    const chatRank = Object.entries(userChatCounts)
+      .sort((a, b) => {
+        return b[1] - a[1];
+      })
+      .map((item) => {
+        return [item[0], item[1], userChatLetters[item[0]]];
+      });
 
     return {
       chatCount,
       chatMembers,
+      chatRank,
       chatMembersCount: chatMembers.length,
       chatLetters: fileContent.length,
     };
@@ -115,6 +140,7 @@ export const summarize = (filePath: string) => {
         inputs: {
           input_content: `${fileContent.slice(getConfig().CUT_LENGTH ? -1 * Number(getConfig().CUT_LENGTH) : 10000)}`,
         },
+        query: '',
         response_mode: 'blocking',
         user: 'abc-123',
       });
@@ -147,14 +173,10 @@ export const summarize = (filePath: string) => {
               chatInfoDayOnDay?.chatMembersCount
             )}，📝对话数量：${getDayOnDayDisplay(chatInfoDayOnDay?.chatCount)}，📝对话字数：${getDayOnDayDisplay(
               chatInfoDayOnDay?.chatLetters
-            )}\n\n`
+            )}`
           : '');
 
-      const result =
-        `### 【${fileNameWithoutExt}】的群聊总结 ${date}\n\n------------\n\n\`\`\`\n` +
-        todayInfo +
-        res.data.answer.replace(/\n\n/g, '\n').trim() +
-        '\n```\n\n------------\n\n❤️本总结由开源项目智囊AI生成 wx.zhinang.ai';
+      const result = `\`\`\`\n` + res.data.answer.replace(/\n\n/g, '\n').trim() + '\n```';
 
       event.emit('update', `已完成文本总结`);
 
@@ -163,12 +185,39 @@ export const summarize = (filePath: string) => {
       // save to file in folder
       fs.writeFileSync(summarizedFilePath, result);
 
+      if (chatInfo) {
+        const indexEmojiMap = {
+          '0': '🥇',
+          '1': '🥈',
+          '2': '🥉',
+          '3': '3️⃣',
+          '4': '4️⃣',
+          '5': '5️⃣',
+          '6': '6️⃣',
+          '7': '7️⃣',
+          '8': '8️⃣',
+          '9': '9️⃣',
+        };
+        const rank = chatInfo?.chatRank
+          .splice(0, 10)
+          .map((item, index) => {
+            return `${indexEmojiMap[index]} @${padEnd(item[0] as string, 10, '  ')}: ${item[1]} 条对话，${item[2]} 字`;
+          })
+          .join('\n');
+        const summarizedFilePath2 = filePath.replace('.txt', ' 的今日群聊总结-rank.txt');
+        fs.writeFileSync(summarizedFilePath2, '今日群聊活跃度排行：\n' + rank);
+      }
+
       //@ts-ignore
       const convertRes = await convert2img({
         mdFile: summarizedFilePath,
         outputFilename: filePath.replace('.txt', ' 的今日群聊总结.png'),
         width: 450,
         cssTemplate: 'githubDark',
+        title: `${fileNameWithoutExt}的今日群聊总结`,
+        subtitle: date,
+        footer: '❤️本总结由开源项目智囊AI生成 wx.zhinang.ai',
+        today: todayInfo,
       });
 
       console.log(`Convert to image successfully!`);

@@ -1,12 +1,20 @@
 import { checkConfigIsOk, getConfig } from './config';
 import { log, Message, ScanStatus, WechatyBuilder } from 'wechaty';
 import { getMessagePayload, LOGPRE } from './helper';
-import { PuppetPadlocal } from 'wechaty-puppet-padlocal-plus';
 import { WechatyInterface } from 'wechaty/dist/esm/src/wechaty/wechaty-impl';
 import { FileBox } from 'file-box';
 import { RoomInterface } from 'wechaty/dist/esm/src/user-modules/room';
+import path from 'path';
+import { BASE_PATH, getChatHistoryFromFile } from './util';
+import moment from 'moment';
+import { gptRequest } from './llama';
+import { PuppetPadlocal } from 'wechaty-puppet-padlocal-plus';
+import fs from 'fs';
 
 let bot: WechatyInterface;
+
+const lastSendTime = new Map<string, number>();
+const sendCount = new Map<string, number>();
 
 export let botStatus = '已停止';
 export let botAccount = '';
@@ -44,8 +52,149 @@ export async function startBot(mainWindow: Electron.BrowserWindow) {
 
     await getMessagePayload(message);
 
-    // await dingDongBot(message);
     botStatus = '运行中';
+
+    if (!config.ENABLE_AUTO_REPLY) {
+      return;
+    }
+    let shouldReply = false;
+
+    const mentionList = await message.mentionList();
+    if (mentionList.length == 1) {
+      if (
+        mentionList.find((m) => {
+          if (m.name() === botAccount) {
+            return true;
+          }
+        })
+      ) {
+        shouldReply = true;
+      }
+    }
+    const roomName = await message.room()?.topic();
+    // 替换掉 xml 标签的内容
+    const messageText = message.text()?.replace(/<.+>[\s\S]*<\/.+>/g, '');
+
+    // return;
+    if (!message.self()) {
+      const roomBlack = [];
+      if (!roomBlack.includes(roomName)) {
+        // 包含这些关键词的文本可能是提问
+        const whilteKeywords = config.AZURE_REPLY_KEYWORDS.split(' ');
+
+        whilteKeywords.forEach((k) => {
+          if (messageText.includes(k)) {
+            shouldReply = true;
+          }
+        });
+      }
+    }
+    if (shouldReply) {
+      if (lastSendTime.get(message.room().id)) {
+        const _lastSendTime = lastSendTime.get(message.room().id);
+        const now = new Date().getTime();
+        if (now - _lastSendTime < 1000 * 60) {
+          return;
+        }
+      }
+
+      console.log('sendCount', sendCount.get(message.room().id));
+      console.log('limit', config.AZURE_REPLY_LIMIT || 10);
+
+      if (sendCount.get(message.room().id) > (config.AZURE_REPLY_LIMIT || 10)) {
+        shouldReply = false;
+        await message
+          .room()
+          .say(
+            `我今天已经回复过你们很多次了，我每天只能为一个群聊提供 ${
+              config.AZURE_REPLY_LIMIT || 10
+            } 条免费回复，我要去睡觉啦(¦3[▓▓] 晚安`
+          );
+        return;
+      }
+
+      const room = await message.room().topic();
+      const date = moment().format('YYYY-MM-DD');
+      const filePath = path.resolve(BASE_PATH, `${date}/${room}.txt`);
+      const content = getChatHistoryFromFile(filePath);
+      let messages = [];
+      if (content.length > 0) {
+        messages = messages.concat(
+          content
+            .map((c) => {
+              if (c.name === botAccount) {
+                return `${c.content?.replace(/<.+>[\s\S]*<\/.+>/g, '').slice(-100)}`;
+              }
+              return `${c.name.replace(/\n/g, '')}：${c.content
+                ?.replace(/<.+>[\s\S]*<\/.+>/g, '')
+                .slice(-100)
+                .replace(/\n/g, '')}`;
+            })
+            .slice(-15)
+        );
+      }
+
+      try {
+        const text = messageText.replace('@智囊 zhinang.ai', '');
+        const user = message.from().name();
+        messages.push(`${text.replace(/\n/g, '')}`);
+
+        if (moment().hours() >= 20 || moment().hours() < 8) {
+          // 告诉用户我要睡觉了
+          const sleepMessage = [
+            'Sorry，我的工作时间是每天8点到20点之间，现在是我的休息时间，我上床睡觉啦(¦3[▓▓] 晚安',
+            '亲爱的，我虽然是你的智囊，但我也需要休息的，现在是我的休息时间，我上床睡觉啦(¦3[▓▓] 晚安',
+            '我亲爱的卡布奇诺，我要去睡觉啦，晚安(¦3[▓▓]',
+            '我亲爱的卡布奇诺，我要去洗澡啦，晚安(¦3[▓▓]',
+            '亲爱的，我去洗洗睡了，我的工作时间是每天8点到20点之间~~~很乐意在工作时间为您提供服务',
+            '我亲爱的卡比巴拉，我的工作时间是每天8点到20点之间，我去上个厕所就去睡觉啦(¦3[▓▓] 晚安',
+            '我亲爱的卡比巴拉，我的工作时间是每天8点到20点之间，我去洗个脚就去睡觉啦(¦3[▓▓] 晚安',
+            '我亲爱的卡比巴拉，我的工作时间是每天8点到20点之间，我去洗个澡就去睡觉啦(¦3[▓▓] 晚安',
+            '亲爱的主人，我的工作时间是每天8点到20点之间，我先去洗澡啦，你要一起吗？',
+          ];
+          await message
+            .room()
+            .say(
+              '@' +
+                user +
+                ' ' +
+                sleepMessage[Math.floor(Math.random() * sleepMessage.length)] +
+                '\n-------------\n请注意，今天我还能回复' +
+                sendCount.get(message.room().id) +
+                '次'
+            );
+          lastSendTime.set(message.room().id, new Date().getTime());
+          return;
+        }
+        const res = await gptRequest([
+          {
+            role: 'system',
+            content: `
+角色：你是一个微信群聊内的智能助手，名字叫智囊 AI，你的访问地址是 https://zhinang.ai。
+你的表达风格：幽默、睿智、话痨、高冷，喜欢用 呵呵或者🙂等表情表达情绪。
+你拒绝回复以下话题：政治、人物评价、人身攻击、宗教、色情、暴力、赌博、违法、违规等相关话题。
+
+以下是群聊内的最后几条对话，请回应用户的最后一个对话中的问题。`,
+          },
+          ...messages.map((m) => {
+            return {
+              role: 'user',
+              content: m,
+            };
+          }),
+        ]);
+        await message.room().say('@' + user + ' ' + res);
+
+        fs.appendFileSync(
+          path.join(BASE_PATH, 'log.txt'),
+          `------------------------------\n${new Date().toLocaleString()} \n${user} \n${roomName} \n${messageText} \n${res}\n`
+        );
+        lastSendTime.set(message.room().id, new Date().getTime());
+        sendCount.set(message.room().id, (sendCount.get(message.room().id) || 0) + 1);
+      } catch (e) {
+        console.error(e);
+      }
+    }
   });
   // 向 mainWindow 发送事件
   bot
@@ -67,7 +216,7 @@ export async function startBot(mainWindow: Electron.BrowserWindow) {
       mainWindow.webContents.send('logout');
       botStatus = '已退出';
     })
-    .on('scan', (qrcode, status) => {
+    .on('scan', async (qrcode, status) => {
       if (status === ScanStatus.Waiting && qrcode) {
         mainWindow.webContents.send('scan-wait', qrcode);
       } else if (status === ScanStatus.Scanned) {
@@ -86,6 +235,30 @@ export async function startBot(mainWindow: Electron.BrowserWindow) {
       mainWindow.webContents.send('toast', `stop`);
       botStatus = '已停止';
     });
+
+  bot.on('login', async (user) => {
+    console.info(`${user.name()} login`);
+  });
+
+  bot.on('room-leave', (room, leaverList, remover) => {
+    console.log('机器人被踢出群了!');
+  });
+
+  bot.on('room-join', (room, inviteeList, inviter) => {
+    console.log('有人加入群');
+  });
+
+  bot.on('friendship', async (friendship) => {});
+
+  bot.on('room-topic', (payload, newTopic, oldTopic) => {
+    console.log('群名称修改', newTopic, oldTopic);
+  });
+
+  bot.on('room-invite', (payload) => {
+    console.log('收到超过40个人的群邀请', payload);
+    //自动接受邀请
+    payload.accept();
+  });
 
   await bot.start();
   mainWindow.webContents.send('toast', `bot started`);

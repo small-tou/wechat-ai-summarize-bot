@@ -1,6 +1,5 @@
 import * as sdk from 'microsoft-cognitiveservices-speech-sdk';
-import fs from 'fs';
-import dotenv from 'dotenv';
+import { getConfig } from './config';
 
 export async function tts(filePath, content) {
   return new Promise((resolve, reject) => {
@@ -11,7 +10,7 @@ export async function tts(filePath, content) {
       process.env.AZURE_TTS_REGION!,
     );
     const audioConfig = sdk.AudioConfig.fromAudioFileOutput(filename);
-    speechConfig.speechSynthesisVoiceName = 'zh-CN-XiaoshuangNeural';
+    speechConfig.speechSynthesisVoiceName = getConfig().AZURE_TTS_VOICE_NAME || 'zh-CN-XiaoshuangNeural';
     speechConfig.speechSynthesisOutputFormat = sdk.SpeechSynthesisOutputFormat.Audio16Khz32KBitRateMonoMp3;
 
     const synthesizer = new sdk.SpeechSynthesizer(speechConfig, audioConfig);
