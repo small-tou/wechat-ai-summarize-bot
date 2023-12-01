@@ -114,6 +114,10 @@ async function convert2img({
                              cssTemplate = 'default',
                              log = false,
                              puppeteerProps,
+                             title = '',
+                             subtitle = '',
+                             footer = '',
+                             today = '',
                            } = {}) {
   const _encodingTypes = ['base64', 'binary'];
   const _outputFileTypes = ['jpeg', 'png', 'webp'];
@@ -210,8 +214,7 @@ async function convert2img({
   } // Parse markdown text to HTML
 
 
-  const _html = spliceHtml(parseMarkdown(_input), _resolveTemplateName(htmlTemplate), _resolveTemplateName(cssTemplate));
-
+  const _html = spliceHtml(`<div class='title'>${title}<div class='subtitle'>${subtitle}</div></div><div class='today'>${parseMarkdown('\`\`\`\n' + today + '\n\`\`\`')}</div><div class='content'>${parseMarkdown(_input)}</div>` + `<div class='footer'>${footer}</div>`, _resolveTemplateName(htmlTemplate), _resolveTemplateName(cssTemplate));
   _result.html = _html; // Launch headless browser to load HTML
   const offscreenWindow = new BrowserWindow({
     width,

@@ -1,12 +1,12 @@
 import { NextUIProvider } from '@nextui-org/react';
 import '../styles/globals.css';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: any) {
   return (
     <NextUIProvider>
       <Component {...pageProps} />
-      <Toaster position={'bottom-center'}/>
+      <Toaster position={'bottom-center'} />
     </NextUIProvider>
   );
 }

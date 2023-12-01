@@ -52,7 +52,6 @@ if (isProd) {
       roomName,
       chats,
     });
-
   });
   ipcMain.on('logout-bot', (event, title) => {
     logoutBot();
@@ -103,36 +102,49 @@ if (isProd) {
   ipcMain.on('send-summarize', async (e, { dateDir, chatFileName }) => {
     await sendImage(
       chatFileName.replace('.txt', ''),
-      path.join(BASE_PATH, dateDir, chatFileName.replace('.txt', ' 的今日群聊总结.png')),
+      path.join(BASE_PATH, dateDir, chatFileName.replace('.txt', ' 的今日群聊总结.png'))
     );
-    await delay(5000);
-    await sendAudio(
-      chatFileName.replace('.txt', ''),
-      path.join(BASE_PATH, dateDir, chatFileName.replace('.txt', ' 的今日群聊总结.mp3')),
-    );
-    await delay(5000);
-    await sendText(
-      chatFileName.replace('.txt', ''),
-      getConfig().LAST_MESSAGE ||
-      '主人们，智囊 AI 为您奉上今日群聊总结，祝您用餐愉快！由开源项目 https://github.com/aoao-eth/wechat-ai-summarize-bot 生成',
-    );
+    await delay(2000);
+    try {
+      await sendAudio(
+        chatFileName.replace('.txt', ''),
+        path.join(BASE_PATH, dateDir, chatFileName.replace('.txt', ' 的今日群聊总结.mp3'))
+      );
+      await delay(2000);
+    } catch (e) {}
 
     try {
       const file = path.join(BASE_PATH, dateDir, chatFileName.replace('.txt', ' 的今日群聊总结.txt'));
       const summarized = fs.readFileSync(file).toString();
       const 评价 = summarized.match(/整体评价.*?\n/);
       const 我的建议 = summarized.match(/我的建议.*?\n/);
-      const 活跃发言者 = summarized.match(/今日最活跃的前五名发言者.*?\n/);
-      if (活跃发言者) {
-        await delay(5000);
-        await sendText(chatFileName.replace('.txt', ''), 活跃发言者[0]);
-      }
+      const 活跃发言者 = fs
+        .readFileSync(path.join(BASE_PATH, dateDir, chatFileName.replace('.txt', ' 的今日群聊总结-rank.txt')))
+        .toString();
+
       if (评价) {
-        await delay(5000);
-        await sendText(chatFileName.replace('.txt', ''), 评价[0] + (我的建议 ? 我的建议[0] : ''));
+        await delay(2000);
+        await sendText(
+          chatFileName.replace('.txt', ''),
+          评价[0] +
+            '\n' +
+            (我的建议 ? 我的建议[0] : '') +
+            '\n' +
+            活跃发言者 +
+            '\n\n--------------\n' +
+            (getConfig().LAST_MESSAGE ||
+              '主人们，智囊 AI 为您奉上今日群聊总结，祝您用餐愉快！由开源项目 https://github.com/aoao-eth/wechat-ai-summarize-bot 生成')
+        );
+      } else {
+        await sendText(
+          chatFileName.replace('.txt', ''),
+          活跃发言者 +
+            '\n\n--------------\n' +
+            (getConfig().LAST_MESSAGE ||
+              '主人们，智囊 AI 为您奉上今日群聊总结，祝您用餐愉快！由开源项目 https://github.com/aoao-eth/wechat-ai-summarize-bot 生成')
+        );
       }
-    } catch (e) {
-    }
+    } catch (e) {}
 
     mainWindow.webContents.send('toast', `发送成功`);
     saveData(dateDir, chatFileName.replace('.txt', ''), {
@@ -144,6 +156,8 @@ if (isProd) {
     const roomName = arg.roomName;
     const content = arg.content;
     sendText(roomName, content);
+    console.log('send-chat-content', roomName, content);
+    mainWindow.webContents.send('toast', `发送成功`);
   });
 })();
 

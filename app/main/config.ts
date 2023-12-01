@@ -8,7 +8,16 @@ type ConfigKeys =
   | 'AZURE_TTS_APPKEY'
   | 'AZURE_TTS_REGION'
   | 'CUT_LENGTH'
-  | 'LAST_MESSAGE';
+  | 'LAST_MESSAGE'
+  | 'AUTO_ACCEPT_FRIEND'
+  | 'AZURE_TTS_VOICE_NAME'
+  | 'ENABLE_AUTO_REPLY'
+  | 'AZURE_ENDPOINT'
+  | 'AZURE_API_VERSION'
+  | 'AZURE_API_KEY'
+  | 'AZURE_MODEL_ID'
+  | 'AZURE_REPLY_KEYWORDS'
+  | 'AZURE_REPLY_LIMIT';
 
 const CONFIG_FILE = path.join(app.getPath('userData'), './config.json');
 
@@ -18,7 +27,29 @@ if (!fs.existsSync(CONFIG_FILE)) {
 
 export function getConfig(): Record<ConfigKeys, any> {
   const file = fs.readFileSync(CONFIG_FILE, 'utf-8').toString();
-  return JSON.parse(file);
+  const config = JSON.parse(file);
+  if (!config.AZURE_REPLY_KEYWORDS) {
+    config.AZURE_REPLY_KEYWORDS = '智囊 zhinang';
+  }
+  if (typeof config.ENABLE_AUTO_REPLY == undefined) {
+    config.ENABLE_AUTO_REPLY = false;
+  }
+  if (!config.CUT_LENGTH) {
+    config.CUT_LENGTH = 10000;
+  }
+  if (!config.AZURE_MODEL_ID) {
+    config.AZURE_MODEL_ID = 'gpt-3.5-turbo';
+  }
+  if (!config.LAST_MESSAGE) {
+    config.LAST_MESSAGE = '由免费、快捷、智能的 https://zhinang.ai 『智囊 AI』技术支持';
+  }
+  if (!config.AZURE_TTS_VOICE_NAME) {
+    config.AZURE_TTS_VOICE_NAME = 'zh-CN-XiaoxiaoNeural';
+  }
+  if (!config.AZURE_REPLY_LIMIT) {
+    config.AZURE_REPLY_LIMIT = 10;
+  }
+  return config;
 }
 
 export function setConfig(config: Record<ConfigKeys, any>) {

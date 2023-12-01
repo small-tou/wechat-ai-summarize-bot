@@ -42,7 +42,7 @@ export const getAllDirs = () => {
       const summarizeSuffix = /_summarized| 的今日群聊总结/;
       const chatFiles = childFiles
         .filter((file) => {
-          return !summarizeSuffix.test(file);
+          return !summarizeSuffix.test(file) && file.endsWith('.txt');
         })
         .map((file) => {
           const chatInfo = getChatInfoForDate(_path, file.replace('.txt', ''));
@@ -80,6 +80,5 @@ export const getAllDirs = () => {
     .sort((r1, r2) => {
       return r1.path > r2.path ? -1 : 1;
     });
-
   return dirs;
 };
