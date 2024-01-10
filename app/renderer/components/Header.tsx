@@ -35,7 +35,7 @@ export function Header(props: { active: string }) {
             }}
           >
             <a
-              href='/'
+              href="/"
               style={{
                 textDecoration: 'none',
               }}
@@ -64,7 +64,7 @@ export function Header(props: { active: string }) {
               }}
             >
               <Link
-                href='#'
+                href="#"
                 style={{
                   fontSize: '14px',
                   color: props.active == 'home' ? 'blue' : '#111',
@@ -78,7 +78,7 @@ export function Header(props: { active: string }) {
                 群聊管理
               </Link>
               <Link
-                href='#'
+                href="#"
                 onClick={() => {
                   ipcRenderer.send('open-url', 'https://zhinang.ai');
                 }}
@@ -95,7 +95,7 @@ export function Header(props: { active: string }) {
                 智囊 AI 官网（免费 GPT 工具）
               </Link>
               <Link
-                href='#'
+                href="#"
                 style={{
                   fontSize: '14px',
                   color: props.active == 'bots' ? 'var(--nextui-colors-primaryLightContrast)' : '#111',
@@ -125,7 +125,7 @@ export function Header(props: { active: string }) {
             </a>
             <a
               onClick={() => {
-                ipcRenderer.send('open-url', 'https://github.com/aoao-eth/wechat-ai-summarize-bot');
+                ipcRenderer.send('open-url', 'https://github.com/Yootou-dev/wechat-ai-summarize-bot');
               }}
             >
               <Github />
@@ -134,7 +134,7 @@ export function Header(props: { active: string }) {
               startContent={
                 ['错误', '已停止', '已退出'].includes(botStatus) ? <ErrorIcon size={14} /> : <SuccessIcon size={14} />
               }
-              variant='flat'
+              variant="flat"
               color={['错误', '已停止', '已退出'].includes(botStatus) ? 'danger' : 'success'}
               style={{
                 paddingLeft: '10px',
@@ -151,18 +151,22 @@ export function Header(props: { active: string }) {
                   // height: '20px',
                 }}
               >
-                {botStatus} | {' '}
-                {botAccount}
+                {botStatus} | {botAccount}
               </span>
             </Chip>
-            <Button size={'sm'} onClick={() => {
-              ipcRenderer.send('logout-bot');
-            }} color={'primary'} variant={'flat'} style={{
-              height: '26px',
-            }}>
+            <Button
+              size={'sm'}
+              onClick={() => {
+                ipcRenderer.send('logout-bot');
+              }}
+              color={'primary'}
+              variant={'flat'}
+              style={{
+                height: '26px',
+              }}
+            >
               切换账号
             </Button>
-
           </div>
         </div>
       </div>
