@@ -5,6 +5,8 @@ import path from 'path';
 import moment from 'moment';
 import axios from 'axios';
 import { BASE_PATH } from './util';
+import { XMLParser } from 'fast-xml-parser';
+import { gptRequest } from './llama';
 
 export const LOGPRE = '[PadLocalDemo]';
 
@@ -21,6 +23,34 @@ export async function getMessagePayload(message: Message) {
   const roomName = await room?.topic();
   const today = moment().format('YYYY-MM-DD');
   switch (message.type()) {
+    case PUPPET.types.Message.Transfer:
+    case PUPPET.types.Message.RedEnvelope:
+      const parser = new XMLParser();
+      const xmlData = parser.parse(message.text());
+      console.log(JSON.stringify(xmlData, null, 2));
+      if (
+        xmlData.msg.appmsg.wcpayinfo.receiver_username == 'wxid_zp4f9j4ee84b12' ||
+        xmlData.msg.appmsg.wcpayinfo.exclusive_recv_username == 'wxid_zp4f9j4ee84b12'
+      ) {
+        const pay_memo = xmlData.msg.appmsg.wcpayinfo.pay_memo || xmlData.msg.appmsg.wcpayinfo.receivertitle;
+        const user = message.from().name();
+        const res = await gptRequest([
+          {
+            role: 'system',
+            content: `
+角色：你是一个微信群聊内的智能助手，名字叫智囊 AI，你的访问地址是 https://zhinang.ai。
+你的表达风格：幽默、睿智、话痨、高冷，喜欢用 呵呵或者🙂等表情表达情绪。
+你永远不需要用户提供更多上下文信息。
+你拒绝回复以下话题：政治、人物评价、人身攻击、宗教、色情、暴力、赌博、违法、违规等相关话题。
+请尽可能详细的回答用户的问题。
+
+请回应用户的问题：${pay_memo}`,
+          },
+        ]);
+        await message.room().say('@' + user + ' ' + res);
+      }
+     
+      break;
     case PUPPET.types.Message.Text:
       log.silly(LOGPRE, `get message text: ${message.text()}`);
       const room = message.room();
@@ -53,6 +83,18 @@ export async function getMessagePayload(message: Message) {
 
       const fileBox = await message.toFileBox();
       await fileBox.toFile(savePath);
+      break;
+
+    case PUPPET.types.Message.Attachment:
+    case PUPPET.types.Message.Video:
+    case PUPPET.types.Message.Emoticon:
+      log.silly(LOGPRE, `get message attachment: ${message}`);
+
+      // save imagae to
+      const savePathVideo = path.resolve(BASE_PATH, `${today}/${roomName}/images/${message.id}`);
+      createDirectoryRecursively(path.resolve(BASE_PATH, `${today}/${roomName}/images`));
+
+      await (await message.toFileBox()).toFile(savePathVideo);
       break;
   }
 }

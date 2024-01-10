@@ -25,6 +25,7 @@
     "electron-serve": "^1.1.0",
     "electron-store": "^8.1.0",
     "eventemitter3": "^5.0.1",
+    "fast-xml-parser": "^4.3.2",
     "framer-motion": "^10.16.4",
     "lodash": "^4.17.21",
     "marked": "^4.0.12",

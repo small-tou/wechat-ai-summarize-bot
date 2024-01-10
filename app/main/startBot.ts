@@ -10,11 +10,13 @@ import moment from 'moment';
 import { gptRequest } from './llama';
 import { PuppetPadlocal } from 'wechaty-puppet-padlocal-plus';
 import fs from 'fs';
+import * as PUPPET from 'wechaty-puppet';
 
 let bot: WechatyInterface;
 
 const lastSendTime = new Map<string, number>();
 const sendCount = new Map<string, number>();
+let sendCountUpdateTime = new Date().getTime();
 
 export let botStatus = '已停止';
 export let botAccount = '';
@@ -52,6 +54,10 @@ export async function startBot(mainWindow: Electron.BrowserWindow) {
 
     await getMessagePayload(message);
 
+    // 如果是红包，并且定向，接收人是我，则自动领取
+
+    if (message.type() == PUPPET.types.Message.RedEnvelope) {
+    }
     botStatus = '运行中';
 
     if (!config.ENABLE_AUTO_REPLY) {
@@ -70,6 +76,11 @@ export async function startBot(mainWindow: Electron.BrowserWindow) {
       ) {
         shouldReply = true;
       }
+    }
+
+    if (moment().format('YYYY-MM-DD') !== moment(sendCountUpdateTime).format('YYYY-MM-DD')) {
+      sendCount.clear();
+      sendCountUpdateTime = new Date().getTime();
     }
     const roomName = await message.room()?.topic();
     // 替换掉 xml 标签的内容
@@ -108,7 +119,8 @@ export async function startBot(mainWindow: Electron.BrowserWindow) {
           .say(
             `我今天已经回复过你们很多次了，我每天只能为一个群聊提供 ${
               config.AZURE_REPLY_LIMIT || 10
-            } 条免费回复，我要去睡觉啦(¦3[▓▓] 晚安`
+            } 条免费回复，我要去睡觉啦(¦3[▓▓] 晚安` +
+              '\n-------------\n你可以通过向我发送定向红包或者转账（在备注中附上问题）来向我直接提问（不限次数）'
           );
         return;
       }
@@ -159,9 +171,7 @@ export async function startBot(mainWindow: Electron.BrowserWindow) {
                 user +
                 ' ' +
                 sleepMessage[Math.floor(Math.random() * sleepMessage.length)] +
-                '\n-------------\n请注意，今天我还能回复' +
-                sendCount.get(message.room().id) +
-                '次'
+                '\n-------------\n你可以通过向我发送定向红包或者转账（在备注中附上问题）来强制唤醒我，我会回答您备注中的问题'
             );
           lastSendTime.set(message.room().id, new Date().getTime());
           return;

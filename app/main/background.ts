@@ -133,7 +133,7 @@ if (isProd) {
             活跃发言者 +
             '\n\n--------------\n' +
             (getConfig().LAST_MESSAGE ||
-              '主人们，智囊 AI 为您奉上今日群聊总结，祝您用餐愉快！由开源项目 https://github.com/aoao-eth/wechat-ai-summarize-bot 生成')
+              '由免费、快捷、智能的 https://zhinang.ai 『智囊 AI』技术支持，你可以直接 @我 提问问题，我会自动回复你的消息')
         );
       } else {
         await sendText(
@@ -141,7 +141,7 @@ if (isProd) {
           活跃发言者 +
             '\n\n--------------\n' +
             (getConfig().LAST_MESSAGE ||
-              '主人们，智囊 AI 为您奉上今日群聊总结，祝您用餐愉快！由开源项目 https://github.com/aoao-eth/wechat-ai-summarize-bot 生成')
+              '由免费、快捷、智能的 https://zhinang.ai 『智囊 AI』技术支持，你可以直接 @我 提问问题，我会自动回复你的消息')
         );
       }
     } catch (e) {}

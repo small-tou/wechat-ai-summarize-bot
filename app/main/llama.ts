@@ -2,24 +2,6 @@ import axios from 'axios';
 import { getConfig } from './config';
 
 export const requestLLama = async (prompt: string) => {
-  /**
-   * curl -X 'POST' \
-   *   'http://localhost:3001/v1/chat/completions' \
-   *   -H 'accept: application/json' \
-   *   -H 'Content-Type: application/json' \
-   *   -d '{
-   *   "messages": [
-   *     {
-   *       "content": "You are a helpful assistant.",
-   *       "role": "system"
-   *     },
-   *     {
-   *       "content": "What is the capital of France?",
-   *       "role": "user"
-   *     }
-   *   ]
-   * }'
-   */
   const raw = JSON.stringify({
     prompt: prompt,
     max_tokens: 4000,

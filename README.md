@@ -6,8 +6,8 @@
 
 ## 封号风险提示
 
-⚠️ **重要提示：使用本项目登录微信可能存在封号的风险，请慎重使用并遵守相关平台的规则。使用本项目意味着您已经充分了解并接受这一风险。**
-
+⚠️ **重要提示：使用本项目登录微信可能存在封号的风险，请慎重使用并遵守相关平台的规则。使用本项目意味着您已经充分了解并接受这一风险。
+**
 
 ## 项目介绍
 
@@ -25,11 +25,11 @@ xxx_sumarized.mp3 # 总结的语音
 
 效果预览
 
-<img src="https://github.com/aoao-eth/wechat-summarize-bot/assets/897401/f3220210-3b7e-411f-8e2e-801f82a0b5da" width="300" />
+<img src="https://github.com/Yootou-dev/wechat-summarize-bot/assets/897401/f3220210-3b7e-411f-8e2e-801f82a0b5da" width="300" />
 
 同时可以生成一张图片，方便发送到其他平台或者群内
 
-<img src="https://github.com/aoao-eth/wechat-ai-summarize-bot/assets/897401/3f9f37c0-26b4-4ae2-9593-c2e0edcc47fe" width="300" />
+<img src="https://github.com/Yootou-dev/wechat-ai-summarize-bot/assets/897401/3f9f37c0-26b4-4ae2-9593-c2e0edcc47fe" width="300" />
 
 ## 运行
 
@@ -94,6 +94,7 @@ DIFY_API_KEY=xxxxxx
 ![](./static/1.jpg)
 
 5. 设置 MONITOR_ROOMS
+
 ```bash
 MONITOR_ROOMS=群名（目前只支持一个）
 ```
@@ -112,7 +113,8 @@ MONITOR_ROOMS=群名（目前只支持一个）
 npm run watch
 ```
 
-此时会弹出一个二维码，使用微信扫码登录，登录成功后，程序将持续抓取所有群聊的聊天记录，聊天记录会保存在本地文件中，位置在 data/日期文件夹/群名.txt 中，不会上传到任何第三方。
+此时会弹出一个二维码，使用微信扫码登录，登录成功后，程序将持续抓取所有群聊的聊天记录，聊天记录会保存在本地文件中，位置在
+data/日期文件夹/群名.txt 中，不会上传到任何第三方。
 
 9. 手动运行总结程序
    在每天结束的时候，手动对某个群的内容进行总结

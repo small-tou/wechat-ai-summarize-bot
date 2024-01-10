@@ -618,7 +618,7 @@ function Home() {
                   <a
                     href={'#'}
                     onClick={() => {
-                      ipcRenderer.send('open-url', 'https://github.com/aoao-eth/wechat-ai-summarize-bot');
+                      ipcRenderer.send('open-url', 'https://github.com/Yootou-dev/wechat-ai-summarize-bot');
                     }}
                     style={{
                       color: 'blue',
